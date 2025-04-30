@@ -1,0 +1,92 @@
+[
+  {
+    "id": "TN_STEWART_00046",
+    "state": "Tennessee",
+    "county": "Stewart",
+    "acres": 8.02,
+    "price": 58800,
+    "status": "AVAILABLE",
+    "image": "https://placehold.co/600x400?text=TN+Stewart"
+  },
+  {
+    "id": "NC_WILKES_00047",
+    "state": "North Carolina",
+    "county": "Wilkes",
+    "acres": 5.5,
+    "price": 49900,
+    "status": "PENDING",
+    "image": "https://placehold.co/600x400?text=NC+Wilkes"
+  },
+  {
+    "id": "GA_HABERSHAM_00048",
+    "state": "Georgia",
+    "county": "Habersham",
+    "acres": 10.0,
+    "price": 75000,
+    "status": "SOLD",
+    "image": "https://placehold.co/600x400?text=GA+Habersham"
+  },
+  {
+    "id": "TX_TRAVIS_00049",
+    "state": "Texas",
+    "county": "Travis",
+    "acres": 12.3,
+    "price": 82000,
+    "status": "AVAILABLE",
+    "image": "https://placehold.co/600x400?text=TX+Travis"
+  },
+  {
+    "id": "CO_BOULDER_00050",
+    "state": "Colorado",
+    "county": "Boulder",
+    "acres": 7.8,
+    "price": 67000,
+    "status": "AVAILABLE",
+    "image": "https://placehold.co/600x400?text=CO+Boulder"
+  },
+  {
+    "id": "TN_STEWART_00046",
+    "state": "Tennessee",
+    "county": "Stewart",
+    "acres": 8.02,
+    "price": 58800,
+    "status": "AVAILABLE",
+    "image": "https://placehold.co/600x400?text=TN+Stewart"
+  },
+  {
+    "id": "NC_WILKES_00047",
+    "state": "North Carolina",
+    "county": "Wilkes",
+    "acres": 5.5,
+    "price": 49900,
+    "status": "PENDING",
+    "image": "https://placehold.co/600x400?text=NC+Wilkes"
+  },
+  {
+    "id": "GA_HABERSHAM_00048",
+    "state": "Georgia",
+    "county": "Habersham",
+    "acres": 10.0,
+    "price": 75000,
+    "status": "SOLD",
+    "image": "https://placehold.co/600x400?text=GA+Habersham"
+  },
+  {
+    "id": "TX_TRAVIS_00049",
+    "state": "Texas",
+    "county": "Travis",
+    "acres": 12.3,
+    "price": 82000,
+    "status": "AVAILABLE",
+    "image": "https://placehold.co/600x400?text=TX+Travis"
+  },
+  {
+    "id": "CO_BOULDER_00050",
+    "state": "Colorado",
+    "county": "Boulder",
+    "acres": 7.8,
+    "price": 67000,
+    "status": "AVAILABLE",
+    "image": "https://placehold.co/600x400?text=CO+Boulder"
+  }
+]
