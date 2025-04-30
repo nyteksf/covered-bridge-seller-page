@@ -37,12 +37,12 @@ const StatusFilter = ({ themeMode }) => {
             ? `${
                 themeMode === "dark-mode"
                   ? "border-white text-cyan-300"
-                  : "text-black border-cyan-500 bg-white"
+                  : "text-black border-cyan-400 border bg-[#f5f5f5]"
               }`
             : `transition-all duration-350 hover:text-gray-600 ${
                 themeMode === "dark-mode"
                   ? "border-gray-300 bg-[#181818] text-[#f5f5f5]"
-                  : "bg-white text-[#181818] border-[#dae4d8]"
+                  : "bg-white text-gray-600 border-[#dbd5d7]"
               }`
         }
       `}
