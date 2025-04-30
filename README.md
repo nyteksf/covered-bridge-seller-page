@@ -1,1 +1,1 @@
-"# covered-bridge-seller-page" 
+"# covered-bridge-sales-page" 
