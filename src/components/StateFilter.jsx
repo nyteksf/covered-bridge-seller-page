@@ -91,7 +91,7 @@ export default function StateFilter({ themeMode }) {
       isAvailable
         ? themeMode === "dark-mode"
           ? "border-[#3f3f3f] border text-white bg-[#1f1f1f] hover:border-[#f5f5f5] hover:text-cyan-300 cursor-pointer"
-          : "border-[#444] border !text-white !bg-[#333] opacity-80 cursor-pointer hover:opacity-75"
+          : "border-[#444] border !text-white !bg-[#333] opacity-85 cursor-pointer hover:opacity-80"
         : "bg-[#0000] text-gray-300 cursor-not-allowed border"
     }
     ${selectedStates.includes(state) ? "!border-white !text-cyan-300" : "text-[#181818]"}
