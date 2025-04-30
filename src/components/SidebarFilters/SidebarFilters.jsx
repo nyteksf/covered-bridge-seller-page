@@ -6,7 +6,7 @@ import AcresFilter from "./AcresFilter";
 import PriceFilter from "./PriceFilter";
 import StatusFilter from "./StatusFilter";
 import CountryFilter from "./CountryFilter";
-import StateFilter from "../../components/StateFilter";
+import StateFilter from "./StateFilter";
 import SidebarBlock from "../../components/SidebarBlock";
 import PurchaseOptionsFilter from "./PurchaseOptionsFilter";
 
