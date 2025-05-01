@@ -91,7 +91,7 @@ export default function StateFilter({ themeMode }) {
       isAvailable
         ? themeMode === "dark-mode"
           ? "border-[#3f3f3f] border !text-white bg-[#3a3a3a] hover:border-[#f5f5f5] hover:!text-cyan-300 cursor-pointer"
-          : "bg-[#d3d3d3b1] text-black border-[#dbd5d7] hover:bg-[#333] hover:border-gray-300 hover:text-cyan-300 cursor-pointer"
+          : "bg-[#dbd5d7] text-black border-[lightgray] hover:bg-[#333] hover:border-gray-300 hover:text-cyan-300 cursor-pointer"
         : `opacity-50 cursor-not-allowed border ${
             themeMode === "dark-mode"
               ? "border-[#3d3d3d] bg-[#0000] text-gray-500"
