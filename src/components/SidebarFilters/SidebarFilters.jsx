@@ -72,7 +72,7 @@ const SidebarFilters = ({ themeMode }) => {
                         cursor-pointer rounded-[4px] font-lato 
                         border-[#3f3f3f]
                         no-underline bg-transparent 
-                        transition-all duration-200 focus:outline-none ${ themeMode === "dark-mode" ? "text-white" : "text-[#333] hover:bg-[#181818] hover:text-[#f5f5f5]" }`}
+                        transition-all duration-200 focus:outline-none ${ themeMode === "dark-mode" ? "text-white" : "opacity-100 text-[#333] hover:!bg-[#3f3f3f] hover:text-white" }`}
           >
             Back To Top{" "}
             <span className={`inline-block rounded-[4px] ml-[8px] px-[7px] py-[5px] font-fa-solid leading-[14px] font-bold relative ${ themeMode === "dark-mode" ? "bg-[#1f1f1f]" : "bg-[#333]" }`}>

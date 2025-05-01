@@ -26,7 +26,7 @@ const CountryFilter = ({ themeMode }) => {
               className={`
                         font-semibold text-[0.9rem] flex flex-row justify-center items-center gap-x-2 relative cursor-pointer rounded-md w-[48%] border mb-0 px-6 py-2 uppercase ${
                           themeMode === "dark-mode"
-                            ? "border-black !bg-[#1f1f1f] text-cyan-300"
+                            ? "border-black !bg-[#1f1f1f] text-[#f5f5f5]"
                             : "opacity-85 hover:opacity-80 text-gray-100 border-gray-200 border bg-[#181818]"
                         }
                     `}
