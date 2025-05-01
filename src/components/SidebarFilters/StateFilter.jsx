@@ -86,12 +86,12 @@ export default function StateFilter({ themeMode }) {
               onClick={() => {
                 if (isAvailable) handleToggleState(state);
               }}
-              className={`flex duration-250 transition-all items-center justify-start px-3 py-[10px] h-[40px] border rounded text-sm font-semibold tracking-[-0.95px] 
+              className={`flex duration-250 transition-all items-center justify-start px-3 py-[10px] h-[40px] border rounded text-sm font-semibold tracking-[-0.85px] 
     ${
       isAvailable
         ? themeMode === "dark-mode"
           ? "border-[#3f3f3f] border !text-white bg-[#3a3a3a] hover:border-[#f5f5f5] hover:!text-cyan-300 cursor-pointer"
-          : "bg-[#dbd5d7] text-black border-[lightgray] hover:bg-[#333] hover:border-gray-300 hover:text-cyan-300 cursor-pointer"
+          : "bg-[#dbd5d7b9] text-black border-[lightgray] hover:bg-[#333] hover:border-[black] hover:text-gray-300 cursor-pointer"
         : `opacity-50 cursor-not-allowed border ${
             themeMode === "dark-mode"
               ? "border-[#3d3d3d] bg-[#0000] text-gray-500"
@@ -103,7 +103,7 @@ export default function StateFilter({ themeMode }) {
         ? `opacity-85 ${
             themeMode === "dark-mode"
               ? "border-black !bg-[#1f1f1f] hover:bg-[#181818] !text-cyan-300"
-              : "border border-cyan-200 text-cyan-200 !bg-[#1f1f1f] hover-[#181818]"
+              : "border border-cyan-200 text-white !bg-[#1f1f1f] hover-[#181818]"
           }`
         : `${themeMode === "dark-mode" ? "" : ""}`
     }

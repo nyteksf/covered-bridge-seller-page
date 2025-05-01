@@ -37,7 +37,7 @@ const SearchBar = ({ themeMode }) => {
                 ${
                   themeMode === "dark-mode"
                     ? "bg-[rgb(44,44,44)] text-[#f5f5f5] placeholder-[#f9f9f9]"
-                    : "bg-[#f5f5f5] text-[#333] placeholder-[#333] border border-[#dae4d8]"
+                    : "bg-[#f5f5f5] text-[#181818] placeholder-[#181818] border border-[#dae4d8]"
                 }
               `}
       />

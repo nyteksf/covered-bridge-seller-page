@@ -32,7 +32,7 @@ const PriceFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas }) => {
             className={`w-full border font-lato placeholder:font-lato text-white px-3 py-2 -tracking-[0.55px] ${
               themeMode === "dark-mode"
                 ? "bg-[#1a1a1a] border-gray-600"
-                : "bg-[#f5f5f5] border-gray-300 text-gray-800"
+                : "bg-[#f5f5f5] border-gray-300 !text-gray-800"
             }`}
           />
           <span
@@ -55,7 +55,7 @@ const PriceFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas }) => {
             className={`w-full border font-lato placeholder:font-lato text-white px-3 py-2 -tracking-[0.55px] ${
               themeMode === "dark-mode"
                 ? "bg-[#1a1a1a] border-gray-600"
-                : "bg-[#f5f5f5] text-[#181818] border-gray-300"
+                : "bg-[#f5f5f5] !text-[#181818] border-gray-300"
             }`}
           />
         </div>
