@@ -89,12 +89,12 @@ export default function StateFilter({ themeMode }) {
               className={`flex duration-150 transition-all items-center justify-start px-3 py-[10px] h-[40px] border rounded text-sm font-semibold tracking-[-0.95px] 
     ${
       isAvailable ? themeMode === "dark-mode"
-          ? "border-[#3f3f3f] border !text-white bg-[#181818] hover:border-[#f5f5f5] hover:!text-cyan-300 cursor-pointer"
-          : "border-[#3f3f3f] border text-[#f5f5f5] bg-[#333] opacity-85 cursor-pointer hover:text-cyan-300 hover:opacity-80"
+          ? "border-[#3f3f3f] border !text-white bg-[#3f3f3f] hover:border-[#f5f5f5] hover:!text-cyan-300 cursor-pointer"
+          : "border-[#3f3f3f] border text-[#f5f5f5] bg-[#3a3a3a] opacity-85 cursor-pointer hover:text-cyan-300 hover:opacity-80"
 
-        : "border-[#3f3f3f] bg-[#2c2c2c] text-gray-500 opacity-50 cursor-not-allowed border"
+        : `opacity-50 cursor-not-allowed border ${ themeMode === "dark-mode" ? "border-[#3d3d3d] bg-[#0000] text-gray-500" : "bg-[#0000] border-[lightgray] text-gray-500" }`
     } 
-    ${selectedStates.includes(state) ? `${ themeMode === "dark-mode" ? "border-[#3f3f3f] bg-[black] hover:bg-[#181818] !text-cyan-200" : "border text-cyan-200 bg-[#181818] hover-[#181818]" }` : `${ themeMode === "dark-mode" ? "" : "" }` }
+    ${selectedStates.includes(state) ? `${ themeMode === "dark-mode" ? "border-[#3f3f3f] bg-[black] hover:bg-[#181818] !text-cyan-200" : "border border-cyan-200 text-cyan-200 !bg-[#1f1f1f] hover-[#181818]" }` : `${ themeMode === "dark-mode" ? "" : "" }` }
   `}
             >
               <input
