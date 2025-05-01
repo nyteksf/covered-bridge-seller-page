@@ -34,15 +34,15 @@ const StatusFilter = ({ themeMode }) => {
               className={`flex-1 text-[0.95rem] border px-3 py-2 rounded font-semibold uppercase outline-none hover:outline-none active:outline-none
         ${
           selectedStatuses.includes(status)
-            ? `${
+            ? `transition-all duration-350 ${
                 themeMode === "dark-mode"
                   ? "border-white text-cyan-300"
-                  : "text-black border-cyan-400 border bg-[#f5f5f5]"
+                  : "text-gray-100 border-gray-200 opacity-85 border bg-[#181818]"
               }`
             : `transition-all duration-350 hover:text-gray-600 ${
                 themeMode === "dark-mode"
                   ? "border-gray-300 bg-[#181818] text-[#f5f5f5]"
-                  : "bg-white text-gray-600 border-[#dbd5d7]"
+                  : "bg-[#f5f5f5] text-black border-[#dbd5d7] hover:bg-[white] hover:border-gray-300 hover:text-cyan-300"
               }`
         }
       `}
