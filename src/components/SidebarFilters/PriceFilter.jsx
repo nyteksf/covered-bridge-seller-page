@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 
-const PriceFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas }) => {
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(30000000);
-
+const PriceFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas, minPrice, maxPrice, setMinPrice, setMaxPrice }) => {
   const clearPrice = () => {
     setMinPrice(0);
     setMaxPrice(30000000);

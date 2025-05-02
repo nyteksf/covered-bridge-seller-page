@@ -2,24 +2,36 @@ import React, { useState } from "react";
 
 import { usePageLoad } from "../../hooks/usePageLoad";
 
+import StateFilter from "./StateFilter";
 import AcresFilter from "./AcresFilter";
 import PriceFilter from "./PriceFilter";
+import ReturnToTop from "../ReturnToTop";
 import StatusFilter from "./StatusFilter";
 import CountryFilter from "./CountryFilter";
-import StateFilter from "./StateFilter";
 import SidebarBlock from "../../components/SidebarBlock";
 import PurchaseOptionsFilter from "./PurchaseOptionsFilter";
 
-const SidebarFilters = ({ themeMode }) => {
-  const [buyNowToggled, setBuyNowToggled] = useState(false);
-  const [ownerFinanceToggled, setOwnerFinanceToggled] = useState(false);
-
+const SidebarFilters = ({
+  themeMode,
+  minPrice,
+  setMinPrice,
+  maxPrice,
+  setMaxPrice,
+  minAcres,
+  setMinAcres,
+  maxAcres,
+  setMaxAcres,
+  selectedStatuses,
+  setSelectedStatuses,
+  ownerFinanceToggled,
+  setOwnerFinanceToggled,
+  buyNowToggled,
+  setBuyNowToggled,
+  selectedStates,
+  setSelectedStates,
+  formatNumberWithCommas,
+}) => {
   const pageIsLoading = usePageLoad(); // DISABLE BUTTONS?
-
-  const formatNumberWithCommas = (num) => {
-    if (num === null || num === undefined) return "";
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
 
   return (
     <aside
@@ -34,6 +46,10 @@ const SidebarFilters = ({ themeMode }) => {
         themeMode={themeMode}
         SidebarBlock={SidebarBlock}
         formatNumberWithCommas={formatNumberWithCommas}
+        minPrice={minPrice}
+        setMinPrice={setMinPrice}
+        maxPrice={maxPrice}
+        setMaxPrice={setMaxPrice}
       />
 
       {/* ACRES FILTER */}
@@ -41,68 +57,43 @@ const SidebarFilters = ({ themeMode }) => {
         themeMode={themeMode}
         SidebarBlock={SidebarBlock}
         formatNumberWithCommas={formatNumberWithCommas}
+        minAcres={minAcres}
+        setMinAcres={setMinAcres}
+        maxAcres={maxAcres}
+        setMaxAcres={setMaxAcres}
       />
 
       {/* STATUS FILTER */}
-      <StatusFilter themeMode={themeMode} />
+      <StatusFilter
+        themeMode={themeMode}
+        selectedStatuses={selectedStatuses}
+        setSelectedStatuses={setSelectedStatuses}
+      />
 
       {/* PURCHASE OPTION FILTER */}
-      <PurchaseOptionsFilter themeMode={themeMode} />
+      <PurchaseOptionsFilter
+        themeMode={themeMode}
+        ownerFinanceToggled={ownerFinanceToggled}
+        setOwnerFinanceToggled={setOwnerFinanceToggled}
+        buyNowToggled={buyNowToggled}
+        setBuyNowToggled={setBuyNowToggled}
+      />
 
       {/* COUNTRY FILTER */}
       <CountryFilter themeMode={themeMode} />
 
       {/* STATE FILTER */}
-      <StateFilter themeMode={themeMode} />
+      <StateFilter
+        themeMode={themeMode}
+        selectedStates={selectedStates}
+        setSelectedStates={setSelectedStates}
+      />
 
       {/* HR-STYLE DIVIDER */}
       <div className="w-[calc(100%+1.25rem)] -ml-[0.66rem] border-t border-[#3f3f3f] mb-8" />
 
       {/* FINAL SECTION: Back to Top + CTA Buttons */}
-      <div
-        className="
-            border border-[#3f3f3f] bg-[#0000] rounded-[4px] flex flex-col mt-4 pt-1 px-0 sticky top-[80px] pb-[1.1rem]
-            "
-      >
-        <div className="mt-2 pt-2 flex items-center justify-center">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className={`text-center text-sm font-bold bg-gray-600 hover:bg-[#f5f5f5] hover:text-gray-600 hover:border-gray-600 border
-                        flex items-center gap-[4px] px-2 py-1 
-                        cursor-pointer rounded-[4px] font-lato 
-                        border-[#3f3f3f]
-                        no-underline bg-transparent 
-                        transition-all duration-200 focus:outline-none ${ themeMode === "dark-mode" ? "text-white" : "opacity-100 text-[#333] hover:!bg-[#3f3f3f] hover:text-white" }`}
-          >
-            Back To Top{" "}
-            <span className={`inline-block rounded-[4px] ml-[8px] px-[7px] py-[5px] font-fa-solid leading-[14px] font-bold relative ${ themeMode === "dark-mode" ? "bg-[#1f1f1f]" : "bg-[#333]" }`}>
-              <span className={`relative -top-[2px] font-bold ${ themeMode === "dark-mode" ? "text-[#f4f4f4] hover:bg-[#0000]" : "text-[#f4f4f4] hover:bg-[#333]" }`}>↑</span>
-            </span>
-          </button>
-        </div>
-        <div
-          className="flex flex-row flex-wrap justify-between items-center 
-                  bg-[#0000] rounded-[4px] 
-                    px-[10px]"
-        >
-          <button
-            onClick={() => {
-              window.open("https://www.selltocoveredbridge.com/");
-            }}
-            className="bg-[#1f1f1f] border text-[#f5f5f5] font-bold py-3 uppercase tracking-wide transition-all hover:text-cyan-300 border-black text-center w-[48%] mt-[10px] mb-[10px] px-[4px] text-[16px] active:outline-none"
-          >
-            Sell Property
-          </button>
-          <button
-            onClick={() => {
-              window.location.href = "/land-for-sale?country=U.S.A.";
-            }}
-            className="bg-[#1f1f1f] border text-[#f5f5f5] font-bold py-3 uppercase tracking-wide hover:text-cyan-300 border-black transition-all text-center w-[48%] mt-[10px] mb-[10px] px-[4px] text-[16px] active:outline-none"
-          >
-            Buy Property
-          </button>
-        </div>
-      </div>
+      <ReturnToTop themeMode={themeMode} />
     </aside>
   );
 };

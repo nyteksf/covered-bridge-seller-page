@@ -1,92 +1,106 @@
 [
   {
-    "id": "TN_STEWART_00046",
-    "state": "Tennessee",
-    "county": "Stewart",
-    "acres": 8.02,
+    "id": "OK_Tillman_00001",
+    "state": "Oklahoma",
+    "county": "Tillman County",
+    "acres": 9.9,
+    "price": 86728,
+    "status": "AVAILABLE",
+    "image": "/latimer1.jpg",
+    "isBuyNow": true,
+    "isOwnerFinanced": true
+  },
+  {
+    "id": "OK_Pottawatomie_00001",
+    "state": "Oklahoma",
+    "county": "Pottawatomie County",
+    "acres": 5,
+    "price": 39997,
+    "status": "AVAILABLE",
+    "image": "/pottawatomie1.jpg",
+    "isBuyNow": true,
+    "isOwnerFinanced": true
+  },
+  {
+    "id": "OK_Latimer_00040",
+    "state": "Oklahoma",
+    "county": "Latimer County",
+    "acres": 3,
+    "price": 49500,
+    "status": "SOLD",
+    "image": "/latimer3.jpg"
+  },
+  {
+    "id": "OK_Latimer_00021",
+    "state": "Oklahoma",
+    "county": "Latimer County",
+    "acres": 3.84,
+    "price": 52000,
+    "status": "AVAILABLE",
+    "image": "/latimer2.jpg",
+    "isBuyNow": true,
+    "isOwnerFinanced": true
+  },
+  {
+    "id": "OK_Latimer_00020",
+    "state": "Oklahoma",
+    "county": "Latimer County",
+    "acres": 3.13,
+    "price": 67000,
+    "status": "SOLD",
+    "image": "/latimer4.jpg"
+  },
+  {
+    "id": "OK_Latimer_00040",
+    "state": "Oklahoma",
+    "county": "Latimer County",
+    "acres": 3.15,
     "price": 58800,
     "status": "AVAILABLE",
-    "image": "https://placehold.co/600x400?text=TN+Stewart"
+    "image": "/latimer5.jpg",
+    "isBuyNow": true,
+    "isOwnerFinanced": true
   },
   {
-    "id": "NC_WILKES_00047",
-    "state": "North Carolina",
-    "county": "Wilkes",
-    "acres": 5.5,
+    "id": "OK_Latimer_00018",
+    "state": "Oklahoma",
+    "county": "Latimer County",
+    "acres": 3.92,
     "price": 49900,
     "status": "PENDING",
-    "image": "https://placehold.co/600x400?text=NC+Wilkes"
+    "image": "/latimer7.jpg",
+    "isBuyNow": true,
+    "isOwnerFinanced": false
   },
   {
-    "id": "GA_HABERSHAM_00048",
-    "state": "Georgia",
-    "county": "Habersham",
-    "acres": 10.0,
+    "id": "OK_Latimer_00016",
+    "state": "Oklahoma",
+    "county": "Latimer County",
+    "acres": 7.45,
     "price": 75000,
     "status": "SOLD",
-    "image": "https://placehold.co/600x400?text=GA+Habersham"
+    "image": "/latimer8.jpg"
   },
   {
-    "id": "TX_TRAVIS_00049",
-    "state": "Texas",
-    "county": "Travis",
-    "acres": 12.3,
-    "price": 82000,
+    "id": "OK_Latimer_00015",
+    "state": "Oklahoma",
+    "county": "Latimer County",
+    "acres": 2.27,
+    "price": 22000,
     "status": "AVAILABLE",
-    "image": "https://placehold.co/600x400?text=TX+Travis"
+    "image": "/latimer9.jpg",
+    "isBuyNow": true,
+    "isOwnerFinanced": true
   },
   {
-    "id": "CO_BOULDER_00050",
-    "state": "Colorado",
-    "county": "Boulder",
-    "acres": 7.8,
-    "price": 67000,
+    "id": "OK_Latimer_00010",
+    "state": "Oklahoma",
+    "county": "Latimer County",
+    "acres": 6.96,
+    "price": 77000,
     "status": "AVAILABLE",
-    "image": "https://placehold.co/600x400?text=CO+Boulder"
-  },
-  {
-    "id": "TN_STEWART_00046",
-    "state": "Tennessee",
-    "county": "Stewart",
-    "acres": 8.02,
-    "price": 58800,
-    "status": "AVAILABLE",
-    "image": "https://placehold.co/600x400?text=TN+Stewart"
-  },
-  {
-    "id": "NC_WILKES_00047",
-    "state": "North Carolina",
-    "county": "Wilkes",
-    "acres": 5.5,
-    "price": 49900,
-    "status": "PENDING",
-    "image": "https://placehold.co/600x400?text=NC+Wilkes"
-  },
-  {
-    "id": "GA_HABERSHAM_00048",
-    "state": "Georgia",
-    "county": "Habersham",
-    "acres": 10.0,
-    "price": 75000,
-    "status": "SOLD",
-    "image": "https://placehold.co/600x400?text=GA+Habersham"
-  },
-  {
-    "id": "TX_TRAVIS_00049",
-    "state": "Texas",
-    "county": "Travis",
-    "acres": 12.3,
-    "price": 82000,
-    "status": "AVAILABLE",
-    "image": "https://placehold.co/600x400?text=TX+Travis"
-  },
-  {
-    "id": "CO_BOULDER_00050",
-    "state": "Colorado",
-    "county": "Boulder",
-    "acres": 7.8,
-    "price": 67000,
-    "status": "AVAILABLE",
-    "image": "https://placehold.co/600x400?text=CO+Boulder"
+    "image": "/latimer10.jpg",
+    "isBuyNow": true,
+    "isOwnerFinanced": false
   }
 ]

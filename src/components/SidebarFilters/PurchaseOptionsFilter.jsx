@@ -1,6 +1,6 @@
 import React from "react";
 
-const PurchaseOptionsFilter = ({ themeMode }) => {
+const PurchaseOptionsFilter = ({ themeMode,  }) => {
   const handleTogglePurchaseOption = (label) => {
     if (label === "BUY NOW") {
       setBuyNowToggled(!buyNowToggled);

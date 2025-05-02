@@ -12,10 +12,27 @@ import FilterSummarySortBy from "../components/FilterSummarySortBy";
 import SidebarFilters from "../components/SidebarFilters/SidebarFilters";
 
 import { usePageLoad } from "../hooks/usePageLoad";
+import { usePropertyList } from "../hooks/usePropertyList";
 
 export default function AllLand() {
+  const { data: properties, loading, error } = usePropertyList();
+
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(30000000);
+  const [minAcres, setMinAcres] = useState(0);
+  const [maxAcres, setMaxAcres] = useState(15000);
+  const [selectedStatuses, setSelectedStatuses] = useState([]);
+  const [buyNowToggled, setBuyNowToggled] = useState(false);
+  const [ownerFinanceToggled, setOwnerFinanceToggled] = useState(false);
+  const [selectedStates, setSelectedStates] = useState([]);
+
   const pageIsLoading = usePageLoad();
   const [themeMode, setThemeMode] = useState("light-mode");
+
+  const formatNumberWithCommas = (num) => {
+    if (num === null || num === undefined) return "";
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   return (
     <>
@@ -37,7 +54,26 @@ export default function AllLand() {
           >
             <section className="text-white md:pl-4 md:pr-4 py-2.5 pb-[10px] mb-[3rem] flex flex-col lg:flex-row gap-4">
               {/* SIDEBAR */}
-              <SidebarFilters themeMode={themeMode} />
+              <SidebarFilters
+                themeMode={themeMode}
+                buyNowToggled={buyNowToggled}
+                setBuyNowToggled={setBuyNowToggled}
+                ownerFinanceToggled={ownerFinanceToggled}
+                setOwnerFinanceToggled={setOwnerFinanceToggled}
+                minPrice={minPrice}
+                setMinPrice={setMinPrice}
+                maxPrice={maxPrice}
+                setMaxPrice={setMaxPrice}
+                minAcres={minAcres}
+                setMinAcres={setMinAcres}
+                maxAcres={maxAcres}
+                setMaxAcres={setMaxAcres}
+                selectedStatuses={selectedStatuses}
+                setSelectedStatuses={setSelectedStatuses}
+                selectedStates={selectedStates}
+                setSelectedStates={setSelectedStates}
+                formatNumberWithCommas={formatNumberWithCommas}
+              />
 
               {/* === RIGHT COLUMN === */}
               <div className="flex-1 flex flex-col relative">
@@ -51,8 +87,13 @@ export default function AllLand() {
 
                 {/* PROPERTY CARDS */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 mt-3.5 gap-6">
-                  {Array.from({ length: 10 }).map((_, index) => (
-                    <PropertyCard key={index} themeMode={themeMode} />
+                  {properties.map((property) => (
+                    <PropertyCard
+                      key={property.id}
+                      data={property}
+                      themeMode={themeMode}
+                      formatNumberWithCommas={formatNumberWithCommas}
+                    />
                   ))}
                 </div>
               </div>
