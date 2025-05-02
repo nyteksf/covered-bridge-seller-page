@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-const StatusFilter = ({ themeMode }) => {
-  const [selectedStatuses, setSelectedStatuses] = useState([]);
-
+const StatusFilter = ({ themeMode, selectedStatuses, setSelectedStatuses }) => {
   const handleToggleStatus = (status) => {
     setSelectedStatuses(
       (prevSelected) =>

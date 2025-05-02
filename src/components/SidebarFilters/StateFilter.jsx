@@ -39,9 +39,7 @@ const allStates = [
   "Wyoming",
 ];
 
-export default function StateFilter({ themeMode }) {
-  const [selectedStates, setSelectedStates] = useState([]);
-
+export default function StateFilter({ themeMode, selectedStates, setSelectedStates }) {
   const handleToggleState = (state) => {
     setSelectedStates(
       (prevSelected) =>

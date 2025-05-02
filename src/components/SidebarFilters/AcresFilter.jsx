@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 
-const AcresFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas }) => {
-  const [minAcres, setMinAcres] = useState(0);
-  const [maxAcres, setMaxAcres] = useState(15000);
-
+const AcresFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas, minAcres, setMinAcres, maxAcres, setMaxAcres }) => {
   const clearAcres = () => {
     setMinAcres(0);
     setMaxAcres(15000);
