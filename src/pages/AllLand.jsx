@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import Footer from "../components/Footer";
 import LoadingState from "./LoadingState";
@@ -13,8 +13,10 @@ import SidebarFilters from "../components/SidebarFilters/SidebarFilters";
 
 import { usePageLoad } from "../hooks/usePageLoad";
 import { usePropertyList } from "../hooks/usePropertyList";
+import { useActiveFilters } from "../hooks/useActiveFilters";
 
 export default function AllLand() {
+  const [themeMode, setThemeMode] = useState("light-mode");
   const { data: properties, loading, error } = usePropertyList();
 
   const [minPrice, setMinPrice] = useState(0);
@@ -25,14 +27,47 @@ export default function AllLand() {
   const [buyNowToggled, setBuyNowToggled] = useState(false);
   const [ownerFinanceToggled, setOwnerFinanceToggled] = useState(false);
   const [selectedStates, setSelectedStates] = useState([]);
-
+  const [sortBy, setSortBy] = useState("");
+  
   const pageIsLoading = usePageLoad();
-  const [themeMode, setThemeMode] = useState("light-mode");
 
   const formatNumberWithCommas = (num) => {
     if (num === null || num === undefined) return "";
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
+
+  const activeFilters = useActiveFilters({
+    buyNowToggled,
+    setBuyNowToggled,
+    ownerFinanceToggled,
+    setOwnerFinanceToggled,
+    selectedStatuses,
+    setSelectedStatuses,
+    selectedStates,
+    setSelectedStates,
+    minPrice,
+    setMinPrice,
+    maxPrice,
+    setMaxPrice,
+    minAcres,
+    setMinAcres,
+    maxAcres,
+    setMaxAcres,
+    formatNumberWithCommas,
+  });
+
+
+// memoised ordering
+const sortedProperties = useMemo(() => {
+  const list = [...properties];
+  switch (sortBy) {
+    case "price-asc":  return list.sort((a, b) => a.price  - b.price);
+    case "price-desc": return list.sort((a, b) => b.price  - a.price);
+    case "acres-asc":  return list.sort((a, b) => a.acres  - b.acres);
+    case "acres-desc": return list.sort((a, b) => b.acres  - a.acres);
+    default:           return list;
+  }
+}, [properties, sortBy]);
 
   return (
     <>
@@ -79,15 +114,22 @@ export default function AllLand() {
               <div className="flex-1 flex flex-col relative">
                 <SearchBar themeMode={themeMode} />
                 <div>
-                  <FilterSummarySortBy themeMode={themeMode} />
+                  
+                  <FilterSummarySortBy
+                    themeMode={themeMode}
+                    activeFilters={activeFilters}
+                    sortBy={sortBy}
+                    setSortBy={setSortBy}
+                  />
                   <span className="text-sm text-left text-gray-400 relative -top-1 mr-auto">
-                    <span className="text-[#149f49]">729</span> results
+                    <span className="text-[#149f49]">{properties.length}</span>{" "}
+                    results
                   </span>
                 </div>
 
                 {/* PROPERTY CARDS */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 mt-3.5 gap-6">
-                  {properties.map((property) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 mt-[0.74rem] gap-6">
+                  {sortedProperties.map((property) => (
                     <PropertyCard
                       key={property.id}
                       data={property}

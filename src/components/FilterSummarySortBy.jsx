@@ -1,5 +1,6 @@
 import React from "react";
 
+import FilterByPill from "./FilterByPill";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -7,7 +8,14 @@ import {
   DropdownMenuItem,
 } from "./ui/dropdown-menu";
 
-const FilterSummarySortBy = ({ themeMode }) => {
+import { SORT_OPTIONS } from "../constants/sortOptions";
+
+const FilterSummarySortBy = ({
+  themeMode,
+  activeFilters,
+  sortBy,
+  setSortBy,
+}) => {
   const baseItemClasses = `
     flex flex-row justify-start items-center
     w-full max-w-full mb-0
@@ -19,13 +27,15 @@ const FilterSummarySortBy = ({ themeMode }) => {
 
   const itemDark = "border-r-[#e6e6e6] border-b-[#e6e6e6] text-[#f5f5f5]";
   const itemLight = "border-r-[#3f3f3f] border-b-[#3f3f3f] text-[#181818]";
-
+  
+  // Updated to match original button style
   const buttonBase = `
     text-sm flex flex-row justify-start items-center
     min-w-[10rem] px-[4rem] py-[0.5rem] pl-[1.1rem]
     rounded-[4px] text-left whitespace-nowrap
     ml-auto no-underline cursor-pointer
     font-pt-sans -tracking-[0.25px] appearance-none
+    relative
   `;
 
   return (
@@ -38,36 +48,31 @@ const FilterSummarySortBy = ({ themeMode }) => {
         >
           Filtering by:
         </span>
-        <div
-          className={`${
-            themeMode === "dark-mode"
-              ? "bg-[#333] border-[#3f3f3f] text-white"
-              : "bg-[#f5f5f5] border-[#dae4d8] text-[#181818]"
-          } border rounded px-2 pt-[1px] relative top-[0.5px] pb-[2px] flex items-center -tracking-[0.2px] gap-1`}
-        >
-          Country: U.S.A.
-          <button
-            className={`duration-150 transition-all text-xs ml-1 ${
-              themeMode === "dark-mode"
-                ? "text-[#007e7e] hover:text-cyan-200"
-                : "text-[#333]"
-            }`}
-          >
-            ✕
-          </button>
-        </div>
+        {activeFilters.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2 mt-1">
+            {activeFilters.map((f) => (
+              <FilterByPill
+                key={f.id}
+                themeMode={themeMode}
+                index={f.id}
+                label={f.label}
+                onRemove={f.onRemove}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* SORTING DROPDOWN */}
       <DropdownMenu>
         <DropdownMenuTrigger
-          className={`relative ${buttonBase} ${
+          className={`${buttonBase} ${
             themeMode === "dark-mode"
               ? "bg-[#1a1a1a] text-[#f5f5f5] border border-[#3f3f3f]"
-              : "bg-[#f5f5f5] text-[#181818] border"
+              : "bg-[#f5f5f5] text-[#181818] border border-[#dae4d8]"
           }`}
         >
-          Sort by
+          {SORT_OPTIONS.find((o) => o.value === sortBy)?.label ?? "Sort by"}
           <svg
             className={`pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 ${
               themeMode === "dark-mode" ? "text-white" : "text-[#181818]"
@@ -82,6 +87,7 @@ const FilterSummarySortBy = ({ themeMode }) => {
             />
           </svg>
         </DropdownMenuTrigger>
+
         <DropdownMenuContent
           className={`rounded-[4px] mt-2 z-50 w-[180px] ${
             themeMode === "dark-mode"
@@ -89,20 +95,18 @@ const FilterSummarySortBy = ({ themeMode }) => {
               : "bg-[#f5f5f5] text-[#181818] border border-[#dae4d8]"
           }`}
         >
-          {[
-            { label: "Acres (Large)", value: "acres-large-small" },
-            { label: "Acres (Small)", value: "acres-small-large" },
-            { label: "Price (High)", value: "price-high-low" },
-            { label: "Price (Low)", value: "price-low-high" },
-          ].map((item) => (
+          {SORT_OPTIONS.map((item) => (
             <DropdownMenuItem
               key={item.value}
-              value={item.value}
+              onSelect={() => setSortBy(item.value)}
               className={`${baseItemClasses} ${
                 themeMode === "dark-mode" ? itemDark : itemLight
-              }`}
+              } ${sortBy === item.value ? "bg-[#149f49]/10" : ""}`}
             >
               {item.label}
+              {sortBy === item.value && (
+                <span className="ml-auto text-[#149f49]">✔</span>
+              )}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>

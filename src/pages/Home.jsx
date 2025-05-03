@@ -8,6 +8,7 @@ import VIPSignup from "../components/VIPSignUp";
 import SecondaryNav from "../components/SecondaryNav";
 import StateSelector from "../components/StateSelector";
 import StickySecondaryNav from "../components/StickySecondaryNav";
+
 import { usePageLoad } from "../hooks/usePageLoad";
 
 const Home = () => {
