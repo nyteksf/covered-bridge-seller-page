@@ -51,15 +51,15 @@
     "image": "/latimer4.jpg"
   },
   {
-    "id": "OK_Latimer_00040",
+    "id": "OK_Latimer_00041",
     "state": "Oklahoma",
     "county": "Latimer County",
     "acres": 3.15,
     "price": 58800,
-    "status": "AVAILABLE",
+    "status": "PENDING",
     "image": "/latimer5.jpg",
-    "isBuyNow": true,
-    "isOwnerFinanced": true
+    "isBuyNow": false,
+    "isOwnerFinanced": false
   },
   {
     "id": "OK_Latimer_00018",

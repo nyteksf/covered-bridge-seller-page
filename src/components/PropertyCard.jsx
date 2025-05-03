@@ -1,12 +1,13 @@
 import React from "react";
 
 import PurchaseTypeBtn from "./PurchaseTypeBtn";
+import PropertyStatusPill from "./PropertyStatusPill";
 
-const PropertyCard = ({ key, data, formatNumberWithCommas, themeMode }) => {
+const PropertyCard = ({ index, data, formatNumberWithCommas, themeMode }) => {
   console.log("data: ", data);
   return (
     <div
-      key={key}
+      key={index}
       className={`flex flex-col shadow-[0_4px_12px_rgba(0,0,0,0.06)] justify-between h-full rounded-[6px] border ${
         themeMode === "dark-mode"
           ? "border-[#3f3f3f]"
@@ -17,25 +18,11 @@ const PropertyCard = ({ key, data, formatNumberWithCommas, themeMode }) => {
       <div className="relative px-[12px]">
         <img
           src={`${data.image}`}
-          alt={`Property ${key} + 1}`}
+          alt={`Property ${index} + 1}`}
           loading="lazy"
           className="object-cover rounded-[6px] inline-block align-middle border-0 max-w-full w-full h-[175px] px-0"
         />
-        <span
-          className="absolute text-[#1f1f1f] text-xs font-bold px-2 flex 
-                            items-center 
-                            gap-x-2 
-                            bg-[#f1f7f3] 
-                            rounded-[16px] 
-                            left-[4%] 
-                            top-[6%]
-                            h-[28px]
-                            py-[2px]
-                            shadow-[2px_0_5px_2px_#0003]"
-        >
-          <div className="bg-[#05c85d] rounded-full w-[12px] h-[12px]"></div>
-          <span className="uppercase font-lato text-[12px]">{data.status}</span>
-        </span>
+        <PropertyStatusPill statusTitle={data.status} />
       </div>
 
       {/* Content Block */}
