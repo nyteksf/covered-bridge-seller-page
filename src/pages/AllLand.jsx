@@ -17,7 +17,7 @@ import { useActiveFilters } from "../hooks/useActiveFilters";
 
 export default function AllLand() {
   const [themeMode, setThemeMode] = useState("light-mode");
-  const { data: properties, loading, error } = usePropertyList();
+  const { data: properties, loading } = usePropertyList();
 
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(30000000);
@@ -28,7 +28,7 @@ export default function AllLand() {
   const [ownerFinanceToggled, setOwnerFinanceToggled] = useState(false);
   const [selectedStates, setSelectedStates] = useState([]);
   const [sortBy, setSortBy] = useState("");
-  
+
   const pageIsLoading = usePageLoad();
 
   const formatNumberWithCommas = (num) => {
@@ -56,18 +56,22 @@ export default function AllLand() {
     formatNumberWithCommas,
   });
 
-
-// memoised ordering
-const sortedProperties = useMemo(() => {
-  const list = [...properties];
-  switch (sortBy) {
-    case "price-asc":  return list.sort((a, b) => a.price  - b.price);
-    case "price-desc": return list.sort((a, b) => b.price  - a.price);
-    case "acres-asc":  return list.sort((a, b) => a.acres  - b.acres);
-    case "acres-desc": return list.sort((a, b) => b.acres  - a.acres);
-    default:           return list;
-  }
-}, [properties, sortBy]);
+  // memoised ordering
+  const sortedProperties = useMemo(() => {
+    const list = [...properties];
+    switch (sortBy) {
+      case "price-asc":
+        return list.sort((a, b) => a.price - b.price);
+      case "price-desc":
+        return list.sort((a, b) => b.price - a.price);
+      case "acres-asc":
+        return list.sort((a, b) => a.acres - b.acres);
+      case "acres-desc":
+        return list.sort((a, b) => b.acres - a.acres);
+      default:
+        return list;
+    }
+  }, [properties, sortBy]);
 
   return (
     <>
@@ -114,7 +118,6 @@ const sortedProperties = useMemo(() => {
               <div className="flex-1 flex flex-col relative">
                 <SearchBar themeMode={themeMode} />
                 <div>
-                  
                   <FilterSummarySortBy
                     themeMode={themeMode}
                     activeFilters={activeFilters}
@@ -122,8 +125,8 @@ const sortedProperties = useMemo(() => {
                     setSortBy={setSortBy}
                   />
                   <span className="text-sm text-left text-gray-400 relative -top-1 mr-auto">
-                    <span className="text-[#149f49]">{properties.length}</span>{" "}
-                    results
+                    <span className="text-[#149f49]">{properties?.length}</span>{" "}
+                    result{properties?.length >= 1 ? "s" : ""}
                   </span>
                 </div>
 
