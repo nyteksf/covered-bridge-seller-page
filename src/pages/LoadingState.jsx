@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./loading-state.css";
 
@@ -54,7 +54,7 @@ const LoadingState = () => {
   }, [animationPhase]);
 
   return (
-    <div className="loading-state--container">
+    <div className="loading-state--container cursor-default">
       <div className="loading-indicator" />
     </div>
   );

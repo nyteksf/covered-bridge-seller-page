@@ -4,11 +4,12 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
-import PageNotFound from "./pages/NotFound";
+import LandInfo from "./pages/LandInfo";
 import LandForSale from "./pages/AllLand";
+import StateLand from "./pages/StateLand";
+import PageNotFound from "./pages/NotFound";
 
 import "./index.css";
-import StateLand from "./pages/StateLand";
 
 function App() {
   return (
@@ -32,7 +33,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/land-for-sale" element={<LandForSale />} />
-        <Route path="/state/:slug" element={<StateLand />} />
+        <Route path="/state/:stateName" element={<StateLand />} />
+        <Route path="/listing/:propertyId" element={<LandInfo />} />
+        {/* 404 PAGE */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

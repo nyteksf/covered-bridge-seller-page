@@ -28,10 +28,7 @@ const StickySecondaryNav = () => {
             <a
               href="#"
               className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative
-              duration-150 
-              no-underline 
-              mx-auto 
-              align-top
+              duration-150 no-underline mx-auto align-top
               "
             >
               Available
