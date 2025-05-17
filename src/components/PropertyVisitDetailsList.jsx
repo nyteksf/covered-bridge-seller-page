@@ -8,7 +8,7 @@ const PropertyVisitDetailsList = ({ details = [], title, className }) => {
         <h3 className="font-montserrat font-bold text-lg mb-3 tracking-[0.1px]">
           {title}
         </h3>
-        <ul className="list-none pl-0 space-y-1">
+        <ul className="list-none pl-1 space-y-1">
           {details.map((item, idx) => (
             <li
               key={idx}
