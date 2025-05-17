@@ -10,7 +10,7 @@ function RenderGPSCoords({ coords, title, className }) {
         <h3 className="font-montserrat font-bold text-lg mb-3 tracking-[0.1px]">
           {title}
         </h3>
-        <ul>
+        <ul className="list-disc pl-5">
           {coords.map(({ label, lat, lng, googleMapUrl }, idx) => (
             <li key={idx}>
               {label}: {lat}, {lng}{" "}

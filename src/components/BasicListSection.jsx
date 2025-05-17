@@ -77,7 +77,7 @@ const BasicListSection = ({
 
   /* choose list style ------------------------------------------------------- */
   const ulClasses = clsx(
-    showBullets ? "list-disc pl-5" : "list-none pl-0",
+    showBullets ? "list-disc pl-5" : "list-none pl-1",
     "space-y-1"
   );
 
