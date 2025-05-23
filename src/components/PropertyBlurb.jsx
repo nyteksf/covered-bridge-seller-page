@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 import { Button } from "./ui/button";
 import VisaCardIcon from "../../public/img/VisaCard-light.svg";
@@ -7,10 +7,45 @@ import checkmarkGreen from "../../public/img/checkmark_green.svg";
 import MasterCardIcon from "../../public/img/MasterCard-light.svg";
 import DiscoverCardIcon from "../../public/img/DiscoverCard-light.svg";
 
-const PropertyBlurb = ({ propertyId, propertyBlurbContent }) => {
+const PropertyBlurb = ({
+  propertyId,
+  propertyBlurbContent,
+  propertyStatus,
+}) => {
   {
     /* propertyId, canOwnerFinance: boolean, totalPrice: number, depositPrice: number, monthlyPayment: number, */
   }
+
+  const [isSoldOut, setIsSoldOut] = useState(false);
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  {
+    /* THIS IS A DUMB PLACEHOLDER ONLY! FIX AFTER INTEGRATING STRIPE PAY */
+  }
+
+  const createCheckoutSession = () => {
+    // SET PROPERTY STATUS TO PENDING WHEN COMPLETES THIS STEP, OR RESET ON ERROR
+    console.log("peepee poopoo");
+  };
+
+  const handleBuyNowClick = async () => {
+    if (isCheckingOut) return;
+
+    if (propertyStatus !== "available") {
+      throw new Error("Property is already sold or pending");
+    }
+
+    setIsCheckingOut(true);
+
+    try {
+      const session = await createCheckoutSession();
+      window.location.href = session.url;
+      // REDIRECT USER IF REDIRECT OCCURS
+    } catch (err) {
+      console.error(err);
+      setIsCheckingOut(false);
+    }
+  };
 
   function formatWithCommas(input) {
     const number = Number(input);
@@ -52,8 +87,22 @@ const PropertyBlurb = ({ propertyId, propertyBlurbContent }) => {
 
             {/* Center: Buy Now Button */}
             <div className="flex justify-center items-center max-w-[33%]">
-              <Button className="uppercase bg-[#0aa952] font-lato text-[14px] px-[15px] py-[9px] rounded-lg font-black tracking-[1.1px] min-h-[35px] hover:bg-[#099146] focus:bg-[#099146] disabled:bg-[#999999] text-white transition duration-200 ease-in-out max-w-full text-ellipsis overflow-hidden leading-[1.2] border-0">
-                buy now
+              <Button
+                className={`uppercase bg-[#0aa952] font-lato text-[14px] px-[15px] py-[9px] rounded-lg font-black tracking-[1.1px] min-h-[35px] hover:bg-[#099146] focus:bg-[#099146] disabled:bg-[#999999] 
+                  shadow-md hover:shadow-sm hover:translate-y-[1px] text-white transition duration-150 ease-in-out max-w-full text-ellipsis overflow-hidden leading-[1.2] border-0 ${
+                    isSoldOut || isCheckingOut
+                      ? "opacity-50 cursor-not-allowed"
+                      : ""
+                  }`}
+                disabled={isCheckingOut || isSoldOut}
+                onClick={handleBuyNowClick}
+              >
+                {isCheckingOut
+                  ? "Processing..."
+                  : isSoldOut
+                  ? "Out of Stock"
+                  : "Buy Now"}
+                {/* SET THIS TO TRUE IN THE ONCLICK() */}
               </Button>
             </div>
 
@@ -191,7 +240,11 @@ const PropertyBlurb = ({ propertyId, propertyBlurbContent }) => {
           </p>
           <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">
             Property to sell? Feel free to visit:{" "}
-            <a href="https://www.SELLToCOVEREDBRIDGE.com/">
+            <a
+              href="https://www.SELLToCOVEREDBRIDGE.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <span className="text-[#007E7E] hover:text-[#0cc] font-semibold transition-all duration-250">
                 https://SELLToCOVEREDBRIDGE.com
               </span>

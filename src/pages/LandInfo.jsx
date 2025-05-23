@@ -33,9 +33,10 @@ const LandInfo = () => {
   const imagesPreloaded = useRef(false);
 
   const [assetCount, setAssetCount] = useState(0);
-  const [propertyData, setPropertyData] = useState(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [propertyData, setPropertyData] = useState(null);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const [videoLoadError, setVideoLoadError] = useState(false);
   const [videoUrl, setVideoUrl] = useState(
     "https://www.youtube.com/watch?v=H5W65j5i2JI"
   );
@@ -50,6 +51,7 @@ const LandInfo = () => {
 
   useEffect(() => {
     if (activeTab === "Video") {
+      setVideoLoadError(false);
       setVideoLoaded(false); // force skeleton to show again
     }
   }, [activeTab]);
@@ -179,6 +181,19 @@ const LandInfo = () => {
     loadData();
   }, [propertyId, navigate]);
 
+  useEffect(() => {
+    if (activeTab !== "Video") return;
+
+    const timer = setTimeout(() => {
+      if (!videoLoaded) {
+        setVideoLoadError(true);
+        // Optionally, log error or display message to user
+      }
+    }, 15000); // 10 seconds timeout
+
+    return () => clearTimeout(timer);
+  }, [activeTab, videoLoaded]);
+
   const formattedNearbyPoints =
     propertyData?.nearbyPoints?.map((point) => {
       let text = `${point.distance} ${point.unit} to ${point.title}`;
@@ -225,13 +240,20 @@ const LandInfo = () => {
                       </div>
                     )}
 
-                    <YouTubeEmbed
-                      url={videoUrl}
-                      onReady={handleVideoReady}
-                      className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${
-                        videoLoaded ? "opacity-100 z-2" : "opacity-0 z-0"
-                      }`}
-                    />
+                    {!videoLoadError ? (
+                      <YouTubeEmbed
+                        url={videoUrl}
+                        onReady={handleVideoReady}
+                        className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${
+                          videoLoaded ? "opacity-100 z-2" : "opacity-0 z-0"
+                        }`}
+                      />
+                    ) : (
+                      <div className="error-message p-4 bg-red-100 text-red-700">
+                        Video unavailable or restricted. Please try another
+                        property.
+                      </div>
+                    )}
                   </div>
                 )}
 
@@ -275,6 +297,7 @@ const LandInfo = () => {
                 <PropertyBlurb
                   propertyId={propertyData.parcelId}
                   propertyBlurbContent={propertyData.PTBContent}
+                  propertyStatus={propertyData.propertyStatus}
                 />
                 <PropertySpecs
                   specs={propertyData?.specsData}

@@ -21,7 +21,7 @@ export default function SecondaryNav({
   };
 
   return (
-    <nav className="w-full pl-[5rem] pr-[8.45rem] py-2 bg-[#2a3031] gap-x-[3.5rem] relative z-[2]">
+    <nav className="w-full pl-[5rem] pr-[8.45rem] py-2 bg-[#2a3031] gap-x-[3.5rem] relative z-[20]">
       <div
         className="
           nav-link-wrapper

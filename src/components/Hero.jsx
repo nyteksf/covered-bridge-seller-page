@@ -21,6 +21,8 @@ export default function Hero() {
           </a>
           <a
             href="https://www.selltocoveredbridge.com/"
+            rel="noopener noreferrer"
+            target="_blank"
             className="hover:text-cyan-200 hover:border-white border-4 border-cyan-200 px-6 pt-1.5 pb-[0.35rem] font-montserrat text-[22px] text-center mt-0 mb-0 uppercase cursor-pointer bg-[#131313] rounded-none flex-none transition-all duration-200 font-extrabold h-[52px] w-[251.1px] py-3 shadow-[0_0_4px_rgba(0,255,255,0.35)] hover:shadow-[0_0_6px_rgba(255,255,255,0.5)] -tracking-[0.0325px]"
           >
             Sell Property

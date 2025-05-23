@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const PropertyList = () => {
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
-    fetch('/data/properties.json')
+    fetch("/data/properties.json")
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
       .then((data) => setProperties(data))
       .catch((error) => {
-        console.error('Error fetching the properties:', error);
+        console.error("Error fetching the properties:", error);
       });
   }, []);
 
