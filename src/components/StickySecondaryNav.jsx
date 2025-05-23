@@ -5,7 +5,7 @@ const StickySecondaryNav = () => {
     <nav
       className="
     fixed top-0 left-0 w-full h-[67.2px]
-    z-[1] bg-[#1f1f1f] text-[#f5f5f5]
+    z-[19] bg-[#1f1f1f] text-[#f5f5f5]
     flex gap-[3.5rem] pl-[5rem] border-b-[#333] border-b-[0.5px]
   "
     >

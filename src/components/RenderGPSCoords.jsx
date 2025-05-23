@@ -1,9 +1,6 @@
 import clsx from "clsx";
 
 function RenderGPSCoords({ coords, title, className }) {
-    console.log("title -> ", title)
-    console.log("coords -> ", coords) 
-    console.log("className -> ", className)
   return (
     <section className={clsx("w-full flex justify-center mb-1", className)}>
       <div className="w-full max-w-[616px] text-left border-l-[4px] border-[#007e7e] pl-4">

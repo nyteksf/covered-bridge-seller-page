@@ -14,6 +14,7 @@ import SidebarFilters from "../components/SidebarFilters/SidebarFilters";
 import { usePageLoad } from "../hooks/usePageLoad";
 import { usePropertyList } from "../hooks/usePropertyList";
 import { useActiveFilters } from "../hooks/useActiveFilters";
+import { Link } from "react-router-dom";
 
 export default function AllLand() {
   const [themeMode, setThemeMode] = useState("light-mode");
@@ -72,6 +73,11 @@ export default function AllLand() {
         return list;
     }
   }, [properties, sortBy]);
+
+   {/* <Link to={`${toSmallSlug(property.id)}`}>  HOW TO USE LATER TO MAKE DYNAMIC VIA HARDCODED ID */}
+  function toSmallSlug(str) {
+    return str.toLowerCase().replace(/_/g, "-");
+  }
 
   return (
     <>
@@ -133,12 +139,14 @@ export default function AllLand() {
                 {/* PROPERTY CARDS */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 mt-[0.74rem] gap-6">
                   {sortedProperties.map((property) => (
-                    <PropertyCard
-                      key={property.id}
-                      data={property}
-                      themeMode={themeMode}
-                      formatNumberWithCommas={formatNumberWithCommas}
-                    />
+                    <Link to="http://localhost:5173/listing/ok-carbon-00038/">
+                      <PropertyCard
+                        key={property.id}
+                        data={property}
+                        themeMode={themeMode}
+                        formatNumberWithCommas={formatNumberWithCommas}
+                      />
+                    </Link>
                   ))}
                 </div>
               </div>

@@ -41,7 +41,7 @@ const YouTubeEmbed = ({ url, className = "", onReady }) => {
         </div>
       )}
       <iframe
-        className={`absolute inset-0 w-full h-full ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        className={`absolute inset-0 w-full h-full ${isLoading ? "opacity-0" : "opacity-100"}`}
         src={`https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0`}
         title="YouTube video player"
         frameBorder="0"

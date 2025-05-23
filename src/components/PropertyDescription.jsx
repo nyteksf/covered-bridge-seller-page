@@ -14,9 +14,7 @@ const PropertyDescription = ({
   PropertyVisitDetails,
   GPSCoords,
 }) => {
-  console.log("PropertyVisitDetails -> ", PropertyVisitDetails);
   const descriptionPairs = pSections;
-
   const specificationPairs = propertySpecifications ?? [];
 
   const formattedNearbyPoints =
@@ -96,7 +94,7 @@ const PropertyDescription = ({
     />,
 
     /* 6 - "Contact Info" */
-    <ContactInfoJoe />
+    <ContactInfoJoe />,
   ];
 
   return (

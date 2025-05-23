@@ -90,7 +90,7 @@ export default function TopNav() {
   };
 
   return (
-    <div className="bg-[#131313] w-full my-[-0.25rem] py-[4px] relative z-[2]">
+    <div className="bg-[#131313] w-full my-[-0.25rem] py-[4px] relative z-[20]">
       {/* Outer Wrapper */}
       <div className="flex items-center justify-between w-full mx-auto h-full max-h-[60px] py-0 relative gap-x-6 max-w-[1220px] pl-4 pr-[2.10rem]">
         {/* === LEFT SECTION === */}
@@ -135,7 +135,11 @@ export default function TopNav() {
               BUY
             </button>
           </Link>
-          <Link to="https://www.selltocoveredbridge.com/">
+          <a
+            href="https://www.selltocoveredbridge.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <button
               className="border-4 border-cyan-200 bg-[#231f20] text-white hover:border-white hover:text-cyan-200 transition-all duration-150 tracking-[1px] font-montserrat font-bold text-[1.1rem]
             inline-block cursor-pointer text-center uppercase flex-none leading-[20px] rounded-none px-[0.5rem] h-[35.2px]
@@ -143,7 +147,7 @@ export default function TopNav() {
             >
               SELL
             </button>
-          </Link>
+          </a>
         </div>
 
         {/* === RIGHT SECTION === */}

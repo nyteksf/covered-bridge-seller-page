@@ -4,7 +4,11 @@ import PurchaseTypeBtn from "./PurchaseTypeBtn";
 import PropertyStatusPill from "./PropertyStatusPill";
 
 const PropertyCard = ({ index, data, formatNumberWithCommas, themeMode }) => {
-  console.log("data: ", data);
+  console.log("index -> ", index) 
+  console.log("data -> ", data)
+  console.log("formatNumberWithCommas -> ", formatNumberWithCommas)
+  console.log("themeMode -> ", themeMode)
+
   return (
     <div
       key={index}

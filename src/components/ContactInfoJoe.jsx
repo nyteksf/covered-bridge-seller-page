@@ -33,6 +33,8 @@ const ContactInfoJoe = ({
       Property to Sell? Visit:{" "}
       <a
         href="https://www.selltocoveredbridge.com"
+        rel="noopener noreferrer"
+        target="_blank"
         className="text-[#007e7e] hover:text-[#0cc] ml-1"
       >
         <strong>https://SellToCoveredBridge.com</strong>

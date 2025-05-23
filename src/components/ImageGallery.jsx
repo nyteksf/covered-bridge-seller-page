@@ -192,7 +192,7 @@ export default function ImageGallery({ images }) {
                 <img
                   src={src}
                   alt={`Thumbnail ${index + 1}`}
-                  className="w-full h-full object-cover hover:opacity-90 duration-250 ease scale-100 transition-all"
+                  className="w-full h-full object-cover hover:opacity-90 duration-250 ease scale-100 transition-all z-[-1]"
                   onError={(e) => {
                     console.error("Thumbnail failed to load:", src);
                     e.target.src = "/api/placeholder/150/150"; // Fallback to placeholder
