@@ -1,9 +1,8 @@
-import React from "react";
-
+import { Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import ShareDropdown from "@/components/ShareDropdown";
 
-const LandInfoSidebar = () => {
+const LandInfoSidebar = ({ setIsContactModalOpen }) => {
   return (
     <aside className="space-y-6 font-lato w-full mt-4">
       {/* Contact Card */}
@@ -14,13 +13,14 @@ const LandInfoSidebar = () => {
         </h4>
         <Button
           className="
-            tracking-[1px] uppercase px-6 pt-2 pb-[5px] w-full
-            text-[15px] font-black font-montserrat
-            text-white bg-[#131313] rounded-none
-            shadow-[0_3px_0_0_#131313]
-            hover:shadow-[0_3px_0_0_#22d3ee]
-            transition-all duration-300 hover:text-gray-200
-          "
+              tracking-[1px] uppercase px-6 pt-2 pb-[5px] w-full
+              text-[15px] font-black font-montserrat
+              text-white bg-[#131313] rounded-none
+              shadow-[0_3px_0_0_#131313]
+              hover:shadow-[0_3px_0_0_#22d3ee]
+              transition-all duration-300 hover:text-gray-200
+            "
+          onClick={() => setIsContactModalOpen(true)}
         >
           Contact
         </Button>
@@ -33,30 +33,38 @@ const LandInfoSidebar = () => {
 
       {/* Action Buttons */}
       <div className="flex flex-col gap-3 bg-white p-4 rounded-[4px] shadow-sm border border-[#c4c4c4]">
-        <Button
-          className="
+        <a
+          href="https://selltocoveredbridge.com/"
+          className="w-full"
+          target="_blank"
+        >
+          <Button
+            className="
             px-6 pt-3 pb-[9px] font-montserrat text-[15px] font-black
             tracking-[1px] uppercase cursor-pointer bg-[#131313] 
-            text-white rounded-none
+            text-white rounded-none w-full
             shadow-[0_3px_0_0_#131313]
             hover:shadow-[0_3px_0_0_#22d3ee]
             transition-all duration-300 hover:text-gray-200
           "
-        >
-          Sell Property
-        </Button>
-        <Button
-          className="
-            px-6 pt-3 pb-[9px] font-montserrat text-[15px] font-black
-            tracking-[1px] uppercase cursor-pointer bg-[#131313] 
-            text-white rounded-none
-            shadow-[0_3px_0_0_#131313]
-            hover:shadow-[0_3px_0_0_#22d3ee]
-            transition-all duration-300 hover:text-gray-200
-          "
-        >
-          Return Home
-        </Button>
+          >
+            Sell Property
+          </Button>
+        </a>
+        <Link to="/">
+          <Button
+            className="
+              px-6 pt-3 pb-[9px] font-montserrat text-[15px] font-black
+              tracking-[1px] uppercase cursor-pointer bg-[#131313] 
+              text-white rounded-none w-full
+              shadow-[0_3px_0_0_#131313]
+              hover:shadow-[0_3px_0_0_#22d3ee]
+              transition-all duration-300 hover:text-gray-200
+            "
+          >
+            Return Home
+          </Button>
+        </Link>
       </div>
     </aside>
   );

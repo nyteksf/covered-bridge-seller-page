@@ -1,4 +1,5 @@
-import React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,12 +11,26 @@ import {
   faFacebook,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import ContactMeModal from "./ContactMeModal";
 
 import smallLogo from "../../public/logo-sm-2-invert.png";
 
+import "./contact-me-modal.css";
+
 export default function Footer() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalAnimating, setIsModalAnimating] = useState(false);
+
   return (
     <>
+      {(isModalOpen || isModalAnimating) && (
+        <ContactMeModal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          isModalAnimating={isModalAnimating}
+          setIsModalAnimating={setIsModalAnimating}
+        />
+      )}
       <footer className="bg-[#445255] text-white px-8 pb-6 text-sm font-montserrat">
         <div className="mx-auto">
           <div className="bg-[#e6e6e663] w-full h-[1px] ml-[2px] mr-[3px]" />
@@ -25,20 +40,20 @@ export default function Footer() {
             <div className="flex flex-col space-y-2">
               <ul className="space-y-1">
                 <li className="py-[10px] h-[40px]">
-                  <a
-                    href="#"
+                  <Link
+                    to="/land-for-sale?country=U.S.A."
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     Properties
-                  </a>
+                  </Link>
                 </li>
                 <li className="py-[10px] h-[40px]">
-                  <a
-                    href="#"
+                  <Link
+                    href="/faq"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     FAQ
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -76,12 +91,15 @@ export default function Footer() {
             <div className="flex flex-col space-y-2">
               <ul className="space-y-1">
                 <li className="py-[10px] h-[40px]">
-                  <a
-                    href="#"
+                  <button
                     className="hover:text-cyan-300 font-semibold transition"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsModalOpen(true);
+                    }}
                   >
                     Contact
-                  </a>
+                  </button>
                 </li>
                 <li className="py-[10px] h-[40px]">
                   <a
@@ -145,17 +163,24 @@ export default function Footer() {
                   </div>
                   <ul className="flex">
                     <li className="mr-[0.2rem]">
-                      <div className="w-[26px] h-[26px] rounded-full border border-white/50 flex items-center justify-center cursor-pointer hover:opacity-100 hover:bg-[#1877f2] transition-all duration-300 opacity-70">
-                        <FontAwesomeIcon icon={faFacebook} />
-                      </div>
+                      <a
+                        href="https://www.facebook.com/profile.php?id=61577295317770"
+                        target="_blank"
+                      >
+                        <div className="w-[26px] h-[26px] rounded-full border border-white/50 flex items-center justify-center cursor-pointer hover:opacity-100 hover:bg-[#1877f2] transition-all duration-300 opacity-70">
+                          <FontAwesomeIcon icon={faFacebook} />
+                        </div>
+                      </a>
                     </li>
                     <li className="mr-[0.2rem]">
-                      <div className="w-[26px] h-[26px] rounded-full border border-white/50 flex items-center justify-center cursor-pointer hover:opacity-100 hover:bg-[#26a7de] transition-all duration-300 opacity-70">
-                        <FontAwesomeIcon icon={faTwitter} />
-                      </div>
+                      <a href="https://x.com/BridgeLandCo/" target="_blank">
+                        <div className="w-[26px] h-[26px] rounded-full border border-white/50 flex items-center justify-center cursor-pointer hover:opacity-100 hover:bg-[#26a7de] transition-all duration-300 opacity-70">
+                          <FontAwesomeIcon icon={faTwitter} />
+                        </div>
+                      </a>
                     </li>
                     <li className="mr-[0.2rem]">
-                      <div className="w-[26px] h-[26px] rounded-full border border-white/50 flex items-center justify-center cursor-pointer hover:opacity-100 x hover:bg-[#fbad50] transition-all duration-300 opacity-70">
+                      <div className="w-[26px] h-[26px] rounded-full border border-white/50 flex items-center justify-center cursor-not-allowed hover:opacity-100 x hover:bg-[#fbad50] transition-all duration-300 opacity-70">
                         <FontAwesomeIcon icon={faInstagram} />
                       </div>
                     </li>

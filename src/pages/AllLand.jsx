@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
 import React, { useMemo, useState } from "react";
 
 import Footer from "../components/Footer";
 import LoadingState from "./LoadingState";
 import TopNav from "../components/TopNav";
 import SearchBar from "../components/Searchbar";
+import ButtonToTop from "../components/ButtonToTop";
 import PropertyCard from "../components/PropertyCard";
 import SecondaryNav from "../components/SecondaryNav";
 import StateSelector from "../components/StateSelector";
@@ -14,7 +16,8 @@ import SidebarFilters from "../components/SidebarFilters/SidebarFilters";
 import { usePageLoad } from "../hooks/usePageLoad";
 import { usePropertyList } from "../hooks/usePropertyList";
 import { useActiveFilters } from "../hooks/useActiveFilters";
-import { Link } from "react-router-dom";
+
+import "../components/button-to-top.css";
 
 export default function AllLand() {
   const [themeMode, setThemeMode] = useState("light-mode");

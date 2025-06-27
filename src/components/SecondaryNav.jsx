@@ -1,13 +1,20 @@
-import React from "react";
+import { useState } from "react";
+
+import ContactMeModal from "./ContactMeModal";
 
 import sunLight from "../../public/sun-light.svg";
 import moonLight from "../../public/moon-light.png";
+
+import "./contact-me-modal.css";
 
 export default function SecondaryNav({
   showThemes = false,
   themeMode,
   setThemeMode,
 }) {
+  const [isNavbarModalOpen, setIsNavbarModalOpen] = useState(false);
+  const [isNavbarModalAnimating, setIsNavbarModalAnimating] = useState(false);
+
   const handleThemeChangeToDark = () => {
     if (themeMode === "light-mode") {
       setThemeMode("dark-mode");
@@ -21,9 +28,18 @@ export default function SecondaryNav({
   };
 
   return (
-    <nav className="w-full pl-[5rem] pr-[8.45rem] py-2 bg-[#2a3031] gap-x-[3.5rem] relative z-[20]">
-      <div
-        className="
+    <>
+      {(isNavbarModalOpen || isNavbarModalAnimating) && (
+        <ContactMeModal
+          isModalOpen={isNavbarModalOpen}
+          setIsModalOpen={setIsNavbarModalOpen}
+          isModalAnimating={isNavbarModalAnimating}
+          setIsModalAnimating={setIsNavbarModalAnimating}
+        />
+      )}
+      <nav className="w-full pl-[5rem] pr-[8.45rem] py-2 bg-[#2a3031] gap-x-[3.5rem] relative z-[20]">
+        <div
+          className="
           nav-link-wrapper
           text-left
           flex
@@ -35,70 +51,74 @@ export default function SecondaryNav({
           items-center
           pt-[0.05rem] pb-[0.1rem] pl-1 pr-[2.2rem]
           relative"
-      >
-        <ul className="font-montserrat flex justify-between items-center w-full max-w-[1440px] mx-auto    py-1 relative h-auto gap-[3.5rem]">
-          <li>
-            <a
-              href="#"
-              className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
-            >
-              Available
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
-            >
-              Sold
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
-            >
-              Testimonials
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
-            >
-              Contact
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="hover:text-cyan-200 hover:border-white opacity-100 hover:bg-transparent text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative border-4 border-cyan-200 bg-[#231f20] px-2 leading-[20px] duration-250 pt-[0.25rem] pl-[0.5rem] pr-[0.5rem] pb-[0.15rem]"
-            >
-              Featured Property
-            </a>
-          </li>
-          {showThemes ? (
+        >
+          <ul className="font-montserrat flex justify-between items-center w-full max-w-[1440px] mx-auto    py-1 relative h-auto gap-[3.5rem]">
             <li>
-              <div className="group relative flex gap-x-2">
-                <img
-                  src={sunLight}
-                  className="opacity-80 hover:opacity-90 cursor-pointer transition-all duration-150 w-[22px]"
-                  title="Light Mode"
-                  onClick={handleThemeChangeToLight}
-                />
-                <img
-                  src={moonLight}
-                  className="opacity-80 hover:opacity-90 cursor-pointer transition-all duration-150 w-[22px]"
-                  title="Dark Mode"
-                  onClick={handleThemeChangeToDark}
-                />
-              </div>
+              <a
+                href="#"
+                className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
+              >
+                Available
+              </a>
             </li>
-          ) : (
-            ""
-          )}
-        </ul>
-      </div>
-    </nav>
+            <li>
+              <a
+                href="#"
+                className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
+              >
+                Sold
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
+              >
+                Testimonials
+              </a>
+            </li>
+            <li>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsNavbarModalOpen(true);
+                }}
+                className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
+              >
+                Contact
+              </button>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="hover:text-cyan-200 hover:border-white opacity-100 hover:bg-transparent text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative border-4 border-cyan-200 bg-[#231f20] px-2 leading-[20px] duration-250 pt-[0.25rem] pl-[0.5rem] pr-[0.5rem] pb-[0.15rem]"
+              >
+                Featured Property
+              </a>
+            </li>
+            {showThemes ? (
+              <li>
+                <div className="group relative flex gap-x-2">
+                  <img
+                    src={sunLight}
+                    className="opacity-80 hover:opacity-90 cursor-pointer transition-all duration-150 w-[22px]"
+                    title="Light Mode"
+                    onClick={handleThemeChangeToLight}
+                  />
+                  <img
+                    src={moonLight}
+                    className="opacity-80 hover:opacity-90 cursor-pointer transition-all duration-150 w-[22px]"
+                    title="Dark Mode"
+                    onClick={handleThemeChangeToDark}
+                  />
+                </div>
+              </li>
+            ) : (
+              ""
+            )}
+          </ul>
+        </div>
+      </nav>
+    </>
   );
 }
