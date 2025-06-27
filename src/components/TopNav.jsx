@@ -106,7 +106,7 @@ export default function TopNav() {
         {/* Phone */}
         <div className="group flex items-center text-[#f5f5f5] text-[1.2rem] font-bold tracking-wider -ml-[20px] gap-[0.9rem]">
           <a
-            href="tel:866-852-6346"
+            href="tel:866-610-5263"
             className="hover:opacity-[1] transition-all duration-250 uppercase text-[1.25rem] opacity-[0.85] tracking-[1.3px] leading-none font-montserrat flex items-center mr-[0px]"
           >
             <img
@@ -119,7 +119,7 @@ export default function TopNav() {
               alt="Smartphone"
               className="w-[18px] h-[18px] mr-[0.2rem]"
             />
-            <span className="ml-[2px]">866-852-6346</span>
+            <span className="ml-[2px]">866-610-5263</span>
           </a>
         </div>
 

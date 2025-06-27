@@ -27,9 +27,9 @@ import ListingHeaderGroup from "../components/ListingHeaderGroup";
 import MoreStateProperties from "../components/MoreStateProperties";
 import PropertyDescription from "../components/PropertyDescription";
 
+import "../components/contact-me-modal.css";
 import "swiper/swiper-bundle.css";
 import "../components/button-to-top.css";
-import "../components/contact-me-modal.css";
 
 const LandInfo = () => {
   const navigate = useNavigate();
@@ -37,58 +37,23 @@ const LandInfo = () => {
   const imagesPreloaded = useRef(false);
 
   const [assetCount, setAssetCount] = useState(0);
-  const [activeTab, setActiveTab] = useState("Video");
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [propertyData, setPropertyData] = useState(null);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [videoLoadError, setVideoLoadError] = useState(false);
-  const [fadeInScrollBtn, setFadeInScrollBtn] = useState(false);
-  const [showScrollButton, setShowScrollButton] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isContactModalAnimating, setIsContactModalAnimating] = useState(false);
   const [videoUrl, setVideoUrl] = useState(
     "https://www.youtube.com/watch?v=H5W65j5i2JI"
   );
 
+  // Add state to track active tab
+  const [activeTab, setActiveTab] = useState("Video");
+
   /* TEMP DEMO DATA */
   const listingTitle = propertyData?.title;
 
   const stateName = "oklahoma";
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
-      const viewportHeight = window.innerHeight;
-
-      if (scrollY > viewportHeight) {
-        setShowScrollButton(true);
-      } else {
-        setShowScrollButton(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-  const handleScroll = () => {
-    const scrollY = window.scrollY || window.pageYOffset;
-    const triggerPoint = window.innerHeight * 0.6; // tweak this ratio or use fixed px like 300
-
-    if (scrollY > triggerPoint) {
-      setShowScrollButton(true);
-      setTimeout(() => setFadeInScrollBtn(true), 50); // allows transition to catch
-    } else {
-      setFadeInScrollBtn(false);
-      setShowScrollButton(false);
-    }
-  };
-
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
-
 
   useEffect(() => {
     if (activeTab === "Video") {
@@ -272,106 +237,103 @@ const LandInfo = () => {
             {/* Full-width title */}
             <TitleBanner listingTitle={listingTitle} />
 
-            <div className="">
-              <div className="w-full max-w-7xl mx-auto px-4 pb-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                  {/* Left Content Column */}
-                  <div className="col-span-1 md:col-span-2 min-h-screen">
-                    <ListingHeaderGroup
-                      activeTab={activeTab}
-                      setActiveTab={setActiveTab}
-                    />
+            <div className="w-full max-w-7xl mx-auto px-4 pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Left Content Column */}
+              <div className="md:col-span-2">
+                <ListingHeaderGroup
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+                />
 
-                    {/* media block */}
-                    {activeTab === "Video" && (
-                      <div className="relative w-full aspect-video">
-                        {!videoLoaded && (
-                          <div className="absolute inset-0 z-1">
-                            <YouTubeSkeleton />
-                          </div>
-                        )}
-
-                        {!videoLoadError ? (
-                          <YouTubeEmbed
-                            url={videoUrl}
-                            onReady={handleVideoReady}
-                            className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${
-                              videoLoaded ? "opacity-100 z-2" : "opacity-0 z-0"
-                            }`}
-                          />
-                        ) : (
-                          <div className="error-message p-4 bg-red-100 text-red-700">
-                            Video unavailable or restricted. Please try another
-                            property.
-                          </div>
-                        )}
+                {/* media block */}
+                {activeTab === "Video" && (
+                  <div className="relative w-full aspect-video">
+                    {!videoLoaded && (
+                      <div className="absolute inset-0 z-1">
+                        <YouTubeSkeleton />
                       </div>
                     )}
 
-                    {activeTab === "Images" && (
-                      <>
-                        {!propertyData?.imageUrls?.length ? (
-                          <div className="relative aspect-video bg-gray-100 flex items-center justify-center flex-col border border-[#c4c4c427]">
-                            <img
-                              loading="lazy"
-                              src="/public/img/error-indicator.svg"
-                              title="Error!"
-                              alt="Error Indicator Image"
-                              className="w-[80px] h-auto"
-                            />
-                            <p className="text-[#333] font-pt-serif text-sm leading-5">
-                              Error loading property images
-                            </p>
-                          </div>
-                        ) : (
-                          <ImageGallery
-                            images={propertyData.imageUrls}
-                            key={`gallery-${propertyData.id}`}
-                          />
-                        )}
-                      </>
+                    {!videoLoadError ? (
+                      <YouTubeEmbed
+                        url={videoUrl}
+                        onReady={handleVideoReady}
+                        className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${
+                          videoLoaded ? "opacity-100 z-2" : "opacity-0 z-0"
+                        }`}
+                      />
+                    ) : (
+                      <div className="error-message p-4 bg-red-100 text-red-700">
+                        Video unavailable or restricted. Please try another
+                        property.
+                      </div>
                     )}
+                  </div>
+                )}
 
-                    {activeTab === "Map" && (
-                      <MapEmbed lat={42.38713} lng={-106.772502} />
-                    )}
-
-                    {/* rest of page column */}
-                    {propertyData?.PTBContent && (
-                      <PageTitleBlock
-                        PTBContent={propertyData.PTBContent}
-                        propertyId={prettyFormatPropertyId(propertyId)}
-                        formatNumberWithCommas={formatNumberWithCommas}
+                {activeTab === "Images" && (
+                  <>
+                    {!propertyData?.imageUrls?.length ? (
+                      <div className="relative aspect-video bg-gray-100 flex items-center justify-center flex-col border border-[#c4c4c427]">
+                        <img
+                          loading="lazy"
+                          src="/public/img/error-indicator.svg"
+                          title="Error!"
+                          alt="Error Indicator Image"
+                          className="w-[80px] h-auto"
+                        />
+                        <p className="text-[#333] font-pt-serif text-sm leading-5">
+                          Error loading property images
+                        </p>
+                      </div>
+                    ) : (
+                      <ImageGallery
+                        images={propertyData.imageUrls}
+                        key={`gallery-${propertyData.id}`}
                       />
                     )}
-                    <HorizontalDivider />
-                    <PropertyBlurb
-                      propertyId={propertyData.parcelId}
-                      propertyBlurbContent={propertyData.PTBContent}
-                      propertyStatus={propertyData.propertyStatus}
-                    />
-                    <PropertySpecs
-                      specs={propertyData?.specsData}
-                      propertyId={prettyFormattedPropertyId}
-                    />
-                    <PropertyDescription
-                      pSections={propertyData.descriptionPairs}
-                      miscItems={propertyData.miscItems}
-                      propertySpecifications={
-                        propertyData.propertySpecifications
-                      }
-                      nearbyPoints={propertyData.nearbyPoints}
-                      PropertyVisitDetails={propertyData.propertyVisitDetails}
-                      GPSCoords={propertyData.GPSCoords}
-                    />
-                    <MoreStateProperties stateName={stateName} />
-                  </div>
-                  {/* Sticky Sidebar (Right Content Column) */}
-                  <div className="sticky top-16 z-10">
-                    <LandInfoSidebar
-                      setIsContactModalOpen={setIsContactModalOpen}
-                    />
-                  </div>
+                  </>
+                )}
+
+                {activeTab === "Map" && (
+                  <MapEmbed lat={42.38713} lng={-106.772502} />
+                )}
+
+                {/* rest of page column */}
+                {propertyData?.PTBContent && (
+                  <PageTitleBlock
+                    PTBContent={propertyData.PTBContent}
+                    propertyId={prettyFormatPropertyId(propertyId)}
+                    formatNumberWithCommas={formatNumberWithCommas}
+                  />
+                )}
+                <HorizontalDivider />
+                <PropertyBlurb
+                  propertyId={propertyData.parcelId}
+                  propertyBlurbContent={propertyData.PTBContent}
+                  propertyStatus={propertyData.propertyStatus}
+                />
+                <PropertySpecs
+                  specs={propertyData?.specsData}
+                  propertyId={prettyFormattedPropertyId}
+                />
+                <PropertyDescription
+                  pSections={propertyData.descriptionPairs}
+                  miscItems={propertyData.miscItems}
+                  propertySpecifications={propertyData.propertySpecifications}
+                  nearbyPoints={propertyData.nearbyPoints}
+                  PropertyVisitDetails={propertyData.propertyVisitDetails}
+                  GPSCoords={propertyData.GPSCoords}
+                />
+                <MoreStateProperties stateName={stateName} />
+              </div>
+
+              {/* Sticky Sidebar (Right Content Column) */}
+              <div className="md:col-span-1 relative">
+                <div className="top-[70px] self-start z-10 h-fit">
+                  <LandInfoSidebar
+                    setIsContactModalOpen={setIsContactModalOpen}
+                  />
                 </div>
               </div>
             </div>
@@ -379,7 +341,6 @@ const LandInfo = () => {
 
           <VIPSignup />
           <StateSelector />
-          {showScrollButton && <ButtonToTop />}
           <Footer />
         </>
       )}

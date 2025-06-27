@@ -5,11 +5,14 @@ import Footer from "../components/Footer";
 import LoadingState from "./LoadingState";
 import TopNav from "../components/TopNav";
 import VIPSignup from "../components/VIPSignUp";
+import ButtonToTop from "../components/ButtonToTop";
 import SecondaryNav from "../components/SecondaryNav";
 import StateSelector from "../components/StateSelector";
 import StickySecondaryNav from "../components/StickySecondaryNav";
 
 import { usePageLoad } from "../hooks/usePageLoad";
+
+import "../components/button-to-top.css";
 
 const Home = () => {
   const pageIsLoaded = usePageLoad();
