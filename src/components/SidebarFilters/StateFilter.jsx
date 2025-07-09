@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-const availableStates = ["North Carolina", "Tennessee", "Georgia", "Oklahoma"];
+const availableStates = ["Florida", "Texas", "Oklahoma"];
 
 const allStates = [
   "Alabama",
@@ -39,19 +39,26 @@ const allStates = [
   "Wyoming",
 ];
 
-export default function StateFilter({ themeMode, selectedStates, setSelectedStates }) {
+export default function StateFilter({
+  themeMode,
+  selectedStates,
+  setSelectedStates,
+}) {
+  console.log("🧪 StateFilter props received:", {
+    selectedStates,
+    setSelectedStates,
+    typeOfSetter: typeof setSelectedStates,
+  });
+
   const handleToggleState = (state) => {
-    setSelectedStates(
-      (prevSelected) =>
-        prevSelected.includes(state)
-          ? prevSelected.filter((s) => s !== state) // remove if selected
-          : [...prevSelected, state] // add if not selected
+    setSelectedStates((prevSelected) =>
+      prevSelected.includes(state)
+        ? prevSelected.filter((s) => s !== state)
+        : [...prevSelected, state]
     );
   };
 
-  const clearSelection = () => {
-    setSelectedStates([]);
-  };
+  const clearSelection = () => setSelectedStates([]);
 
   return (
     <div>
@@ -71,52 +78,47 @@ export default function StateFilter({ themeMode, selectedStates, setSelectedStat
           Clear
         </button>
       </div>
+
       <div className="grid grid-cols-2 gap-x-3 gap-y-2">
         {allStates.map((state) => {
           const isAvailable = availableStates.includes(state);
           const stateId = `checkbox-${state
             .toLowerCase()
             .replace(/\s+/g, "-")}`;
+          const isSelected = selectedStates.includes(state);
+
           return (
             <label
               key={state}
               htmlFor={stateId}
-              onClick={() => {
-                if (isAvailable) handleToggleState(state);
-              }}
-              className={`flex duration-250 transition-all items-center justify-start px-3 py-[10px] h-[40px] border rounded text-sm font-semibold tracking-[-0.85px] 
-    ${
-      isAvailable
-        ? themeMode === "dark-mode"
-          ? "border-[#3f3f3f] border !text-white bg-[#3a3a3a] hover:border-[#f5f5f5] hover:!text-cyan-300 cursor-pointer"
-          : "bg-[#dbd5d7b9] text-black border-[lightgray] hover:bg-[#333] hover:border-[black] hover:text-gray-300 cursor-pointer"
-        : `opacity-50 cursor-not-allowed border ${
-            themeMode === "dark-mode"
-              ? "border-[#3d3d3d] bg-[#0000] text-gray-500"
-              : "bg-[#0000] border-[lightgray] text-gray-500"
-          }`
-    } 
-    ${
-      selectedStates.includes(state)
-        ? `opacity-85 ${
-            themeMode === "dark-mode"
-              ? "border-black !bg-[#1f1f1f] hover:bg-[#181818] !text-cyan-300"
-              : "border border-cyan-200 text-white !bg-[#1f1f1f] hover-[#181818]"
-          }`
-        : `${themeMode === "dark-mode" ? "" : ""}`
-    }
-  `}
+              className={`flex items-center justify-start px-3 py-[10px] h-[40px] border rounded text-sm font-semibold tracking-[-0.85px] transition-all duration-250
+              ${
+                isAvailable
+                  ? themeMode === "dark-mode"
+                    ? "border-[#3f3f3f] bg-[#3a3a3a] text-white hover:border-[#f5f5f5] hover:text-cyan-300 cursor-pointer"
+                    : "bg-[#dbd5d7b9] text-black border-[lightgray] hover:bg-[#333] hover:border-[black] hover:text-gray-300 cursor-pointer"
+                  : `opacity-50 cursor-not-allowed ${
+                      themeMode === "dark-mode"
+                        ? "border-[#3d3d3d] bg-transparent text-gray-500"
+                        : "bg-transparent border-[lightgray] text-gray-500"
+                    }`
+              }
+              ${
+                isSelected
+                  ? themeMode === "dark-mode"
+                    ? "border-black bg-[#1f1f1f] hover:bg-[#181818] text-cyan-300"
+                    : "border-cyan-200 bg-[#1f1f1f] text-white hover:bg-[#181818]"
+                  : ""
+              }`}
             >
               <input
                 type="checkbox"
                 id={stateId}
                 name="state"
                 disabled={!isAvailable}
-                checked={selectedStates.includes(state)}
+                checked={isSelected}
                 onChange={() => handleToggleState(state)}
-                className={`mr-2 accent-cyan-200 w-[14px] h-[14px] ${
-                  themeMode === "dark-mode" ? "bg-[]" : "bg-red"
-                }`}
+                className="mr-2 accent-cyan-200 w-[14px] h-[14px]"
               />
               {state}
             </label>

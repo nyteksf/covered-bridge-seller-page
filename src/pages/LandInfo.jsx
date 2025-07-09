@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
 
+import PageNotFound from "./NotFound";
 import Footer from "../components/Footer";
 import TopNav from "../components/TopNav";
 import MapEmbed from "../components/MapEmbed";
@@ -50,10 +51,11 @@ const LandInfo = () => {
     "https://www.youtube.com/watch?v=H5W65j5i2JI"
   );
 
-  /* TEMP DEMO DATA */
+  /* PROPERTY DATA */
+  const excludeId = propertyData?.id;
   const listingTitle = propertyData?.title;
-
-  const stateName = "oklahoma";
+  const stateName = propertyData?.stateName;
+  const ptbStateName = propertyData?.PTBContent?.stateName;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,23 +74,22 @@ const LandInfo = () => {
   }, []);
 
   useEffect(() => {
-  const handleScroll = () => {
-    const scrollY = window.scrollY || window.pageYOffset;
-    const triggerPoint = window.innerHeight * 0.6; // tweak this ratio or use fixed px like 300
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const triggerPoint = window.innerHeight * 0.6; // tweak this ratio or use fixed px like 300
 
-    if (scrollY > triggerPoint) {
-      setShowScrollButton(true);
-      setTimeout(() => setFadeInScrollBtn(true), 50); // allows transition to catch
-    } else {
-      setFadeInScrollBtn(false);
-      setShowScrollButton(false);
-    }
-  };
+      if (scrollY > triggerPoint) {
+        setShowScrollButton(true);
+        setTimeout(() => setFadeInScrollBtn(true), 50); // allows transition to catch
+      } else {
+        setFadeInScrollBtn(false);
+        setShowScrollButton(false);
+      }
+    };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
-
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (activeTab === "Video") {
@@ -212,7 +213,10 @@ const LandInfo = () => {
           setPropertyData({ id: docSnap.id, ...data });
         } else {
           console.warn("No property found with ID:", formattedId);
-          navigate("/error404", { replace: true });
+          // navigate("/error404", { replace: true });
+          setPropertyData(null); // <-- set null so we can render the 404 inline
+          setIsPageLoaded(true); // <-- allow rendering to proceed
+          return;
         }
       } catch (err) {
         console.error("Error loading property data:", err);
@@ -259,6 +263,8 @@ const LandInfo = () => {
       )}
       {!isPageLoaded ? (
         <LoadingState />
+      ) : !propertyData ? (
+        <PageNotFound />
       ) : (
         <>
           <TopNav />
@@ -364,7 +370,10 @@ const LandInfo = () => {
                       PropertyVisitDetails={propertyData.propertyVisitDetails}
                       GPSCoords={propertyData.GPSCoords}
                     />
-                    <MoreStateProperties stateName={stateName} />
+                    <MoreStateProperties
+                      stateName={stateName || ptbStateName}
+                      excludeId={excludeId}
+                    />
                   </div>
                   {/* Sticky Sidebar (Right Content Column) */}
                   <div className="sticky top-16 z-10">

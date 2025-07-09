@@ -13,23 +13,17 @@ import PurchaseOptionsFilter from "./PurchaseOptionsFilter";
 
 const SidebarFilters = ({
   themeMode,
-  minPrice,
-  setMinPrice,
-  maxPrice,
-  setMaxPrice,
-  minAcres,
-  setMinAcres,
-  maxAcres,
-  setMaxAcres,
+  searchParams,
+  setSearchParams,
+  formatNumberWithCommas,
   selectedStatuses,
   setSelectedStatuses,
+  selectedStates,
+  setSelectedStates,
   ownerFinanceToggled,
   setOwnerFinanceToggled,
   buyNowToggled,
   setBuyNowToggled,
-  selectedStates,
-  setSelectedStates,
-  formatNumberWithCommas,
 }) => {
   const pageIsLoading = usePageLoad(); // DISABLE BUTTONS?
 
@@ -45,11 +39,9 @@ const SidebarFilters = ({
       <PriceFilter
         themeMode={themeMode}
         SidebarBlock={SidebarBlock}
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
         formatNumberWithCommas={formatNumberWithCommas}
-        minPrice={minPrice}
-        setMinPrice={setMinPrice}
-        maxPrice={maxPrice}
-        setMaxPrice={setMaxPrice}
       />
 
       {/* ACRES FILTER */}
@@ -57,17 +49,16 @@ const SidebarFilters = ({
         themeMode={themeMode}
         SidebarBlock={SidebarBlock}
         formatNumberWithCommas={formatNumberWithCommas}
-        minAcres={minAcres}
-        setMinAcres={setMinAcres}
-        maxAcres={maxAcres}
-        setMaxAcres={setMaxAcres}
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
       />
 
       {/* STATUS FILTER */}
       <StatusFilter
         themeMode={themeMode}
         selectedStatuses={selectedStatuses}
-        setSelectedStatuses={setSelectedStatuses}
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
       />
 
       {/* PURCHASE OPTION FILTER */}

@@ -1,36 +1,57 @@
-import React, { useState } from "react";
+import React from "react";
 
-const AcresFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas, minAcres, setMinAcres, maxAcres, setMaxAcres }) => {
-  const clearAcres = () => {
-    setMinAcres(0);
-    setMaxAcres(15000);
-  };
-  
+const AcresFilter = ({
+  themeMode,
+  SidebarBlock,
+  searchParams,
+  setSearchParams,
+  formatNumberWithCommas,
+}) => {
+  const minAcres = searchParams.get("minAcres") || "";
+  const maxAcres = searchParams.get("maxAcres") || "";
+
   const onlyAllowValidNumbers = (str) => {
     return /^[0-9]*\.?[0-9]*$/.test(str);
   };
 
-  const handleAcreageInput = (e, setterFn) => {
+  const updateParam = (key, value) => {
+    const next = new URLSearchParams(searchParams);
+    if (value === "") {
+      next.delete(key);
+    } else {
+      next.set(key, value);
+    }
+    setSearchParams(next);
+  };
+
+  const handleAcreageInput = (e, key) => {
     let raw = e.target.value.replace(/,/g, "");
 
-    if (!onlyAllowValidNumbers(raw)) {
-      return; // Ignore invalid keypresses
-    }
+    if (!onlyAllowValidNumbers(raw)) return;
 
     if (raw.trim() === "") {
-      setterFn("");
+      updateParam(key, "");
       return;
     }
 
     let num = parseFloat(raw);
 
     if (isNaN(num) || num < 0) {
-      setterFn(0);
-      return;
+      updateParam(key, "0");
+    } else {
+      updateParam(key, Math.min(num, 15000).toString());
     }
-
-    setterFn(Math.min(num, 15000));
   };
+
+  const clearAcres = () => {
+    const next = new URLSearchParams(searchParams);
+    next.delete("minAcres");
+    next.delete("maxAcres");
+    setSearchParams(next);
+  };
+
+  const parsedMin = parseFloat(minAcres || 0);
+  const parsedMax = parseFloat(maxAcres || 0);
 
   return (
     <div>
@@ -38,8 +59,10 @@ const AcresFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas, minAcres
         <div className="flex items-center gap-2">
           <input
             type="text"
+            inputMode="decimal"
             value={minAcres !== "" ? formatNumberWithCommas(minAcres) : ""}
-            onChange={(e) => handleAcreageInput(e, setMinAcres)}
+            onChange={(e) => handleAcreageInput(e, "minAcres")}
+            placeholder="0"
             className={`w-full font-lato placeholder:font-lato ${
               themeMode === "dark-mode"
                 ? "bg-[#1a1a1a] border-gray-600 text-white"
@@ -55,8 +78,9 @@ const AcresFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas, minAcres
           </span>
           <input
             type="text"
+            inputMode="decimal"
             value={maxAcres !== "" ? formatNumberWithCommas(maxAcres) : ""}
-            onChange={(e) => handleAcreageInput(e, setMaxAcres)}
+            onChange={(e) => handleAcreageInput(e, "maxAcres")}
             placeholder="15,000"
             className={`w-full font-lato placeholder:font-lato ${
               themeMode === "dark-mode"
@@ -66,9 +90,10 @@ const AcresFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas, minAcres
           />
         </div>
       </SidebarBlock>
+
       {minAcres !== "" &&
         maxAcres !== "" &&
-        parseFloat(minAcres) > parseFloat(maxAcres) && (
+        parsedMin > parsedMax && (
           <div className="text-red-600 text-xs mt-2 -tracking-[0.5]">
             Minimum acres cannot exceed maximum.
           </div>

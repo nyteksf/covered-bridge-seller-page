@@ -1,15 +1,22 @@
 import React from "react";
 
-const PurchaseOptionsFilter = ({ themeMode,  }) => {
+const PurchaseOptionsFilter = ({
+  themeMode,
+  buyNowToggled,
+  setBuyNowToggled,
+  ownerFinanceToggled,
+  setOwnerFinanceToggled,
+}) => {
   const handleTogglePurchaseOption = (label) => {
     if (label === "BUY NOW") {
-      setBuyNowToggled(!buyNowToggled);
-      console.log(buyNowToggled);
+      setBuyNowToggled((prev) => !prev);
+      console.log("BUY NOW:", !buyNowToggled);
     } else {
-      setOwnerFinanceToggled(!ownerFinanceToggled);
-      console.log(ownerFinanceToggled);
+      setOwnerFinanceToggled((prev) => !prev);
+      console.log("OWNER FINANCING:", !ownerFinanceToggled);
     }
   };
+
   return (
     <>
       <div>
@@ -24,8 +31,12 @@ const PurchaseOptionsFilter = ({ themeMode,  }) => {
           </h3>
           <div className="w-[24px]" />
         </div>
+
         <div className="space-y-4 w-full">
-          {["BUY NOW", "OWNER FINANCING"].map((label) => (
+          {[
+            { label: "BUY NOW", value: buyNowToggled },
+            { label: "OWNER FINANCING", value: ownerFinanceToggled },
+          ].map(({ label, value }) => (
             <div key={label} className="flex justify-between items-center">
               <span
                 className={`text-sm font-semibold ${
@@ -40,10 +51,12 @@ const PurchaseOptionsFilter = ({ themeMode,  }) => {
                 <input
                   onClick={() => handleTogglePurchaseOption(label)}
                   type="checkbox"
+                  checked={value}
+                  readOnly
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:bg-[#007e7e] transition-all"></div>
-                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+                <div className="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:bg-[#007e7e] transition-all" />
+                <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5" />
               </label>
             </div>
           ))}

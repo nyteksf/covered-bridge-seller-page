@@ -1,5 +1,7 @@
-// /src/hooks/usePropertyList.js
+// src/hooks/usePropertyList.js
 import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase"; // Adjust if path is different
 
 export function usePropertyList() {
   const [data, setData] = useState([]);
@@ -7,19 +9,23 @@ export function usePropertyList() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const abort = new AbortController();
-    fetch("/data/propertyList.json", { signal: abort.signal })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then(setData)
-      .catch((e) => {
-        if (e.name !== "AbortError") setError(e);
-      })
-      .finally(() => setLoading(false));
+    const fetchProperties = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "properties"));
+        const properties = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setData(properties);
+      } catch (err) {
+        console.error("Error fetching properties:", err);
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return () => abort.abort();
+    fetchProperties();
   }, []);
 
   return { data, loading, error };

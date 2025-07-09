@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
-import React, { useMemo, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 
 import Footer from "../components/Footer";
 import LoadingState from "./LoadingState";
 import TopNav from "../components/TopNav";
 import SearchBar from "../components/Searchbar";
-import ButtonToTop from "../components/ButtonToTop";
 import PropertyCard from "../components/PropertyCard";
 import SecondaryNav from "../components/SecondaryNav";
 import StateSelector from "../components/StateSelector";
@@ -20,49 +19,145 @@ import { useActiveFilters } from "../hooks/useActiveFilters";
 import "../components/button-to-top.css";
 
 export default function AllLand() {
-  const [themeMode, setThemeMode] = useState("light-mode");
+  const [searchQuery, setSearchQuery] = useState("");
   const { data: properties, loading } = usePropertyList();
+  const [themeMode, setThemeMode] = useState("light-mode");
 
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(30000000);
-  const [minAcres, setMinAcres] = useState(0);
-  const [maxAcres, setMaxAcres] = useState(15000);
-  const [selectedStatuses, setSelectedStatuses] = useState([]);
+  const { stateSlug } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const minPrice = parseInt(searchParams.get("minPrice")) || 0;
+  const maxPrice = parseInt(searchParams.get("maxPrice")) || 30000000;
+  const minAcres = parseInt(searchParams.get("minAcres")) || 0;
+  const maxAcres = parseInt(searchParams.get("maxAcres")) || 15000;
+
+  const selectedStatuses = searchParams.getAll("status");
+  const [selectedStates, setSelectedStates] = useState(
+    searchParams.getAll("state")
+  );
+
+  const [sortBy, setSortBy] = useState(searchParams.get("sort") || "");
+
   const [buyNowToggled, setBuyNowToggled] = useState(false);
   const [ownerFinanceToggled, setOwnerFinanceToggled] = useState(false);
-  const [selectedStates, setSelectedStates] = useState([]);
-  const [sortBy, setSortBy] = useState("");
 
   const pageIsLoading = usePageLoad();
+
+  const normalizeString = (str) =>
+    typeof str === "string" ? str.trim().toLowerCase() : "";
 
   const formatNumberWithCommas = (num) => {
     if (num === null || num === undefined) return "";
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const activeFilters = useActiveFilters({
-    buyNowToggled,
-    setBuyNowToggled,
-    ownerFinanceToggled,
-    setOwnerFinanceToggled,
+  const activeFilters = {
+    buyNowToggled: searchParams.get("buyNow") === "true",
+    ownerFinanceToggled: searchParams.get("ownerFinance") === "true",
     selectedStatuses,
-    setSelectedStatuses,
     selectedStates,
-    setSelectedStates,
     minPrice,
-    setMinPrice,
     maxPrice,
-    setMaxPrice,
     minAcres,
-    setMinAcres,
     maxAcres,
-    setMaxAcres,
-    formatNumberWithCommas,
-  });
+  };
+
+  const filteredProperties = useMemo(() => {
+    return properties.filter((p) => {
+      const price = Number(p.price) || 0;
+      const acres = Number(p.acres) || 0;
+
+      if (!p.price || !p.acres) {
+        console.warn(
+          `Property ${
+            p.id || p.title || "(unknown title)"
+          } is missing key data:`,
+          { price: p.price, acres: p.acres }
+        );
+      }
+
+      const query = normalizeString(searchQuery);
+
+      const matchesSearch =
+        query.length === 0 ||
+        Object.values(p)
+          .flatMap((val) => {
+            if (typeof val === "string" || typeof val === "number")
+              return [val];
+            if (typeof val === "object" && val !== null)
+              return Object.values(val);
+            return [];
+          })
+          .some((val) => normalizeString(String(val)).includes(query));
+
+      const status = normalizeString(p.status);
+      const state = normalizeString(p.state);
+
+      const matchesPrice = price >= minPrice && price <= maxPrice;
+      const matchesAcres = acres >= minAcres && acres <= maxAcres;
+      const matchesStatus =
+        selectedStatuses.length === 0 || selectedStatuses.includes(status);
+      const matchesState =
+        selectedStates.length === 0 ||
+        selectedStates.map(normalizeString).includes(normalizeString(state));
+
+      const isBuyNow =
+        p.isBuyNow ??
+        p.PTBContent?.canBuyNow ??
+        p.PTBContent?.buyNowAvailable ??
+        false;
+
+      const isOwnerFinanced =
+        p.isOwnerFinanced ?? p.PTBContent?.canOwnerFinance ?? false;
+
+      const matchesBuyNow = !buyNowToggled || isBuyNow === true;
+      const matchesOwnerFinance =
+        !ownerFinanceToggled || isOwnerFinanced === true;
+
+      return (
+        matchesPrice &&
+        matchesAcres &&
+        matchesStatus &&
+        matchesState &&
+        matchesBuyNow &&
+        matchesOwnerFinance &&
+        matchesSearch
+      );
+    });
+  }, [
+    properties,
+    minPrice,
+    maxPrice,
+    minAcres,
+    maxAcres,
+    selectedStatuses,
+    selectedStates,
+    buyNowToggled,
+    ownerFinanceToggled,
+    searchQuery,
+  ]);
+
+  useEffect(() => {
+    const normalizedSlug = stateSlug?.toLowerCase();
+    const isSlugControlled =
+      normalizedSlug &&
+      ["ok", "tx", "fl", "oklahoma", "texas", "florida"].includes(
+        normalizedSlug
+      );
+
+    if (!isSlugControlled) {
+      const newParams = new URLSearchParams(searchParams);
+      newParams.delete("state");
+      selectedStates.forEach((state) => {
+        newParams.append("state", normalizeString(state));
+      });
+      setSearchParams(newParams, { replace: true });
+    }
+  }, [selectedStates, stateSlug]);
 
   // memoised ordering
   const sortedProperties = useMemo(() => {
-    const list = [...properties];
+    const list = [...filteredProperties];
     switch (sortBy) {
       case "price-asc":
         return list.sort((a, b) => a.price - b.price);
@@ -75,12 +170,20 @@ export default function AllLand() {
       default:
         return list;
     }
-  }, [properties, sortBy]);
+  }, [filteredProperties, sortBy]);
 
-   {/* <Link to={`${toSmallSlug(property.id)}`}>  HOW TO USE LATER TO MAKE DYNAMIC VIA HARDCODED ID */}
   function toSmallSlug(str) {
     return str.toLowerCase().replace(/_/g, "-");
   }
+
+  useEffect(() => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.delete("state");
+    selectedStates.forEach((state) => {
+      newParams.append("state", normalizeString(state));
+    });
+    setSearchParams(newParams, { replace: true }); // avoids pushing new history state
+  }, [selectedStates]);
 
   return (
     <>
@@ -104,28 +207,25 @@ export default function AllLand() {
               {/* SIDEBAR */}
               <SidebarFilters
                 themeMode={themeMode}
-                buyNowToggled={buyNowToggled}
-                setBuyNowToggled={setBuyNowToggled}
-                ownerFinanceToggled={ownerFinanceToggled}
-                setOwnerFinanceToggled={setOwnerFinanceToggled}
-                minPrice={minPrice}
-                setMinPrice={setMinPrice}
-                maxPrice={maxPrice}
-                setMaxPrice={setMaxPrice}
-                minAcres={minAcres}
-                setMinAcres={setMinAcres}
-                maxAcres={maxAcres}
-                setMaxAcres={setMaxAcres}
+                searchParams={searchParams}
+                setSearchParams={setSearchParams}
+                formatNumberWithCommas={formatNumberWithCommas}
                 selectedStatuses={selectedStatuses}
-                setSelectedStatuses={setSelectedStatuses}
                 selectedStates={selectedStates}
                 setSelectedStates={setSelectedStates}
-                formatNumberWithCommas={formatNumberWithCommas}
+                ownerFinanceToggled={ownerFinanceToggled}
+                setOwnerFinanceToggled={setOwnerFinanceToggled}
+                buyNowToggled={buyNowToggled}
+                setBuyNowToggled={setBuyNowToggled}
               />
 
               {/* === RIGHT COLUMN === */}
               <div className="flex-1 flex flex-col relative">
-                <SearchBar themeMode={themeMode} />
+                <SearchBar
+                  themeMode={themeMode}
+                  searchQuery={searchQuery}
+                  setSearchQuery={setSearchQuery}
+                />
                 <div>
                   <FilterSummarySortBy
                     themeMode={themeMode}
@@ -134,17 +234,18 @@ export default function AllLand() {
                     setSortBy={setSortBy}
                   />
                   <span className="text-sm text-left text-gray-400 relative -top-1 mr-auto">
-                    <span className="text-[#149f49]">{properties?.length}</span>{" "}
-                    result{properties?.length >= 1 ? "s" : ""}
+                    <span className="text-[#149f49]">
+                      {sortedProperties.length}
+                    </span>{" "}
+                    result{sortedProperties.length !== 1 ? "s" : ""}
                   </span>
                 </div>
 
                 {/* PROPERTY CARDS */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 mt-[0.74rem] gap-6">
                   {sortedProperties.map((property) => (
-                    <Link to="http://localhost:5173/listing/ok-carbon-00038/">
+                    <Link to={`/listing/${property.id}/`} key={property.id}>
                       <PropertyCard
-                        key={property.id}
                         data={property}
                         themeMode={themeMode}
                         formatNumberWithCommas={formatNumberWithCommas}

@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 
-const StatusFilter = ({ themeMode, selectedStatuses, setSelectedStatuses }) => {
+const StatusFilter = ({
+  themeMode,
+  selectedStatuses,
+  searchParams,
+  setSearchParams,
+}) => {
   const handleToggleStatus = (status) => {
-    setSelectedStatuses(
-      (prevSelected) =>
-        prevSelected.includes(status)
-          ? prevSelected.filter((s) => s !== status) // remove if selected
-          : [...prevSelected, status] // add if not selected
-    );
+    const current = searchParams.getAll("status");
+    const updated = current.includes(status)
+      ? current.filter((s) => s !== status)
+      : [...current, status];
+
+    const newParams = new URLSearchParams(searchParams.toString());
+    newParams.delete("status");
+    updated.forEach((s) => newParams.append("status", s));
+    setSearchParams(newParams);
   };
 
   return (
@@ -30,20 +38,20 @@ const StatusFilter = ({ themeMode, selectedStatuses, setSelectedStatuses }) => {
               key={status}
               onClick={() => handleToggleStatus(status)}
               className={`flex-1 text-[0.95rem] border px-3 py-2 rounded font-semibold uppercase outline-none hover:outline-none active:outline-none
-        ${
-          selectedStatuses.includes(status)
-            ? `transition-all duration-350 ${
-                themeMode === "dark-mode"
-                  ? "border-white text-cyan-300"
-                  : "text-gray-100 border-gray-200 opacity-85 border bg-[#181818]"
-              }`
-            : `transition-all duration-350 hover:text-gray-600 ${
-                themeMode === "dark-mode"
-                  ? "border-gray-300 bg-[#181818] text-[#f5f5f5]"
-                  : "bg-[#f5f5f5] text-black border-[#dbd5d7] hover:bg-[white] hover:border-gray-300 hover:text-cyan-300"
-              }`
-        }
-      `}
+                ${
+                  selectedStatuses.includes(status)
+                    ? `transition-all duration-350 ${
+                        themeMode === "dark-mode"
+                          ? "border-white text-cyan-300"
+                          : "text-gray-100 border-gray-200 opacity-85 border bg-[#181818]"
+                      }`
+                    : `transition-all duration-350 hover:text-gray-600 ${
+                        themeMode === "dark-mode"
+                          ? "border-gray-300 bg-[#181818] text-[#f5f5f5]"
+                          : "bg-[#f5f5f5] text-black border-[#dbd5d7] hover:bg-[white] hover:border-gray-300 hover:text-cyan-300"
+                      }`
+                }
+              `}
             >
               {status}
             </button>
@@ -52,7 +60,7 @@ const StatusFilter = ({ themeMode, selectedStatuses, setSelectedStatuses }) => {
       </div>
 
       <div
-        className={`w-[calc(100%+1.25rem)] calc(1rem * calc(1 - var(--tw-space-y-reverse))); -ml-[0.66rem] border-t mb-8 ${
+        className={`w-[calc(100%+1.25rem)] -ml-[0.66rem] border-t mb-8 ${
           themeMode === "dark-mode" ? "border-[#3f3f3f]" : "border-[#dae4d8]"
         }`}
       />

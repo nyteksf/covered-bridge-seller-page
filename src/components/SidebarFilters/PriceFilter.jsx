@@ -1,31 +1,52 @@
-import React, { useState } from "react";
+import React from "react";
 
-const PriceFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas, minPrice, maxPrice, setMinPrice, setMaxPrice }) => {
-  const clearPrice = () => {
-    setMinPrice(0);
-    setMaxPrice(30000000);
-  };
+const PriceFilter = ({
+  themeMode,
+  SidebarBlock,
+  searchParams,
+  setSearchParams,
+  formatNumberWithCommas,
+}) => {
+  const minPrice = searchParams.get("minPrice") || "";
+  const maxPrice = searchParams.get("maxPrice") || "";
 
   const parseFormattedNumber = (str) => {
-    if (!str) return 0;
-    return parseFloat(str.replace(/,/g, ""));
+    if (!str) return "";
+    return str.replace(/,/g, "");
   };
+
+  const updateParam = (key, value) => {
+    const next = new URLSearchParams(searchParams);
+    if (value === "") {
+      next.delete(key);
+    } else {
+      next.set(key, value);
+    }
+    setSearchParams(next);
+  };
+
+  const clearPrice = () => {
+    const next = new URLSearchParams(searchParams);
+    next.delete("minPrice");
+    next.delete("maxPrice");
+    setSearchParams(next);
+  };
+
+  const parsedMin = parseFloat(minPrice || 0);
+  const parsedMax = parseFloat(maxPrice || 0);
 
   return (
     <div>
-      {console.log(themeMode)}
       <SidebarBlock themeMode={themeMode} title="Price" onClear={clearPrice}>
         <div className="flex items-center gap-2">
           <input
             type="text"
-            value={formatNumberWithCommas(minPrice)}
-            onChange={(e) => {
-              const parsed = parseFormattedNumber(e.target.value);
-              setMinPrice(
-                parsed >= 0 && parsed <= 30000000 ? parsed : 30000000
-              );
-            }}
+            inputMode="numeric"
             placeholder="0"
+            value={formatNumberWithCommas(minPrice)}
+            onChange={(e) =>
+              updateParam("minPrice", parseFormattedNumber(e.target.value))
+            }
             className={`w-full border font-lato placeholder:font-lato text-white px-3 py-2 -tracking-[0.55px] ${
               themeMode === "dark-mode"
                 ? "bg-[#1a1a1a] border-gray-600"
@@ -41,14 +62,12 @@ const PriceFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas, minPrice
           </span>
           <input
             type="text"
-            value={formatNumberWithCommas(maxPrice)}
-            onChange={(e) => {
-              const parsed = parseFormattedNumber(e.target.value);
-              setMaxPrice(
-                parsed >= 0 && parsed <= 30000000 ? parsed : 30000000
-              );
-            }}
+            inputMode="numeric"
             placeholder="30,000,000"
+            value={formatNumberWithCommas(maxPrice)}
+            onChange={(e) =>
+              updateParam("maxPrice", parseFormattedNumber(e.target.value))
+            }
             className={`w-full border font-lato placeholder:font-lato text-white px-3 py-2 -tracking-[0.55px] ${
               themeMode === "dark-mode"
                 ? "bg-[#1a1a1a] border-gray-600"
@@ -57,13 +76,12 @@ const PriceFilter = ({ themeMode, SidebarBlock, formatNumberWithCommas, minPrice
           />
         </div>
       </SidebarBlock>
-      {minPrice !== "" &&
-        maxPrice !== "" &&
-        parseFloat(minPrice) > parseFloat(maxPrice) && (
-          <div className="text-red-600 text-xs mt-2 -tracking-[0.5]">
-            Minimum price cannot exceed maximum.
-          </div>
-        )}
+
+      {minPrice !== "" && maxPrice !== "" && parsedMin > parsedMax && (
+        <div className="text-red-600 text-xs mt-2 -tracking-[0.5]">
+          Minimum price cannot exceed maximum.
+        </div>
+      )}
     </div>
   );
 };

@@ -4,19 +4,47 @@ import PurchaseTypeBtn from "./PurchaseTypeBtn";
 import PropertyStatusPill from "./PropertyStatusPill";
 
 const PropertyCard = ({ index, data, formatNumberWithCommas, themeMode }) => {
-  console.log("index -> ", index) 
-  console.log("data -> ", data)
-  console.log("formatNumberWithCommas -> ", formatNumberWithCommas)
-  console.log("themeMode -> ", themeMode)
+  console.log("index -> ", index);
+  console.log("data -> ", data);
+  console.log("formatNumberWithCommas -> ", formatNumberWithCommas);
+  console.log("themeMode -> ", themeMode);
+
+  formatNumberWithCommas = (num) => {
+    if (num === null || num === undefined) return "";
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  const toTitleCase = (str) => {
+    if (!str) return "";
+    return str
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
+  const formatPropertyId = (id) => {
+  if (!id) return "";
+  const parts = id.split("_");
+  if (parts.length !== 3) return id;
+  const [state, county, number] = parts;
+  return [
+    state.toUpperCase(),
+    county.charAt(0).toUpperCase() + county.slice(1).toLowerCase(),
+    number,
+  ].join("_");
+};
 
   return (
     <div
       key={index}
-      className={`flex flex-col shadow-[0_4px_12px_rgba(0,0,0,0.06)] justify-between h-full rounded-[6px] border ${
-        themeMode === "dark-mode"
-          ? "border-[#3f3f3f]"
-          : "border-[#dae4d8] bg-gradient-to-b from-[#f5f5f5] to-[#ffffff]"
-      }  overflow-hidden shadow-[0_2px_8px_#0000000a] pt-[12px] hover:scale-105 hover:translate-y-[-8px] transition-all duration-200 cursor-pointer`}
+      className={`flex flex-col justify-between h-full rounded-[6px] border overflow-hidden pt-[12px] transition-all duration-200 cursor-pointer
+  ${
+    themeMode === "dark-mode"
+      ? "border-[#3f3f3f] bg-[#1a1a1a] shadow-[0_4px_10px_rgba(0,0,0,0.6)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.8)]"
+      : "border-[#dae4d8] bg-gradient-to-b from-[#f5f5f5] to-[#ffffff] shadow-[0_2px_8px_#0000000a] hover:shadow-[0_4px_12px_#0000000d]"
+  }
+      hover:scale-105 hover:translate-y-[-8px]`}
     >
       {/* Image */}
       <div className="relative px-[12px]">
@@ -42,10 +70,10 @@ const PropertyCard = ({ index, data, formatNumberWithCommas, themeMode }) => {
                     ? "bg-[#333] text-[#f5f5f5]"
                     : "bg-[#f1f7f3] text-[#333]"
                 }`}
-                title={data.state}
+                title={toTitleCase(data.state)}
               >
                 <span className="block whitespace-nowrap">
-                  {data.state}
+                  {toTitleCase(data.state)}
                 </span>
               </div>
 
@@ -64,16 +92,16 @@ const PropertyCard = ({ index, data, formatNumberWithCommas, themeMode }) => {
               </div>
 
               {/* County - Will truncate naturally */}
-              <div 
+              <div
                 className={`min-w-0 flex-grow font-lato text-[16px] font-normal text-center rounded-[4px] px-[6px] py-[8px] h-[36px] flex items-center justify-center ${
                   themeMode === "dark-mode"
                     ? "bg-[#333] text-[#f5f5f5]"
                     : "bg-[#f1f7f3] text-[#333]"
                 }`}
-                title={data.county}
+                title={toTitleCase(data.county)}
               >
                 <span className="truncate block w-full overflow-hidden">
-                  {data.county}
+                  {toTitleCase(data.county)}
                 </span>
               </div>
             </div>
@@ -106,11 +134,15 @@ const PropertyCard = ({ index, data, formatNumberWithCommas, themeMode }) => {
               themeMode === "dark-mode" ? "text-gray-400" : "text-[#181818]"
             } `}
           >
-            {data.id}
+            {formatPropertyId(data.id)}
           </p>
           <div className="flex gap-x-1.5">
             {data.isBuyNow ? <PurchaseTypeBtn title="Buy Now" /> : ""}
-            {data.isOwnerFinanced ? <PurchaseTypeBtn title="Owner Finance" /> : ""}
+            {data.isOwnerFinanced ? (
+              <PurchaseTypeBtn title="Owner Finance" />
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

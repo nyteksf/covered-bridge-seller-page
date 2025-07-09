@@ -1,47 +1,101 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
-// Using the correct path based on your project structure
-// Since the image is in public/img/property, we use the public path directly
-const demoPropertyCard = "/img/property/small_property_card--more.jpeg";
-const categories = ["State", "County", "$90,000", "Acres +/-"];
+const formatCurrency = (value) => {
+  const number = parseFloat(value.toString().replace(/[^\d.-]/g, ""));
+  return isNaN(number)
+    ? "—"
+    : number.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0,
+      });
+};
 
-const MorePropertyCard = () => {
-  // Fix 2: Add error handling for the image
+const capitalizeWords = (str = "") =>
+  str.replace(/\b\w/g, (char) => char.toUpperCase());
+
+const formatPropertyId = (rawId = "") => {
+  const [state, county, num] = rawId.split("_");
+  if (!state || !county || !num) return rawId;
+  const countyFormatted =
+    county[0].toUpperCase() + county.slice(1).toLowerCase();
+  return `${state.toUpperCase()}_${countyFormatted}_${num}`;
+};
+
+const MorePropertyCard = ({ property }) => {
+  if (!property) return null;
+
+  const {
+    id,
+    title,
+    imageUrls = [],
+    image,
+    PTBContent = {},
+    specsData = [],
+    stateName,
+    countyName,
+    landPrice,
+    acreAmount,
+  } = property;
+
+  const fallbackSpecs = Object.fromEntries(
+    specsData.map((pair) => [pair.key.toLowerCase(), pair.value])
+  );
+
+  const displayTitle =
+    title ||
+    `${
+      PTBContent.acreAmount || acreAmount || fallbackSpecs["parcel size"] || "—"
+    } Acres in ${
+      PTBContent.countyName || countyName || fallbackSpecs["county"] || "—"
+    }, ${PTBContent.stateName || stateName || "—"}`;
+
+  const displayPrice =
+    PTBContent.landPrice || landPrice || fallbackSpecs["price"] || "—";
+
+  const displayAcres =
+    PTBContent.acreAmount || acreAmount || fallbackSpecs["parcel size"] || "—";
+
+  const displayState = capitalizeWords(
+    PTBContent.stateName || stateName || "—"
+  );
+
+  const displayCounty = capitalizeWords(
+    PTBContent.countyName || countyName || fallbackSpecs["county"] || "—"
+  );
+
+  const displayImage = imageUrls?.[0] || image || "/img/fallback-land.jpg";
+
   return (
-    <a
-      href="#"
-      className="text-[#333] w-full max-w-full mt-[10px] mb-[30px] no-underline inline-block font-bold transition-all duration-200 focus:outline-none active:outline-none hover:outline-none"
-    >
-      <div className="flex flex-col items-center px-[10px] pt-[10px] pb-[5px] font-bold text-[14px] leading-[20px] font-lato">
+    <Link to={`/listing/${id}`}>
+      <div className="w-full bg-white shadow-none hover:shadow-lg translate-y-0 hover:-translate-y-1 scale-100 hover:scale-105 transition-all duration-300">
         <img
-          src={demoPropertyCard}
-          alt="Property Preview"
-          className="object-cover rounded-[2px] w-full h-[150px] align-middle max-w-full inline-block"
-          onError={(e) => {
-            console.error("Image failed to load:", e);
-            e.target.src = "https://via.placeholder.com/150?text=Property";
-          }}
+          src={displayImage}
+          alt={displayTitle}
+          className="w-full h-[165px] object-cover"
         />
-        <h4 className="text-center mt-[15px] mb-[12px] font-lato text-[18px] font-bold -tracking-[0.1px] leading-[24px]">
-          13.8 Wooded Acres near the Cumberland River & Clarksville, TN
-        </h4>
-        <div className="flex flex-wrap justify-between w-[90%] mb-[8px] mx-auto">
-          {categories.map((category) => {
-            return (
-              <div
-                key={category}
-                className="text-[#333] text-center border border-[#c4c4c480] rounded-[2px] justify-center items-center w-[48%] mb-[2%] p-[5px] font-lato text-[14px] font-bold leading-[20px] flex relative tracking-[0.1px]"
-              >
-                {category}
-              </div>
-            );
-          })}
+        <p className="font-semibold text-center text-[#333] leading-snug text-[18px] font-lato pt-[12px] pb-[13px]">
+          {displayTitle}
+        </p>
+        <div className="grid grid-cols-2 text-sm font-medium text-center gap-x-3 gap-y-2 px-2">
+          <div className="border p-1 text-[14px] font-semibold font-lato text-[#181818]">
+            {displayState}
+          </div>
+          <div className="border p-1 text-[14px] font-semibold font-lato text-[#181818]">
+            {displayCounty}
+          </div>
+          <div className="border p-1 text-[14px] font-semibold font-lato text-[#181818]">
+            {formatCurrency(displayPrice)}
+          </div>
+          <div className="border p-1 text-[14px] font-semibold font-lato text-[#181818]">
+            {displayAcres} Acres +/-
+          </div>
         </div>
-        <div className="font-semibold -tracking-[0.1px]">
-            TN_Stewart_00044
-        </div>
+        <p className="text-center text-[14px] text-[#1a1a1a] font-lato font-semibold pt-2 pb-3 mt-1">
+          {formatPropertyId(id)}
+        </p>
       </div>
-    </a>
+    </Link>
   );
 };
 
