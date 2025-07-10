@@ -14,12 +14,6 @@ export default function VIPSignup() {
 
   const submitTimeout = useRef(null);
 
-  if (import.meta.env.PROD && import.meta.env.VITE_BREVO_API_KEY) {
-    throw new Error(
-      "🚨 VITE_BREVO_API_KEY should never be exposed in production!"
-    );
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,31 +24,12 @@ export default function VIPSignup() {
 
     submitTimeout.current = setTimeout(async () => {
       try {
-        const url = import.meta.env.DEV
-          ? "https://api.brevo.com/v3/contacts"
-          : "/api/subscribe";
-
-        const headers = import.meta.env.DEV
-          ? {
-              "api-key": import.meta.env.VITE_BREVO_API_KEY,
-              "Content-Type": "application/json",
-              accept: "application/json",
-            }
-          : {
-              "Content-Type": "application/json",
-            };
-
-        const body = {
-          email,
-          attributes: { FIRSTNAME: name },
-          listIds: [3],
-          updateEnabled: true,
-        };
-
-        const res = await fetch(url, {
+        const res = await fetch("/api/subscribe", {
           method: "POST",
-          headers,
-          body: JSON.stringify(body),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, name }),
         });
 
         const result = await res.json();

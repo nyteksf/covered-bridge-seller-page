@@ -26,33 +26,15 @@ export default function TopNav() {
 
     submitTimeout.current = setTimeout(async () => {
       try {
-        const url = import.meta.env.DEV
-          ? "https://api.brevo.com/v3/contacts"
-          : "/api/subscribe";
-
-        const headers = import.meta.env.DEV
-          ? {
-              "api-key": import.meta.env.VITE_BREVO_API_KEY,
-              "Content-Type": "application/json",
-              accept: "application/json",
-            }
-          : {
-              "Content-Type": "application/json",
-            };
-
-        const body = {
-          email,
-          attributes: {
-            FIRSTNAME: "VIP Buyer",
-          },
-          listIds: [3],
-          updateEnabled: true,
-        };
-
-        const res = await fetch(url, {
+        const res = await fetch("/api/subscribe", {
           method: "POST",
-          headers,
-          body: JSON.stringify(body),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            name: "VIP Buyer",
+          }),
         });
 
         const result = await res.json();
