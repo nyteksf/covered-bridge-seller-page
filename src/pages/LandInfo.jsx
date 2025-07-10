@@ -55,7 +55,7 @@ const LandInfo = () => {
   const excludeId = propertyData?.id;
   const listingTitle = propertyData?.title;
   const stateName = propertyData?.stateName;
-  const ptbStateName = propertyData?.PTBContent?.stateName;
+  const ptbStateName = propertyData?.PTBContent?.stateName; // PHASE THIS OUT FOR ROOT LOCATION
 
   useEffect(() => {
     const handleScroll = () => {
@@ -351,11 +351,13 @@ const LandInfo = () => {
                       />
                     )}
                     <HorizontalDivider />
-                    <PropertyBlurb
-                      propertyId={propertyData.parcelId}
-                      propertyBlurbContent={propertyData.PTBContent}
-                      propertyStatus={propertyData.propertyStatus}
-                    />
+                    {propertyData?.id && (
+                      <PropertyBlurb
+                        propertyId={propertyData.id}
+                        propertyBlurbContent={propertyData.PTBContent}
+                        propertyStatus={propertyData.propertyStatus}
+                      />
+                    )}
                     <PropertySpecs
                       specs={propertyData?.specsData}
                       propertyId={prettyFormattedPropertyId}

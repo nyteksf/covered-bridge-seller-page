@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { Button } from "./ui/button";
 import VisaCardIcon from "../../public/img/VisaCard-light.svg";
@@ -15,6 +16,7 @@ const PropertyBlurb = ({
   {
     /* propertyId, canOwnerFinance: boolean, totalPrice: number, depositPrice: number, monthlyPayment: number, */
   }
+  const { slug } = useParams();
 
   const [isSoldOut, setIsSoldOut] = useState(false);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
@@ -23,30 +25,6 @@ const PropertyBlurb = ({
     /* THIS IS A DUMB PLACEHOLDER ONLY! FIX AFTER INTEGRATING STRIPE PAY */
   }
 
-  const createCheckoutSession = () => {
-    // SET PROPERTY STATUS TO PENDING WHEN COMPLETES THIS STEP, OR RESET ON ERROR
-    console.log("peepee poopoo");
-  };
-
-  const handleBuyNowClick = async () => {
-    if (isCheckingOut) return;
-
-    if (propertyStatus !== "available") {
-      throw new Error("Property is already sold or pending");
-    }
-
-    setIsCheckingOut(true);
-
-    try {
-      const session = await createCheckoutSession();
-      window.location.href = session.url;
-      // REDIRECT USER IF REDIRECT OCCURS
-    } catch (err) {
-      console.error(err);
-      setIsCheckingOut(false);
-    }
-  };
-
   function formatWithCommas(input) {
     const number = Number(input);
     if (isNaN(number)) return input;
@@ -54,9 +32,10 @@ const PropertyBlurb = ({
   }
 
   const formatPropertyId = (propertyId) => {
+    if (typeof propertyId !== "string") return "[Invalid ID]";
     const parts = propertyId.split("_");
 
-    if (parts.length !== 3) return propertyId; // fallback in case it's malformed
+    if (parts.length !== 3) return propertyId; // fallback if malformed
 
     const [state, county, number] = parts;
 
@@ -65,6 +44,38 @@ const PropertyBlurb = ({
     const formattedNumber = number;
 
     return [formattedState, formattedCounty, formattedNumber].join("_");
+  };
+
+  const handleBuyNow = async () => {
+    if (isCheckingOut || propertyStatus !== "available") return;
+
+    setIsCheckingOut(true);
+
+    try {
+      const response = await fetch(
+        "https://us-central1-covered-bridge-properties.cloudfunctions.net/createCheckoutSession",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            propertyId,
+            slug: slug || "",
+          }),
+        }
+      );
+
+      const data = await response.json();
+      if (data?.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error("No URL returned from Stripe");
+      }
+    } catch (err) {
+      console.error("Checkout failed:", err);
+      setIsCheckingOut(false);
+    }
   };
 
   return (
@@ -95,7 +106,7 @@ const PropertyBlurb = ({
                       : ""
                   }`}
                 disabled={isCheckingOut || isSoldOut}
-                onClick={handleBuyNowClick}
+                onClick={handleBuyNow}
               >
                 {isCheckingOut
                   ? "Processing..."

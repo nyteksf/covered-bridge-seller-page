@@ -32,7 +32,9 @@ const CreateListing = () => {
   const handleManualFetch = async () => {
     setIsLoading(true);
     try {
-      const snap = await getDoc(doc(db, "properties", manualPropertyId.toLowerCase()));
+      const snap = await getDoc(
+        doc(db, "properties", manualPropertyId.toLowerCase())
+      );
       if (snap.exists()) {
         setFormState(snap.data());
         toast.success("Property loaded.");
@@ -281,7 +283,7 @@ const CreateListing = () => {
         <button
           onClick={handleSubmit}
           disabled={isSubmitting}
-          className="border-2 border-gray-800 bg-cyan-800 text-white px-6 py-2 rounded font-bold hover:bg-cyan-600 transition-all"
+          className="border-2 border-gray-800 800 text-white px-6 py-2 rounded font-bold hover:bg-cyan-600 transition-all"
         >
           {isSubmitting
             ? "Submitting..."
