@@ -4,7 +4,7 @@ import { Link, useParams, useSearchParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import LoadingState from "./LoadingState";
 import TopNav from "../components/TopNav";
-import SearchBar from "../components/Searchbar";
+import SearchBar from "../components/SearchBar";
 import PropertyCard from "../components/PropertyCard";
 import SecondaryNav from "../components/SecondaryNav";
 import StateSelector from "../components/StateSelector";
