@@ -1,4 +1,4 @@
-// File: /api/subscribe.js (for Vercel or any Node-based serverless runtime)
+// File: /api/subscribe.js
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { email, name } = (await req.json?.()) || (await req.body);
+    const { email, name } = req.body; // ✅ Vercel parses JSON automatically
 
     if (!email || !name) {
       return res.status(400).json({ message: "Missing email or name" });
