@@ -181,10 +181,7 @@ const ContactMeModal = ({
           }
         `}
         >
-          <img
-            src="/public/logo-sm-2-invert.png"
-            className="modal-header-img"
-          />
+          <img src="/logo-sm-2-invert.png" className="modal-header-img" />
 
           <h3 className="modal__title modal__title--about">
             Know Exactly What You’re Getting

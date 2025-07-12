@@ -103,7 +103,7 @@ export default function Footer() {
                 </li>
                 <li className="py-[10px] h-[40px]">
                   <a
-                    href="#"
+                    href="/terms"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     Terms & Conditions
@@ -111,7 +111,7 @@ export default function Footer() {
                 </li>
                 <li className="py-[10px] h-[40px]">
                   <a
-                    href="#"
+                    href="/privacy"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     Privacy Policy

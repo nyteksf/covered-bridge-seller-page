@@ -79,13 +79,16 @@ export default function StateLandPage() {
             <label htmlFor="state-select">Filter By State -</label>
             <select
               id="state-select"
-              className={`bg-[#1a1a1a] text-white border border-[#555] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00bfff] hover:bg-[#000000ee] hover:text-[#f5f5f5] duration-350 cursor-pointer transition duration-200`}
+              className="bg-[#1a1a1a] text-white border border-[#555] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00bfff] hover:bg-[#000000ee] hover:text-[#f5f5f5] duration-350 cursor-pointer transition duration-200"
               onChange={(e) => {
                 const val = e.target.value;
                 if (val) window.location.href = `/state/${val}`;
               }}
-              value={normalizedSlug}
+              value={stateAbbr || ""} // Ensure empty/default if no stateSlug
             >
+              <option value="" disabled>
+                -- Select a State --
+              </option>
               {STATE_OPTIONS.map(([abbr, name]) => (
                 <option
                   key={abbr}

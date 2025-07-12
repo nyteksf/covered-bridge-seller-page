@@ -7,7 +7,9 @@ import LandInfo from "./pages/LandInfo";
 import LandForSale from "./pages/AllLand";
 import PageNotFound from "./pages/NotFound";
 import CreateListing from "./pages/CreateListing";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import StateNamePage from "./pages/StateNamePage";
+import TermsAndConditions from "./pages/TermsAndConditions";
 import ProtectedAdminRoutes from "./components/ProtectedAdminRoutes";
 
 import "./index.css";
@@ -38,6 +40,9 @@ function App() {
         <Route path="/state/:stateSlug" element={<StateNamePage />} />
         {/* INDIVIDUAL LISTING GENERATION VIA DYNAMIC PAGE */}
         <Route path="/listing/:propertyId" element={<LandInfo />} />
+        {/* LEGAL & PRIVACY RELATED */}
+        <Route path="/terms" element={<TermsAndConditions />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
         {/* PROPERTY LISTING GENERATION FORM/WIZARD */}
         <Route path="/login" element={<Login />} />
         <Route path="create" element={<CreateListing />} />

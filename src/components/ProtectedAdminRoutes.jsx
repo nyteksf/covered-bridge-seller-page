@@ -1,13 +1,23 @@
 import { Navigate, Outlet } from "react-router-dom";
 
 const isAuthenticated = () => {
-  const token = localStorage.getItem("admin_token");
-  const envToken = import.meta.env.VITE_ADMIN_TOKEN;
+  // Check if we're in a browser environment
+  if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
+    return false;
+  }
 
-  console.log("admin_token (localStorage):", token);
-  console.log("VITE_ADMIN_TOKEN (env):", envToken);
+  try {
+    const token = localStorage.getItem("admin_token");
+    const envToken = import.meta.env.VITE_ADMIN_TOKEN;
 
-  return token === envToken;
+    console.log("admin_token (localStorage):", token);
+    console.log("VITE_ADMIN_TOKEN (env):", envToken);
+
+    return token === envToken;
+  } catch (error) {
+    console.error("Error accessing localStorage:", error);
+    return false;
+  }
 };
 
 const ProtectedAdminRoutes = () => {
