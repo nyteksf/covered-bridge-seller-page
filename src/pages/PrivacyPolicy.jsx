@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import LoadingState from "./LoadingState";
 
+import "./privacy-policy.css";
+
 const PrivacyPolicy = ({ footerRef }) => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -22,12 +24,12 @@ const PrivacyPolicy = ({ footerRef }) => {
         <LoadingState />
       ) : (
         <div className="flex flex-col min-h-screen bg-white text-gray-800">
-          <header className="border-b border-gray-300 py-4 px-8 bg-gray-100 text-center">
+          <header className="relative border-b border-gray-300 py-5 px-8 bg-gray-100 text-center after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-cyan-300">
             <div className="flex justify-center items-center">
               <Link to="/">
                 <img
                   src="/logo-sm-1.png"
-                  className="w-[412px] max-w-full mx-auto"
+                  className="w-[412px] max-w-full mx-auto relative -top-[1px]"
                   alt="Logo"
                   title="Return Home"
                 />
@@ -199,9 +201,9 @@ const PrivacyPolicy = ({ footerRef }) => {
             <section className="mb-8">
               <h3 className="text-xl font-semibold mb-2">Governing Law</h3>
               <p>
-                Governed by U.S. and Wyoming law where Covered Bridge Properties
-                is a registered trademark and brand of Covered Bridge Property
-                Holdings LLC
+                Governed by U.S. and Wyoming law, where Covered Bridge
+                Properties is a registered trademark and brand of Covered Bridge
+                Property Holdings LLC
               </p>
             </section>
           </main>
