@@ -80,7 +80,7 @@ const FaqPage = () => {
               <h1 className="text-[2rem] md:text-[2.5rem] font-bold text-[#003e5c] mt-4">
                 Frequently Asked Questions
               </h1>
-              <p className="text-lg mt-2 max-w-2xl mx-auto text-[#1a1a1a]">
+              <p className="text-lg mt-2 max-w-2xl mx-auto text-[slategray] font-semibold">
                 Curious about buying land? Whether you’re planning your first
                 purchase, eyeing a retreat, or building a legacy—here are the
                 answers.
@@ -88,11 +88,11 @@ const FaqPage = () => {
             </header>
 
             <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <article className="bg-white p-6 pb-9 rounded-xl border border-gray-300 shadow-sm">
+              <article className="bg-white p-6 pb-9 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
                 <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faQuestionCircle} />
                 </div>
-                <h2 className="text-xl tracking-[0.15] font-semibold text-[#003e5c] mb-2">
+                <h2 className="border-l-8 pl-2 border-l-[brown] text-xl tracking-[0.15] font-semibold text-[#003e5c] mb-2">
                   Why buy more land instead of investing in a house?
                 </h2>
                 <p className="text-gray-700 -tracking-[0.15] leading-relaxed">
@@ -117,11 +117,11 @@ const FaqPage = () => {
                 </p>
               </article>
 
-              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm">
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
                 <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faFileAlt} />
                 </div>
-                <h2 className="text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
+                <h2 className="border-l-8 pl-2 border-l-[brown] text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
                   Is buying land complicated?
                 </h2>
                 <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
@@ -135,11 +135,11 @@ const FaqPage = () => {
                 </p>
               </article>
 
-              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm">
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
                 <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faLandmark} />
                 </div>
-                <h2 className="text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
+                <h2 className="text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15] border-l-8 pl-1 border-l-[brown]">
                   Can I use it right away?
                 </h2>
                 <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
@@ -147,15 +147,16 @@ const FaqPage = () => {
                   property, you might camp, hike, hunt, put in a mobile home or
                   hunting blinds, or just hold it for later. You don’t need
                   permission to walk your own land. And you can start doing that
-                  typically within one week of placing your deposit.
+                  typically within one to maybe two weeks of placing your
+                  deposit.
                 </p>
               </article>
 
-              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm">
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
                 <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faMoneyBillWave} />
                 </div>
-                <h2 className="text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
+                <h2 className="border-l-8 pl-2 border-l-[brown] text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
                   Is land expensive?
                 </h2>
                 <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
@@ -167,11 +168,11 @@ const FaqPage = () => {
                 </p>
               </article>
 
-              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm">
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
                 <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faHandshake} />
                 </div>
-                <h2 className="text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
+                <h2 className="border-l-8 pl-2 border-l-[brown] text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
                   What if I change my mind?
                 </h2>
                 <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
@@ -184,11 +185,11 @@ const FaqPage = () => {
                 </p>
               </article>
 
-              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm">
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
                 <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faCalendarCheck} />
                 </div>
-                <h2 className="text-xl font-semibold text-[#003e5c] mb-2">
+                <h2 className="border-l-8 pl-2 border-l-[brown] text-xl font-semibold text-[#003e5c] mb-2">
                   How fast can I own it?
                 </h2>
                 <p className="text-gray-700 leading-relaxed">
@@ -201,7 +202,7 @@ const FaqPage = () => {
             </section>
 
             <section className="text-center mt-5">
-              <h2 className="text-2xl font-semibold text-[#d8d8d8] mb-6">
+              <h2 className="text-2xl font-semibold text-[#d8d8d8] mb-5">
                 Want clarity on something not covered above?
               </h2>
               <Link
