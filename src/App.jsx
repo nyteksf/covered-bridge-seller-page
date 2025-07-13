@@ -2,7 +2,9 @@ import { Toaster } from "sonner";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
+import About from "./pages/About";
 import Login from "./pages/Login";
+import FaqPage from "./pages/FaqPage";
 import LandInfo from "./pages/LandInfo";
 import LandForSale from "./pages/AllLand";
 import PageNotFound from "./pages/NotFound";
@@ -43,6 +45,9 @@ function App() {
         {/* LEGAL & PRIVACY RELATED */}
         <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        {/* MISC. */}
+        <Route path="/about" element={<About />} />
+        <Route path="/faq" element={<FaqPage />} />
         {/* PROPERTY LISTING GENERATION FORM/WIZARD */}
         <Route path="/login" element={<Login />} />
         <Route path="create" element={<CreateListing />} />

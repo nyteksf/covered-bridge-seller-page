@@ -49,7 +49,7 @@ export default function Footer() {
                 </li>
                 <li className="py-[10px] h-[40px]">
                   <Link
-                    href="/faq"
+                    to="/faq"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     FAQ
@@ -71,7 +71,7 @@ export default function Footer() {
                 </li>
                 <li className="py-[10px] h-[40px]">
                   <a
-                    href="#"
+                    href="/about"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     About
