@@ -92,7 +92,7 @@ const FaqPage = () => {
                 <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faQuestionCircle} />
                 </div>
-                <h2 className="border-l-8 pl-2 border-l-[brown] text-xl tracking-[0.15] font-semibold text-[#003e5c] mb-2">
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl tracking-[0.15] font-semibold text-[#003e5c] mb-2">
                   Why buy more land instead of investing in a house?
                 </h2>
                 <p className="text-gray-700 -tracking-[0.15] leading-relaxed">
@@ -121,7 +121,7 @@ const FaqPage = () => {
                 <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faFileAlt} />
                 </div>
-                <h2 className="border-l-8 pl-2 border-l-[brown] text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
                   Is buying land complicated?
                 </h2>
                 <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
@@ -139,7 +139,7 @@ const FaqPage = () => {
                 <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faLandmark} />
                 </div>
-                <h2 className="text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15] border-l-8 pl-1 border-l-[brown]">
+                <h2 className="text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15] border-l-8 pl-1 border-l-[#a9746e]">
                   Can I use it right away?
                 </h2>
                 <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
@@ -156,7 +156,7 @@ const FaqPage = () => {
                 <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faMoneyBillWave} />
                 </div>
-                <h2 className="border-l-8 pl-2 border-l-[brown] text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
                   Is land expensive?
                 </h2>
                 <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
@@ -172,7 +172,7 @@ const FaqPage = () => {
                 <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faHandshake} />
                 </div>
-                <h2 className="border-l-8 pl-2 border-l-[brown] text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
                   What if I change my mind?
                 </h2>
                 <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
@@ -189,7 +189,7 @@ const FaqPage = () => {
                 <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faCalendarCheck} />
                 </div>
-                <h2 className="border-l-8 pl-2 border-l-[brown] text-xl font-semibold text-[#003e5c] mb-2">
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
                   How fast can I own it?
                 </h2>
                 <p className="text-gray-700 leading-relaxed">
