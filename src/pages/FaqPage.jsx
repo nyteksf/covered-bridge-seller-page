@@ -8,6 +8,18 @@ import {
   faMoneyBillWave,
   faHandshake,
   faCalendarCheck,
+  faHeart,
+  faUserTie,
+  faStore,
+  faMapMarkedAlt,
+  faClock,
+  faIdCard,
+  faPlug,
+  faGem,
+  faSeedling,
+  faHorseHead,
+  faFileContract,
+  faReceipt,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Footer from "../components/Footer";
@@ -77,7 +89,7 @@ const FaqPage = () => {
                   title="Return Home"
                 />
               </Link>
-              <h1 className="text-[2rem] md:text-[2.5rem] font-bold text-[#003e5c] mt-4">
+              <h1 className="text-[2rem] md:text-[2.5rem] font-bold text-[#003e5c] mt-3">
                 Frequently Asked Questions
               </h1>
               <p className="text-lg mt-2 max-w-2xl mx-auto text-[slategray] font-semibold">
@@ -93,45 +105,143 @@ const FaqPage = () => {
                   <FontAwesomeIcon icon={faQuestionCircle} />
                 </div>
                 <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl tracking-[0.15] font-semibold text-[#003e5c] mb-2">
-                  Why buy more land instead of investing in a house?
+                  Why buy more land instead of investing in a house/stock?
                 </h2>
                 <p className="text-gray-700 -tracking-[0.15] leading-relaxed">
                   Land is freedom. No HOA fees. No landlords. Just you, nature,
                   and endless possibility. Whether it’s your future cabin site,
                   part of a dignified retirement plan, or just a quiet
-                  escape—land holds. Only with no tenants, termites or other
-                  cashflow headaches involved. And this is important.
+                  escape—land holds. Only with no rodents, renters, renovations
+                  or other common cashflow headaches. And this is important.
                   <br className="my-2" />
-                  Moreover, here’s what most other people out there who think
-                  about investing tend to overlook: billionaires, hedge funds,
-                  and legacy families are acquiring land fast, even while other
+                  <div className="my-1 w-full" />
+                  Moreover, here’s what most others out there who think about
+                  investing tend to overlook: billionaires, hedge funds, and
+                  legacy families are acquiring land fast, even while other
                   investments abound. Why? Because land’s ultra-limited,
                   low-maintenance, and a timeless investment for anyone to
                   consider making today. After all, land doesn’t vanish in a
-                  market crash. It waits—and appreciates. So, they may manage to
-                  make a new trend every year that comes and goes, and one can
-                  try to ride that wave, but nobody will be able to recreate the
-                  consistently witnessed value growing under your feet year
-                  after year like one can obtain uniquely within the realm of
-                  land investing.
+                  market crash. It waits—and appreciates with low-volatility;
+                  even as inflation daily erases the value of our dollar, and as
+                  interest rates start to climb. Nothing can recreate the type
+                  of consistently witnessed, solid value growing under your
+                  feet, year after year, like that uniquely found within the
+                  realm of land investing.
                 </p>
               </article>
 
               <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
                 <div className="text-2xl text-cyan-500 mb-4">
-                  <FontAwesomeIcon icon={faFileAlt} />
+                  <FontAwesomeIcon icon={faHeart} />
                 </div>
-                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
-                  Is buying land complicated?
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  What’s your satisfaction guarantee?
                 </h2>
                 <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
-                  Not with us. We make it seamless—no agents, no red tape, no
-                  hidden fees. We walk you through every step: from due
-                  diligence to deed transfer. We even handle the paperwork. As
-                  such, you'll find yourself soon able to see the value in
-                  making this decision well before you are sighing that sigh of
-                  relief; the one letting you know you've made a good choice, as
-                  have many before you, and many after to come.
+                  We offer a{" "}
+                  <strong>
+                    90-Day, "Love-It-Or-Swap-It-Or-Refund-It" Guarantee.
+                  </strong>{" "}
+                  If not fully satisfied with your parcel within the first 90
+                  days, and no improvements were made, you can choose either a{" "}
+                  <strong>full refund</strong> and we'll reclaim the deed, or a{" "}
+                  <strong>swap</strong> for any lot of equal or greater value in
+                  our current catalog. Within this period, no limits are placed
+                  on the number of possible swaps, either.
+                  <br className="my-2" />
+                  <div className="my-1 w-full" />
+                  There are no hidden penalties for exercising this option, and
+                  no pressure. Just give us a quick call and we'll take it with
+                  you from there. That's just one of the benefits of working
+                  with us; that you’re dealing with the actual owner of the
+                  property, not some developer or faceless shell corporation.
+                  And we want you to be happy.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faPlug} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  Does the property have utilities?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  Unless otherwise noted in the listing, our rural lots are
+                  off-grid—perfect for solar, wind, or other sustainable setups.
+                  If you're dreaming of a green getaway, you're in the right
+                  place.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faGem} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  Are mineral rights included?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  Mineral rights are not included. However, geological surveys
+                  have shown no valuable deposits on these lands—and in our
+                  experience, it’s never once been a problem.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faSeedling} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  Can I raise crops on the property?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  Absolutely. Most of our properties are zoned for agriculture,
+                  so whether you're planting crops, going off-grid, or building
+                  a home, you’ve got flexibility. Zoning information is
+                  mentioned clearly in the property listings you'll be seeing.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faHorseHead} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  Can I raise animals on the property?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  Yes. Livestock, chickens, horses—many parcels allow for
+                  agricultural use. Check the listing description for specifics,
+                  but in general, these are your acres to cultivate.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faFileContract} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  Is title insurance available?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  Yes. We often provide title insurance through First American
+                  Title on financed properties. If a title policy is included,
+                  it’ll be noted in the listing.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faReceipt} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  What about property taxes?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  Most of our parcels carry very low annual taxes—often under
+                  $50. And they’re typically current unless stated otherwise. We
+                  always list estimated taxes up front.
                 </p>
               </article>
 
@@ -170,23 +280,6 @@ const FaqPage = () => {
 
               <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
                 <div className="text-2xl text-cyan-500 mb-4">
-                  <FontAwesomeIcon icon={faHandshake} />
-                </div>
-                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
-                  What if I change my mind?
-                </h2>
-                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
-                  We give you 30 days to swap your property for another in our
-                  current catalog. But as a land owner, you’re always in the
-                  driver's seat. If you ever want to sell, you’re not locked in.
-                  You can list it, gift it, or just hold it while it gains more
-                  and more value over time. There’s no ongoing commitment, and
-                  often no POA restrictions to deal with.
-                </p>
-              </article>
-
-              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
-                <div className="text-2xl text-cyan-500 mb-4">
                   <FontAwesomeIcon icon={faCalendarCheck} />
                 </div>
                 <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
@@ -195,8 +288,117 @@ const FaqPage = () => {
                 <p className="text-gray-700 leading-relaxed">
                   Very fast. Once you’re ready, we close through a title company
                   or attorney, wire the funds, and record the deed in your name.
-                  Sometimes in just 7 days. And whenever possible, we prefer
-                  using your local, trusted attorneys.
+                  Sometimes in just 7 days. And whenever necessary, we prefer to
+                  use your local, trusted attorneys.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faUserTie} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  Do I need an attorney or real estate agent?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  We’ve stripped the complexity out. Everything’s laid out in
+                  plain English contracts. You’re welcome to bring in a
+                  professional if you’d like—but we’ve made it simple enough
+                  that most buyers don’t need to.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faFileAlt} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2 tracking-[0.15]">
+                  Is buying land complicated?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  Not with us. We make it seamless—no agents, no red tape, no
+                  hidden fees. We walk you through every step: from due
+                  diligence to deed transfer. We even handle the paperwork. As
+                  such, you'll find yourself soon able to see the value in
+                  making this decision well before you are sighing that sigh of
+                  relief; the one letting you know you've made a good choice, as
+                  have many before you, and many after to come.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faStore} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  Why buy from Covered Bridge instead of Craigslist or eBay?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  Better land, cleaner process. No surprise liens, no vague
+                  listings. Our parcels are vetted for access, value, and
+                  potential appreciation—and our buying process is built for
+                  clarity and trust.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faHandshake} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  Why buy from you instead of a real estate agent?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  Agents often tack on 5–8% in fees. With us, you're dealing
+                  direct—no middlemen, no commissions, no markup. Just land,
+                  straight from seller to buyer.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faMapMarkedAlt} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  Can I inspect the property before buying?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  Yes—but don’t wait. Land moves fast. We recommend securing the
+                  parcel first with a down payment. Then we’ll provide GPS
+                  coordinates, maps, and access info to help you visit on your
+                  own schedule. And remember: your deposit is backed by our
+                  90-day satisfaction guarantee.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faIdCard} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  What documents do I need for financing?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  None. No IDs, no applications, no uploads. Our process is as
+                  frictionless as it gets—just pick a parcel, pay your down
+                  payment of as little as $99 per month, and you’re well on your
+                  way to monthly payments thereafter of anywhere from $99 to
+                  about $500, depending on acreage and other specifics.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faClock} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  How long does the closing process take?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  Typically about two weeks. We handle everything digitally:
+                  contracts, maps, payment setup. After your final payment, we
+                  issue a Warranty Deed and mail it directly to you—free and
+                  clear.
                 </p>
               </article>
             </section>

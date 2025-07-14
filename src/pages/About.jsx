@@ -78,6 +78,35 @@ const About = () => {
               something lasting.”
             </span>
           </section>
+          <section className="w-full max-w-[650px] bg-white px-6 py-8 rounded-xl border-2 border-[#a6a6a6] mt-0 mb-16 font-semibold mx-auto border-l-8 border-l-[#00ffff]">
+            <h2 className="text-center text-[#a9746e] text-2xl font-bold mb-4 border-l-[6px] border-[#00ffff] pl-4 tracking-wide">
+              Our 90-Day Guarantee
+            </h2>
+            <p className="text-[#181818] text-center leading-relaxed">
+              We offer a{" "}
+              <strong>
+                90-Day, "Love-It-Or-Swap-It-Or-Refund-It" Guarantee.
+              </strong>{" "}
+              If you’re not fully satisfied within 90 days of purchase—and no
+              improvements were made—you can either{" "}
+              <strong>swap for another lot</strong> or request a{" "}
+              <strong>full refund</strong>. No pressure. No hassle.
+            </p>
+            <p className="text-[#181818] text-center leading-relaxed mt-4">
+              Because ownership should feel empowering, not binding. And we’re
+              here to help you find the right land——and to love the land you
+              own.
+            </p>
+            <div className="w-full flex">
+              <a
+                class="inline-block bg-cyan-400 text-[#f5f5f5] py-3 font-semibold rounded shadow-md hover:shadow-lg hover:bg-cyan-300 transition translate-x-0 translate-y-0 hover:translate-x-1 hover:translate-y-1 duration-450 justify-center items-center w-full mt-6 text-center px-8"
+                href="/guarantee"
+                data-discover="true"
+              >
+                Get More Info Here
+              </a>
+            </div>
+          </section>
         </div>
       </div>
       <Footer />

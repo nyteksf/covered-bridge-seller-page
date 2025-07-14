@@ -8,6 +8,7 @@ import FaqPage from "./pages/FaqPage";
 import LandInfo from "./pages/LandInfo";
 import LandForSale from "./pages/AllLand";
 import PageNotFound from "./pages/NotFound";
+import OurGuarantee from "./pages/OurGuarantee";
 import CreateListing from "./pages/CreateListing";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import StateNamePage from "./pages/StateNamePage";
@@ -48,6 +49,7 @@ function App() {
         {/* MISC. */}
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<FaqPage />} />
+        <Route path="/guarantee" element={<OurGuarantee />} />
         {/* PROPERTY LISTING GENERATION FORM/WIZARD */}
         <Route path="/login" element={<Login />} />
         <Route path="create" element={<CreateListing />} />

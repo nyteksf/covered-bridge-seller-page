@@ -55,7 +55,7 @@ export default function SecondaryNav({
           <ul className="font-montserrat flex justify-between items-center w-full max-w-[1440px] mx-auto    py-1 relative h-auto gap-[3.5rem]">
             <li>
               <a
-                href="#"
+                href="/available"
                 className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
               >
                 Available
@@ -63,15 +63,15 @@ export default function SecondaryNav({
             </li>
             <li>
               <a
-                href="#"
+                href="/faq"
                 className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
               >
-                Sold
+                F.A.Q.
               </a>
             </li>
             <li>
               <a
-                href="#"
+                href="/testimonials"
                 className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
               >
                 Testimonials
@@ -90,10 +90,10 @@ export default function SecondaryNav({
             </li>
             <li>
               <a
-                href="#"
-                className="hover:text-cyan-200 hover:border-white opacity-100 hover:bg-transparent text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative border-4 border-cyan-200 bg-[#231f20] px-2 leading-[20px] duration-250 pt-[0.25rem] pl-[0.5rem] pr-[0.5rem] pb-[0.15rem]"
+                href="/guarantee"
+                className="hover:text-cyan-200 hover:border-white opacity-100 hover:bg-transparent text-white text-center tracking-[1px] uppercase !cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative border-4 border-cyan-200 bg-[#231f20] px-2 leading-[20px] duration-250 pt-[0.25rem] pl-[0.5rem] pr-[0.5rem] pb-[0.15rem]"
               >
-                Featured Property
+                OUR GUARANTEE
               </a>
             </li>
             {showThemes ? (

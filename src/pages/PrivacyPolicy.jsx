@@ -194,7 +194,9 @@ const PrivacyPolicy = ({ footerRef }) => {
                 </a>
                 <br />
                 <u>Phone:</u> 866-610-LAND{" "}
-                <span className="text-slate-500">(5263)</span>
+                <i>
+                  <span className="text-slate-500">(5263)</span>
+                </i>
               </address>
             </section>
 

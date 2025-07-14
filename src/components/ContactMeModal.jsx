@@ -186,7 +186,7 @@ const ContactMeModal = ({
           <h3 className="modal__title modal__title--about">
             Know Exactly What You’re Getting
           </h3>
-          <h4 className="modal__sub-title modal__sub-title--about">
+          <h4 className="modal__sub-title modal__sub-title--about font-semibold">
             Covered Bridge Properties · No agents. No nonsense.
           </h4>
           <p className="modal__para">

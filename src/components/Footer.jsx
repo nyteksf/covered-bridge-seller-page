@@ -79,10 +79,10 @@ export default function Footer() {
                 </li>
                 <li className="py-[10px] h-[40px]">
                   <a
-                    href="#"
+                    href="/guarantee"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
-                    Testimonials
+                    Our Guarantee
                   </a>
                 </li>
               </ul>

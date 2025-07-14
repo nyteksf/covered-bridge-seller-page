@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import { Button } from "../components/ui/button";
 import ShareDropdown from "@/components/ShareDropdown";
 
@@ -65,6 +66,26 @@ const LandInfoSidebar = ({ setIsContactModalOpen }) => {
             Return Home
           </Button>
         </Link>
+      </div>
+      <div className="w-full">
+        <div
+          className="w-full border-1 border-[gray] scale-100 hover:scale-105 transition-all duration-350"
+          title="Money Back Guarantee"
+        >
+          <Link to="/guarantee">
+            <img
+              src="/img/moneybackguarantee.png"
+              alt="Money Back Guarantee Icon"
+              title="Money Back Guarantee"
+              className="w-full max-w-[100px] mx-auto"
+            />
+            <div className="w-full py-1 text-center">
+              <span className="text-[#333] w-full text-center font-semibold">
+                Click Here To Learn More
+              </span>
+            </div>
+          </Link>
+        </div>
       </div>
     </aside>
   );
