@@ -77,7 +77,7 @@ const LandInfoSidebar = ({ setIsContactModalOpen }) => {
               src="/img/moneybackguarantee.png"
               alt="Money Back Guarantee Icon"
               title="Money Back Guarantee"
-              className="w-full max-w-[100px] mx-auto"
+              className="w-full !max-w-[100px] mb-0.5 mx-auto"
             />
             <div className="w-full py-1 text-center">
               <span className="text-[#333] w-full text-center font-semibold">
