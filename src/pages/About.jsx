@@ -118,10 +118,10 @@ const About = () => {
                 mixed in and applied.
               </p>
               <p>
-                Since then, I’ve bought dozens of parcels across the country.
-                But more than that, I’ve helped people—normal people, and
-                investors—get sometimes their first foothold in real, tangible
-                ownership.
+                Since then, I’ve bought close to a dozen parcels across the
+                country. But more than that, I’ve helped people—normal people,
+                and investors—get their sometimes first foothold in real,
+                tangible ownership.
               </p>
               <p>
                 Covered Bridge was built to reflect that. No upsell. No cringy

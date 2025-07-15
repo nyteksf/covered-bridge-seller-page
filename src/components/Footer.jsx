@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import ContactMeModal from "./ContactMeModal";
+import VIPListModal from "../pages/VIPListModal";
 import {
   faCcVisa,
   faCcMastercard,
@@ -11,7 +13,6 @@ import {
   faFacebook,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-import ContactMeModal from "./ContactMeModal";
 
 import smallLogo from "../../public/logo-sm-2-invert.png";
 
@@ -19,10 +20,21 @@ import "./contact-me-modal.css";
 
 export default function Footer() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVIPModalOpen, setIsVIPModalOpen] = useState(false);
   const [isModalAnimating, setIsModalAnimating] = useState(false);
+
+  const launchVIPListModal = () => {
+    setIsVIPModalOpen(true);
+  };
 
   return (
     <>
+      {isVIPModalOpen && (
+        <VIPListModal
+          isOpen={isVIPModalOpen}
+          onClose={() => setIsVIPModalOpen(false)}
+        />
+      )}
       {(isModalOpen || isModalAnimating) && (
         <ContactMeModal
           isModalOpen={isModalOpen}
@@ -62,12 +74,12 @@ export default function Footer() {
             <div className="flex flex-col space-y-2">
               <ul className="space-y-1">
                 <li className="py-[10px] h-[40px]">
-                  <a
-                    href="#"
+                  <button
+                    onClick={launchVIPListModal}
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     VIP List
-                  </a>
+                  </button>
                 </li>
                 <li className="py-[10px] h-[40px]">
                   <a
