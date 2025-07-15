@@ -81,7 +81,7 @@ const VIPListModal = ({ isOpen, onClose }) => {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 text-[1rem] border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-cyan-300 tracking-[0.025px]"
+              className="w-full px-4 py-2 text-[1rem] border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-cyan-300 tracking-[0.025px] text-[#181818]"
             />
             <button
               type="submit"
