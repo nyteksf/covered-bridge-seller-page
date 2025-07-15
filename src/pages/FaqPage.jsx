@@ -403,6 +403,51 @@ const FaqPage = () => {
               </article>
             </section>
 
+            <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan] mt-10 text-center">
+              <div className="text-2xl text-cyan-500 mb-4">
+                <FontAwesomeIcon icon={faUserTie} />
+              </div>
+              <div className="border-l-4 border-[brown]">
+                <figure className="w-[132px] h-[132px] rounded-full overflow-hidden border-4 border-cyan-300 shadow-md mx-auto mb-4">
+                  <img
+                    src="/img/joecovportrait.jpg"
+                    alt="Portrait of Joe Coviello"
+                    title="Hi! I'm Joe!"
+                    className="object-cover w-full h-full"
+                  />
+                </figure>
+
+                <h2 className="text-xl font-semibold text-[#003e5c] mb-2">
+                  Want to talk to someone real?
+                </h2>
+              </div>
+
+              <p className="text-gray-700 leading-relaxed -tracking-[0.15px]">
+                I’m not a developer. I’m not a broker. I’m the actual person who
+                found and bought this land before you did.
+                <br />
+                <br />
+                And if you’ve got questions—or just want a straight answer—tap
+                below. I’ll get back to you directly.
+              </p>
+
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="mt-4 px-4 py-2 bg-[#003e5c] text-white rounded hover:bg-[#065f6e] transition"
+              >
+                Contact Me
+              </button>
+              <p className="mt-3 text-sm text-gray-600">
+                Not ready to reach out just yet?{" "}
+                <a
+                  href="/about"
+                  className="text-cyan-600 hover:underline font-medium"
+                >
+                  Learn more about who I am →
+                </a>
+              </p>
+            </article>
+
             <section className="text-center mt-5">
               <h2 className="text-2xl font-semibold text-[#d8d8d8] mb-5">
                 Want clarity on something not covered above?

@@ -78,6 +78,155 @@ const About = () => {
               something lasting.”
             </span>
           </section>
+
+          <section className="w-full max-w-[650px] bg-[#fdfdfd] px-6 py-10 rounded-xl border-2 border-[#a6a6a6] mt-0 mb-10 font-semibold mx-auto border-l-8 border-l-[#00ffff]">
+            <h2 className="text-center text-[#a9746e] text-2xl font-bold mb-4 border-l-[6px] border-[#00ffff] pl-4 tracking-wide">
+              The Guy on the Other End of the Line
+            </h2>
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <img
+                src="/img/joecovportrait.jpg"
+                alt="Portrait of Joe Coviello"
+                className="rounded-full w-[140px] h-[140px] object-cover border-4 border-cyan-300 shadow-md"
+              />
+              <p className="text-[#181818] leading-relaxed text-center sm:text-left">
+                I’m Joe Coviello—owner, land buyer, and the person you’ll hear
+                from if and when you ever reach out.
+                <br className="hidden sm:block" />
+                I started Covered Bridge Properties because I wanted to make
+                owning real land feel real again—human, honest, and rooted.
+                <br className="hidden sm:block" />
+                If you’ve made it this far down the page, I just want you to
+                know: this isn’t a faceless company. It’s me, working to help
+                people like you reclaim something lasting.
+              </p>
+            </div>
+            <div className="mt-6 text-[#181818] text-base leading-relaxed tracking-tight space-y-5">
+              <p>
+                I didn’t grow up thinking I’d sell land. Honestly, I stumbled
+                into it the way you stumble into anything that sticks—with a
+                little skepticism, a little obsession, and a lot of reading at
+                2am.
+              </p>
+              <p>
+                My first property? Total mess. A tiny lot in the middle of
+                nowhere that made no sense on paper. But it taught me that I'm
+                not the market, it taught me there's a buyer for every patch of
+                dirt, and moreover: how to read the land, how to spot value
+                where others miss it—and how to see what a piece of earth could
+                become with a little dash of marketing and a big dash of passion
+                mixed in and applied.
+              </p>
+              <p>
+                Since then, I’ve bought dozens of parcels across the country.
+                But more than that, I’ve helped people—normal people, and
+                investors—get sometimes their first foothold in real, tangible
+                ownership.
+              </p>
+              <p>
+                Covered Bridge was built to reflect that. No upsell. No cringy
+                tech-bro jargon. Just direct land deals, handled like they
+                matter—because they do.
+              </p>
+            </div>
+          </section>
+
+          <section className="w-full max-w-[650px] bg-[#ffffff] px-6 py-8 rounded-xl border-2 border-[#a6a6a6] mt-0 mb-10 font-semibold mx-auto border-l-8 border-l-cyan-300">
+            <h2 className="text-center text-[#a9746e] text-2xl font-bold mb-4 border-l-[6px] border-cyan-300 pl-4 tracking-wide">
+              How I Got Here (The Full Story)
+            </h2>
+
+            <p className="text-[#181818] text-left leading-relaxed mb-5">
+              Like a lot of people, I first dipped into investing back in
+              college—with penny stocks. I’d saved up birthday and holiday money
+              simply to buy my first car, but instead I wound up YOLOing it all
+              into a microcap biotech stock called Advanced Viral Research
+              (ADVR.OB via OTCBB), sold on the Over The Counter Bulletin Board,
+              that a friend told me about. I remember it went down in value, and
+              I was sad. But it actually paid off. I bought a cherry red Miata
+              with the profit; my first ever car and taste of freedom as an
+              adult. From that moment on, I was hooked on investing.
+            </p>
+
+            <p className="text-[#181818] text-left leading-relaxed mb-5">
+              That same obsession led me straight to Wall Street through a
+              friend of a family member that noticed my passion and decided to
+              reward it. And so I interned in the NYSE Blue Room for James E.
+              Cullen’s firm on Wall St. one summer period, spent my time
+              learning how to enter orders into the digital system that had come
+              through via the brokerage house, and running between trading desks
+              with hardcopy tickets meant for specialists' booths and just
+              learning everything I could about how brokers did their thing. And
+              later I'd dabbled in day trading off and on. But even with all
+              that adrenaline and surrounding prestige, something about it
+              just...never quite clicked. It felt like motion without meaning.
+              And it seemed like anyone who could do basic math could have that
+              job while not even really making an impact you'd get to see
+              resulting from your efforts; save for maybe in terms of your own
+              wallet fattening.
+            </p>
+
+            <p className="text-[#181818] text-left leading-relaxed mb-5">
+              Being eager, I looked into house flipping, too. And like everyone
+              else during that wave thanks to all the TV shows out there, like
+              on TLC. But hearing friends' stories about nightmare tenants doing
+              damage and ghosting, plus spending my time elbow-deep in repairs,
+              juggling contractors, and betting big on variables I couldn’t
+              control? It never made sense to me—not then, and maybe not ever.
+              So I reluctantly moved on to the next big idea; having crossed
+              Real Estate off my list, too.
+            </p>
+
+            <p className="text-[#181818] text-left leading-relaxed mb-5">
+              Being proficient in leveraging systems, I even took a swing at
+              federal government contracting. Teamed up with someone that at one
+              time was a friend who owned a construction company and quickly
+              learned my first painful lesson in business: your dreams will only
+              move as fast as the person you’ve tethered them to. I was ready to
+              work. They weren’t. I was all in. They were secretly skeptical. I
+              briefly thought about finding other local businesses after so much
+              work and preparation began a descent down the proverbial "tubes",
+              but realized my reputation and career would be riding on those
+              folks who also similarly may not wind up caring about my bottom
+              line versus their own perceived interests. Meanwhile, I would know
+              those people even less. I was knocked down again. But was I truly
+              done with entrepreneurship?
+            </p>
+
+            <p className="text-[#181818] text-left leading-relaxed mb-5">
+              Then came pressure. A son on the way. A need to create something
+              stable. I switched tracks again and leaned into my analytical side
+              and studied diagnostic medical sonography—memorizing Latin roots
+              and absorbing complex anatomy in a discipline that challenged me
+              mentally, but never lit a fire emotionally; just like before.
+            </p>
+
+            <p className="text-[#181818] text-left leading-relaxed mb-5">
+              And then… I found land. Or rather, an ad on YouTube had one day
+              found me. I skipped it a few times. Until I didn't anymore.
+              Finally, <strong>everything aligned</strong>. All the boxes real
+              estate had left unchecked—this answered. No tenants. No termites.
+              No foundation cracks or late-night leak calls. Just raw, real
+              ownership. Something permanent. Tangible. Non-volatile.
+              Deceptively simple, but powerful.
+            </p>
+
+            <p className="text-[#181818] text-left leading-relaxed">
+              I started Covered Bridge Properties because I wanted land to feel{" "}
+              <strong>human</strong> again. Not corporate. Not faceless. Not
+              some anonymous guy hawking land on eBay that you'll never know or
+              see again. Just a guy who believes real ownership should feel like
+              real <strong>freedom</strong>. That’s the journey. And this is
+              where it’s led. Now I'm pleased to be able to meet you at this
+              time; as you cross the bridge into ownership and into what I have
+              come to firmly believe is the best class of investment one can
+              hope to own in this great country. And having said that, and as
+              you'll see, a person will inevitably find I'm far from alone in
+              drawing this conclusion. So if you’re here now, you’re in good
+              company—and just maybe, right on time.
+            </p>
+          </section>
+
           <section className="w-full max-w-[650px] bg-white px-6 py-8 rounded-xl border-2 border-[#a6a6a6] mt-0 mb-16 font-semibold mx-auto border-l-8 border-l-[#00ffff]">
             <h2 className="text-center text-[#a9746e] text-2xl font-bold mb-4 border-l-[6px] border-[#00ffff] pl-4 tracking-wide">
               Our 90-Day Guarantee
