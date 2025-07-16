@@ -26,15 +26,17 @@ export default function TopNav() {
 
     submitTimeout.current = setTimeout(async () => {
       try {
-        const res = await fetch("/api/subscribe", {
+        const baseUrl =
+          window.location.hostname === "localhost"
+            ? "https://covered-bridge-seller-page-msas6wsgt-nyteklas-projects.vercel.app"
+            : "";
+
+        const res = await fetch(`${baseUrl}/api/subscribe`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            email,
-            name: "VIP Buyer",
-          }),
+          body: JSON.stringify({ email, name: "VIP Buyer" }),
         });
 
         const result = await res.json();

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "sonner";
@@ -6,44 +6,64 @@ import { toast } from "sonner";
 const VIPListModal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [hasSubmittedSuccessfully, setHasSubmittedSuccessfully] =
+    useState(false);
+
+  const submitTimeout = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || isSubmitting) return;
+
+    if (isSubmitting) return;
 
     setIsSubmitting(true);
+    setHasSubmittedSuccessfully(false);
 
-    try {
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, name: "VIP Buyer" }),
-      });
+    submitTimeout.current = setTimeout(async () => {
+      try {
+        const res = await fetch("/api/subscribe", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            name: "VIP Buyer",
+          }),
+        });
 
-      const result = await res.json();
+        const result = await res.json();
 
-      console.log("SUBSCRIBE RESPONSE", res.status, result);
+        if (!res.ok) {
+          console.error("Error:", result);
+          if (result.code === "duplicate_parameter") {
+            alert("You're already on the VIP list. Please check your email.");
+          } else {
+            alert(result.message || "Failed to subscribe.");
+          }
 
-      if (!res.ok) {
-        if (result.code === "duplicate_parameter") {
-          toast.error("You're already subscribed");
-        } else {
-          toast.error(result.message || "Subscription failed.");
+          toast.error("Something went wrong", {
+            description: "Feel free to try again in a bit.",
+          });
+
+          return;
         }
-        return;
-      }
 
-      toast.success("You're on the list!");
-      setHasSubmitted(true);
-      setEmail("");
-    } catch (err) {
-      toast.error("Something went wrong.");
-    } finally {
-      setIsSubmitting(false);
-    }
+        setHasSubmittedSuccessfully(true);
+        setEmail("");
+        toast.success("VIP Access Is Granted!", {
+          description:
+            "You now have exclusive, early access to premium land drops.",
+        });
+      } catch (err) {
+        console.error("Unexpected Error:", err);
+        alert(
+          "We couldn't add you to our VIP Buyer List. Feel free to try again later."
+        );
+      } finally {
+        setIsSubmitting(false);
+      }
+    }, 500);
   };
 
   if (!isOpen) return null;
@@ -64,6 +84,7 @@ const VIPListModal = ({ isOpen, onClose }) => {
             <span className="block mt-[5px] h-[2px] w-[35%] bg-[#8f7e70] mx-auto" />
           </h2>
         </div>
+
         <p className="text-center text-gray-600 text-[0.95rem] mb-5 tracking-[0.025px] pt-1 pb-0">
           Be the first to know when our new properties drop.
           <br />
@@ -72,7 +93,7 @@ const VIPListModal = ({ isOpen, onClose }) => {
           And receive a 5% discount, too!
         </p>
 
-        {!hasSubmitted ? (
+        {!hasSubmittedSuccessfully ? (
           <form
             onSubmit={handleSubmit}
             className="flex flex-col items-center gap-4"
