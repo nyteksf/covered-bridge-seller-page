@@ -152,10 +152,10 @@ const FaqPage = () => {
                   <div className="my-1 w-full" />
                   There are no hidden penalties for exercising this option, and
                   no pressure. Just give us a quick call and we'll take it with
-                  you from there. That's just one of the benefits of working
-                  with us; that you’re dealing with the actual owner of the
-                  property, not some developer or faceless shell corporation.
-                  And we want you to be happy.
+                  you from there. That’s just one of the benefits of working
+                  with us; you’re dealing directly with the person who secured
+                  and vetted this land; not some developer or faceless shell
+                  corporation. And we want you to be happy.
                 </p>
               </article>
 
