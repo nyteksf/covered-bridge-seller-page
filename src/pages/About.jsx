@@ -115,7 +115,7 @@ const About = () => {
                 me I'm not the market, it taught me there's a buyer for every
                 patch of dirt, and moreover: how to read the land, how to spot
                 value where others miss it—and how to see what a piece of earth
-                could become with a little dash of marketing and a big dash of
+                could become with a little dash of marketing and a bigger dash of
                 passion mixed in and applied.
               </p>
               <p>
