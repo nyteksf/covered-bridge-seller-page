@@ -42,16 +42,17 @@ export default function TopNav() {
         const result = await res.json();
 
         if (!res.ok) {
-          console.error("Error:", result);
-          if (result.code === "duplicate_parameter") {
-            alert("You're already on the VIP list. Please check your email.");
-          } else {
-            alert(result.message || "Failed to subscribe.");
-          }
+          console.error("Brevo Error Response:", result);
 
-          toast.error("Something went wrong", {
-            description: "Feel free to try again in a bit.",
-          });
+          if (result.code === "duplicate_parameter") {
+            toast.success("You're already on the VIP list!", {
+              description: "Check your inbox for updates soon.",
+            });
+          } else {
+            toast.error(result.message || "Something went wrong", {
+              description: "Feel free to try again in a bit.",
+            });
+          }
 
           return;
         }
