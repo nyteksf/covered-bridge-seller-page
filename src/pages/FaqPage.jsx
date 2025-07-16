@@ -439,12 +439,12 @@ const FaqPage = () => {
               </button>
               <p className="mt-3 text-sm text-gray-600">
                 Not ready to reach out just yet?{" "}
-                <a
+                <Link
                   href="/about"
                   className="text-cyan-600 hover:underline font-medium"
                 >
                   Learn more about who I am →
-                </a>
+                </Link>
               </p>
             </article>
 
@@ -452,13 +452,12 @@ const FaqPage = () => {
               <h2 className="text-2xl font-semibold text-[#d8d8d8] mb-5">
                 Want clarity on something not covered above?
               </h2>
-              <Link
-                to="#"
+              <button
                 className="inline-block bg-cyan-400 text-[#f5f5f5] px-6 py-3 font-semibold rounded shadow-md hover:shadow-lg hover:bg-cyan-300 transition translate-x-0 translate-y-0 hover:translate-x-1 hover:translate-y-1 duration-450"
                 onClick={launchContactModal}
               >
                 Contact Us With Your Question Here
-              </Link>
+              </button>
               <div className="mt-6 text-gray-700 space-y-2 mb-10">
                 <div>
                   <a

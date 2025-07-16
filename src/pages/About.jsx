@@ -265,13 +265,13 @@ const About = () => {
               own.
             </p>
             <div className="w-full flex">
-              <a
+              <Link
                 className="inline-block bg-cyan-400 text-[#f5f5f5] py-3 font-semibold rounded shadow-md hover:shadow-lg hover:bg-cyan-300 transition translate-x-0 translate-y-0 hover:translate-x-1 hover:translate-y-1 duration-450 justify-center items-center w-full mt-6 text-center px-8"
-                href="/guarantee"
+                to="/guarantee"
                 data-discover="true"
               >
                 Get More Info Here
-              </a>
+              </Link>
             </div>
           </section>
         </div>
