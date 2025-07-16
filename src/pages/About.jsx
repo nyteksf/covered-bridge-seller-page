@@ -110,12 +110,12 @@ const About = () => {
               </p>
               <p>
                 My first property? Total mess. A tiny lot in the middle of
-                nowhere that made no sense on paper. But it taught me that I'm
-                not the market, it taught me there's a buyer for every patch of
-                dirt, and moreover: how to read the land, how to spot value
-                where others miss it—and how to see what a piece of earth could
-                become with a little dash of marketing and a big dash of passion
-                mixed in and applied.
+                nowhere back in 2023 that made no sense on paper. But it taught
+                me I'm not the market, it taught me there's a buyer for every
+                patch of dirt, and moreover: how to read the land, how to spot
+                value where others miss it—and how to see what a piece of earth
+                could become with a little dash of marketing and a big dash of
+                passion mixed in and applied.
               </p>
               <p>
                 Since then, I’ve bought close to a dozen parcels across the
@@ -144,7 +144,7 @@ const About = () => {
               (ADVR.OB via OTCBB), sold on the Over The Counter Bulletin Board,
               that a friend told me about. I remember it went down in value, and
               I was sad. But it actually paid off. I bought a cherry red Miata
-              with the profit; my first ever car and taste of freedom as an
+              with the profit; my first ever car and taste of freedom as a young
               adult. From that moment on, I was hooked on investing.
             </p>
 
@@ -152,18 +152,20 @@ const About = () => {
               That same obsession led me straight to Wall Street through a
               friend of a family member that noticed my passion and decided to
               reward it. And so I interned in the NYSE Blue Room for James E.
-              Cullen’s firm on Wall St. one summer period, spent my time
-              learning how to enter orders into the digital system that had come
-              through via the brokerage house, and running between trading desks
-              with hardcopy tickets meant for specialists' booths and just
-              learning everything I could about how brokers did their thing. And
-              later I'd dabbled in day trading off and on. But even with all
-              that adrenaline and surrounding prestige, something about it
-              just...never quite clicked. It felt like motion without meaning.
-              And it seemed like anyone who could do basic math could have that
-              job while not even really making an impact you'd get to see
-              resulting from your efforts; save for maybe in terms of your own
-              wallet fattening.
+              Cullen’s firm on Wall St. one summer period in my youth, where I'd
+              spent my time learning how to enter into the digital system those
+              orders which had come through via the brokerage house line, and
+              running between trading desks with hardcopy tickets meant for
+              specialists' booths while just observing and learning everything I
+              could about how brokers did their thing. And later I'd dabbled in
+              day trading off and on. But even with all that adrenaline and
+              surrounding prestige, something about it just...never quite
+              clicked. It felt like motion without meaning. Furthermore, I
+              didn't enjoy embracing the inherent volatility of the stock market
+              as a day trader. And it seemed like anyone who could do basic math
+              could have the stock broker job while meanwhile working hard and
+              not even really making an impact one can see resulting from their
+              efforts; save for maybe in terms of their wallet fattening alone.
             </p>
 
             <p className="text-[#181818] text-left leading-relaxed mb-5">
@@ -173,8 +175,8 @@ const About = () => {
               damage and ghosting, plus spending my time elbow-deep in repairs,
               juggling contractors, and betting big on variables I couldn’t
               control? It never made sense to me—not then, and maybe not ever.
-              So I reluctantly moved on to the next big idea; having crossed
-              Real Estate off my list, too.
+              So I reluctantly moved on to the next big idea; having apparently
+              crossed Real Estate off my list, too.
             </p>
 
             <p className="text-[#181818] text-left leading-relaxed mb-5">
@@ -198,32 +200,48 @@ const About = () => {
               stable. I switched tracks again and leaned into my analytical side
               and studied diagnostic medical sonography—memorizing Latin roots
               and absorbing complex anatomy in a discipline that challenged me
-              mentally, but never lit a fire emotionally; just like before.
+              mentally, but never lit a fire emotionally; just like before. As
+              the time approached to enter clinical rotations, reality set in:
+              as a sonography tech I'd be sacrificing my body and most of my
+              waking hours, stuck on-call, missing out on family time and life’s
+              important moments. It hit me clearly—I couldn’t spend my life that
+              way.
             </p>
 
             <p className="text-[#181818] text-left leading-relaxed mb-5">
-              And then… I found land. Or rather, an ad on YouTube had one day
-              found me. I skipped it a few times. Until I didn't anymore.
-              Finally, <strong>everything aligned</strong>. All the boxes real
-              estate had left unchecked—this answered. No tenants. No termites.
-              No foundation cracks or late-night leak calls. Just raw, real
-              ownership. Something permanent. Tangible. Non-volatile.
-              Deceptively simple, but powerful.
+              And then… I found land. Or rather, an ad on YouTube one day found
+              me. I skipped it a few times; eager to get on with my coursework
+              and achieve my degree. That was, until I hadn't skipped it one
+              evening. Finally, <strong>everything aligned</strong>. All the
+              boxes real estate had previously left unchecked—this answered. No
+              tenants. No termites. No foundation cracks or late-night leak
+              calls. Just raw, real ownership. Something permanent. Tangible.
+              Non-volatile. Deceptively simple, but powerful. People said I was
+              crazy to take on debt with a new child and "safe" path in life
+              underfoot. But no matter how much effort, time, or resources it
+              took, I committed to making it work. The mentors I'd found had
+              blazed a trail before me, proving it could be done. I dedicated
+              myself fully, determined to learn everything possible about this
+              new venture and build my land business; knowing it was the only
+              way to succeed that mattered for me.
             </p>
 
             <p className="text-[#181818] text-left leading-relaxed">
-              I started Covered Bridge Properties because I wanted land to feel{" "}
-              <strong>human</strong> again. Not corporate. Not faceless. Not
-              some anonymous guy hawking land on eBay that you'll never know or
-              see again. Just a guy who believes real ownership should feel like
-              real <strong>freedom</strong>. That’s the journey. And this is
-              where it’s led. Now I'm pleased to be able to meet you at this
-              time; as you cross the bridge into ownership and into what I have
-              come to firmly believe is the best class of investment one can
-              hope to own in this great country. And having said that, and as
-              you'll see, a person will inevitably find I'm far from alone in
-              drawing this conclusion. So if you’re here now, you’re in good
-              company—and just maybe, right on time.
+              I started Covered Bridge Properties not merely because of some
+              obsession with success, however, but because I knew I could make
+              land feel <strong>human</strong> again. Not corporate. Not
+              faceless. Not some anonymous guy hawking land on eBay that you'll
+              never know or see. Just a guy who believes real ownership should
+              feel like real <strong>freedom</strong>, and who puts himself out
+              there in the process of making it happen for folks just like
+              yourself, reading this. That’s the journey. And this is where it’s
+              led. Now I'm pleased to be able to meet you at this time; as you
+              cross the bridge into ownership and into what I have come to
+              firmly believe is the best class of investment one can hope to own
+              in this great country. And having said that, and as you'll see, a
+              person will inevitably find I'm far from alone in drawing this
+              conclusion. So if you’re here now, you’re in good company—and just
+              maybe, right on time.
             </p>
           </section>
 

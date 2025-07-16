@@ -25,6 +25,8 @@ const VIPListModal = ({ isOpen, onClose }) => {
 
       const result = await res.json();
 
+      console.log("SUBSCRIBE RESPONSE", res.status, result);
+
       if (!res.ok) {
         if (result.code === "duplicate_parameter") {
           toast.error("You're already subscribed");
@@ -95,7 +97,7 @@ const VIPListModal = ({ isOpen, onClose }) => {
               {isSubmitting ? (
                 <FontAwesomeIcon icon={faSpinner} spin />
               ) : (
-                "Get Early Access"
+                "Get Early Access Now"
               )}
             </button>
           </form>
