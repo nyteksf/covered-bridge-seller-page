@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import ContactMeModal from "./ContactMeModal";
 
@@ -54,28 +55,28 @@ export default function SecondaryNav({
         >
           <ul className="font-montserrat flex justify-between items-center w-full max-w-[1440px] mx-auto    py-1 relative h-auto gap-[3.5rem]">
             <li>
-              <a
+              <Link
                 href="/available"
                 className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
               >
                 Available
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/faq"
                 className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
               >
                 F.A.Q.
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/testimonials"
                 className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative"
               >
                 Testimonials
-              </a>
+              </Link>
             </li>
             <li>
               <button
@@ -89,12 +90,12 @@ export default function SecondaryNav({
               </button>
             </li>
             <li>
-              <a
+              <Link
                 href="/guarantee"
                 className="hover:text-cyan-200 hover:border-white opacity-100 hover:bg-transparent text-white text-center tracking-[1px] uppercase !cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative border-4 border-cyan-200 bg-[#231f20] px-2 leading-[20px] duration-250 pt-[0.25rem] pl-[0.5rem] pr-[0.5rem] pb-[0.15rem]"
               >
                 OUR GUARANTEE
-              </a>
+              </Link>
             </li>
             {showThemes ? (
               <li>

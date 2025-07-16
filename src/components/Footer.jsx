@@ -82,20 +82,20 @@ export default function Footer() {
                   </button>
                 </li>
                 <li className="py-[10px] h-[40px]">
-                  <a
+                  <Link
                     href="/about"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     About
-                  </a>
+                  </Link>
                 </li>
                 <li className="py-[10px] h-[40px]">
-                  <a
+                  <Link
                     href="/guarantee"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     Our Guarantee
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -114,20 +114,20 @@ export default function Footer() {
                   </button>
                 </li>
                 <li className="py-[10px] h-[40px]">
-                  <a
+                  <Link
                     href="/terms"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     Terms & Conditions
-                  </a>
+                  </Link>
                 </li>
                 <li className="py-[10px] h-[40px]">
-                  <a
+                  <Link
                     href="/privacy"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
