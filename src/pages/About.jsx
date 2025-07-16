@@ -106,8 +106,8 @@ const About = () => {
               <p>
                 I didn’t grow up thinking I’d sell land. Honestly, I stumbled
                 into it the way you stumble into anything that sticks—with a
-                little skepticism, a little obsession, and a lot of reading at
-                2am.
+                little skepticism, a little obsession, and a heck of a lot of
+                reading at 2am.
               </p>
               <p>
                 My first property? Total mess. A tiny lot in the middle of
