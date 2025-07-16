@@ -134,7 +134,7 @@ const VIPListModal = ({ isOpen, onClose }) => {
             </button>
           </form>
         ) : (
-          <p className="text-center text-green-600 font-semibold text-lg">
+          <p className="text-center text-green-600 font-semibold text-lg leading-[0.25px]">
             You're in. Keep an eye on your inbox!
           </p>
         )}
@@ -148,3 +148,4 @@ const VIPListModal = ({ isOpen, onClose }) => {
 };
 
 export default VIPListModal;
+Receive Updates on New Properties by J

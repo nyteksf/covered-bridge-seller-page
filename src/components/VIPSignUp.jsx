@@ -1,7 +1,7 @@
-import { useRef } from "react";
-import React, { useState } from "react";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "sonner";
 
 import mountainBackImage from "../../public/mountain-back.jpg";
 
@@ -16,15 +16,19 @@ export default function VIPSignup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (isSubmitting) return; // Prevent double submits during debounce delay
+    if (isSubmitting || !email) return;
 
     setIsSubmitting(true);
     setHasSubmittedSuccessfully(false);
 
     submitTimeout.current = setTimeout(async () => {
       try {
-        const res = await fetch("/api/subscribe", {
+        const baseUrl =
+          window.location.hostname === "localhost"
+            ? "https://covered-bridge-seller-page-msas6wsgt-nyteklas-projects.vercel.app"
+            : "";
+
+        const res = await fetch(`${baseUrl}/api/subscribe`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -32,14 +36,25 @@ export default function VIPSignup() {
           body: JSON.stringify({ email, name }),
         });
 
-        const result = await res.json();
+        let result;
+        try {
+          const text = await res.text();
+          result = text ? JSON.parse(text) : {};
+        } catch (err) {
+          console.warn("Non-JSON response from API");
+          result = { message: "Unexpected response from server." };
+        }
 
         if (!res.ok) {
-          console.error("Error:", result);
+          console.error("Brevo Error Response:", result);
           if (result.code === "duplicate_parameter") {
-            alert("You're already on the VIP list. Check your email.");
+            toast.info("You're already on the VIP list!", {
+              description: "Check your inbox for updates soon.",
+            });
           } else {
-            alert(result.message || "Failed to subscribe.");
+            toast.error(result.message || "Something went wrong", {
+              description: "Feel free to try again later.",
+            });
           }
           return;
         }
@@ -47,14 +62,16 @@ export default function VIPSignup() {
         setHasSubmittedSuccessfully(true);
         setName("");
         setEmail("");
-        console.log("Success:", result);
+        toast.success("You're officially in!", {
+          description: "Welcome to the VIP Buyer List.",
+        });
       } catch (err) {
         console.error("Unexpected Error:", err);
-        alert("Something went wrong on our end. Try again later.");
+        toast.error("Unexpected error. Try again later.");
       } finally {
         setIsSubmitting(false);
       }
-    }, 500); // ⏳ 500ms DEBOUNCE TIME
+    }, 500);
   };
 
   return (
@@ -70,7 +87,7 @@ export default function VIPSignup() {
 
           {hasSubmittedSuccessfully ? (
             <div className="text-left bg-[#c1ffb0] rounded-[3px] mt-[15px] px-[30px] py-[20px]">
-              <div className="vip-list-intro text-[#0a7d00] text-center mt-[15px] mb-[15px] font-pt-sans text-[18px] font-bold ">
+              <div className="vip-list-intro text-[#0a7d00] text-center mt-[15px] mb-[15px] font-pt-sans text-[18px] font-bold tracking-[0.25px]">
                 Thank you!
                 <br />
                 Your submission has been received!
