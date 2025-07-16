@@ -56,7 +56,7 @@ const About = () => {
             </p>
 
             <p className="whyweexist--p text-center max-w-[650px] mx-auto mb-5 text-[#181818]">
-              For some, this may be the *first* chapter in a new kind of
+              For some, this may be the <em>first</em> chapter in a new kind of
               ownership. For others, it's a reawakening—stepping back into
               something they always knew they’d return to. Either way, if your
               eyes are on this page now... some part of you already knows:{" "}
