@@ -13,15 +13,19 @@ const VIPListModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (isSubmitting) return;
+    if (isSubmitting || !email) return;
 
     setIsSubmitting(true);
     setHasSubmittedSuccessfully(false);
 
     submitTimeout.current = setTimeout(async () => {
       try {
-        const res = await fetch("/api/subscribe", {
+        const baseUrl =
+          window.location.hostname === "localhost"
+            ? "https://covered-bridge-seller-page-msas6wsgt-nyteklas-projects.vercel.app"
+            : "";
+
+        const res = await fetch(`${baseUrl}/api/subscribe`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -32,20 +36,27 @@ const VIPListModal = ({ isOpen, onClose }) => {
           }),
         });
 
-        const result = await res.json();
+        let result;
+        try {
+          const text = await res.text();
+          result = text ? JSON.parse(text) : {};
+        } catch (err) {
+          console.warn("Non-JSON response from API");
+          result = { message: "Unexpected response from server." };
+        }
 
         if (!res.ok) {
-          console.error("Error:", result);
+          console.error("Brevo Error Response:", result);
+
           if (result.code === "duplicate_parameter") {
-            alert("You're already on the VIP list. Please check your email.");
+            toast.info("You're already on the VIP list!", {
+              description: "Check your inbox for updates soon.",
+            });
           } else {
-            alert(result.message || "Failed to subscribe.");
+            toast.error(result.message || "Something went wrong", {
+              description: "Feel free to try again later.",
+            });
           }
-
-          toast.error("Something went wrong", {
-            description: "Feel free to try again in a bit.",
-          });
-
           return;
         }
 
@@ -53,13 +64,13 @@ const VIPListModal = ({ isOpen, onClose }) => {
         setEmail("");
         toast.success("VIP Access Is Granted!", {
           description:
-            "You now have exclusive, early access to premium land drops.",
+            "You now have early access to exclusive land drops.",
         });
       } catch (err) {
         console.error("Unexpected Error:", err);
-        alert(
-          "We couldn't add you to our VIP Buyer List. Feel free to try again later."
-        );
+        toast.error("Unable to subscribe at this time.", {
+          description: "Please try again later or contact us.",
+        });
       } finally {
         setIsSubmitting(false);
       }
