@@ -91,7 +91,7 @@ const About = () => {
               />
               <p className="text-[#181818] leading-relaxed text-center sm:text-left">
                 I’m Joe Coviello—owner, land buyer, and the person you’ll hear
-                from if and when you ever reach out.
+                from if and when you reach out.
                 <br className="hidden sm:block" />
                 I started Covered Bridge Properties because I wanted to make
                 owning real land feel real again—human, honest, and rooted.
