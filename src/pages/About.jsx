@@ -98,8 +98,8 @@ const About = () => {
                 <br className="hidden sm:block" />
                 If you’ve made it this far down the page, I just want you to
                 know: this isn’t a faceless company. It’s me, working to help
-                people like you claim something lasting; something to be
-                treasured; something generational.
+                people like you claim something lasting; something treasured;
+                something generational.
               </p>
             </div>
             <div className="mt-6 text-[#181818] text-base leading-relaxed tracking-tight space-y-5">
