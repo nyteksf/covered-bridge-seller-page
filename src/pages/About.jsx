@@ -111,7 +111,7 @@ const About = () => {
               </p>
               <p>
                 My first property? Total mess. A tiny lot in the middle of
-                nowhere back in 2023 that made no sense on paper. But it taught
+                nowhere back in 2024 that made no sense on paper. But it taught
                 me I'm not the market, it taught me there's a buyer for every
                 patch of dirt, and moreover: how to read the land, how to spot
                 value where others miss it—and how to see what a piece of earth
@@ -119,7 +119,7 @@ const About = () => {
                 of passion mixed in and applied.
               </p>
               <p>
-                Since then, I’ve begun to close on the milestone of a dozen
+                Since then, I’ve begun to close on the milestone of half a dozen
                 parcels sold across the country. But more than that, I’ve helped
                 people—normal people, and investors—get their sometimes first
                 foothold in real, tangible ownership. And that's important.
