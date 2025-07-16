@@ -440,7 +440,7 @@ const FaqPage = () => {
               <p className="mt-3 text-sm text-gray-600">
                 Not ready to reach out just yet?{" "}
                 <Link
-                  href="/about"
+                  to="/about"
                   className="text-cyan-600 hover:underline font-medium"
                 >
                   Learn more about who I am →
