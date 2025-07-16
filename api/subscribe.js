@@ -1,6 +1,8 @@
 export default async function handler(req, res) {
   console.log(">>> Received VIP signup request");
 
+  console.log(">>> ENV Check:", !!process.env.BREVO_API_KEY);
+
   if (req.method !== "POST") {
     console.log(">>> Rejected: invalid method", req.method);
     return res.status(405).json({ message: "Method not allowed" });
@@ -43,9 +45,13 @@ export default async function handler(req, res) {
       return res.status(response.status).json(result);
     }
 
-    return res.status(200).json({ message: "Contact added successfully", result });
+    return res
+      .status(200)
+      .json({ message: "Contact added successfully", result });
   } catch (err) {
     console.error(">>> Server error:", err);
-    return res.status(500).json({ message: "Server error", error: err.message });
+    return res
+      .status(500)
+      .json({ message: "Server error", error: err.message });
   }
 }
