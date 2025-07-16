@@ -83,7 +83,7 @@ export default function Footer() {
                 </li>
                 <li className="py-[10px] h-[40px]">
                   <Link
-                    href="/about"
+                    to="/about"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     About
@@ -91,7 +91,7 @@ export default function Footer() {
                 </li>
                 <li className="py-[10px] h-[40px]">
                   <Link
-                    href="/guarantee"
+                    to="/guarantee"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     Our Guarantee
@@ -115,7 +115,7 @@ export default function Footer() {
                 </li>
                 <li className="py-[10px] h-[40px]">
                   <Link
-                    href="/terms"
+                    to="/terms"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     Terms & Conditions
@@ -123,7 +123,7 @@ export default function Footer() {
                 </li>
                 <li className="py-[10px] h-[40px]">
                   <Link
-                    href="/privacy"
+                    to="/privacy"
                     className="hover:text-cyan-300 font-semibold transition"
                   >
                     Privacy Policy
