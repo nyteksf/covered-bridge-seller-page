@@ -408,13 +408,23 @@ const FaqPage = () => {
                 <FontAwesomeIcon icon={faUserTie} />
               </div>
               <div className="border-l-4 border-[brown]">
-                <figure className="w-[132px] h-[132px] rounded-full overflow-hidden border-4 border-cyan-300 shadow-md mx-auto mb-4">
-                  <img
-                    src="/img/joecovportrait.jpg"
-                    alt="Portrait of Joe Coviello"
-                    title="Hi! I'm Joe!"
-                    className="object-cover w-full h-full"
-                  />
+                <figure className="flex flex-col items-center space-y-2 mb-4">
+                  <div className="w-[132px] h-[132px] rounded-full overflow-hidden border-4 border-cyan-300 shadow-md">
+                    <img
+                      src="/img/joecovportrait.jpg"
+                      alt="Portrait of Joe Coviello"
+                      title="Hi! I'm Joe!"
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <figcaption className="text-center">
+                    <p className="text-lg font-semibold text-[#003e5c] font-montserrat">
+                      Joe Coviello
+                    </p>
+                    <p className="text-sm text-gray-500 font-montserrat">
+                      Managing Member
+                    </p>
+                  </figcaption>
                 </figure>
 
                 <h2 className="text-xl font-semibold text-[#003e5c] mb-2">
