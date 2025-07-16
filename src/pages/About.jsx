@@ -239,11 +239,11 @@ const About = () => {
               yourself, reading this. That’s the journey. And this is where it’s
               led. Now I'm pleased to be able to meet you at this time; as you
               cross the bridge into ownership and into what I have come to
-              firmly believe is the best class of investment one can hope to own
-              in this great country. And having said that, and as you'll see, a
-              person will inevitably find I'm far from alone in drawing this
-              conclusion. So if you’re here now, you’re in good company—and just
-              maybe, right on time.
+              firmly believe is the best class of investment asset one can hope
+              to own in this great country. And having said that, and as you'll
+              see, a person will inevitably find I'm far from alone in drawing
+              this conclusion. So if you’re here now, you’re in good company—and
+              just maybe, right on time.
             </p>
           </section>
 
