@@ -157,6 +157,14 @@ const FaqPage = () => {
                   and vetted this land; not some developer or faceless shell
                   corporation. And we want you to be happy.
                 </p>
+                <div className="flex justify-center text-center mt-6">
+                  <Link
+                    to="/guarantee"
+                    className="px-6 py-4 w-full bg-[#003e5c] text-white rounded hover:bg-[#065f6e] transition font-semibold font-montserrat"
+                  >
+                    Review Our Satisfaction Policy
+                  </Link>
+                </div>
               </article>
 
               <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
@@ -349,9 +357,17 @@ const FaqPage = () => {
                   Why buy from you instead of a real estate agent?
                 </h2>
                 <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
-                  Agents often tack on 5–8% in fees. With us, you're dealing
-                  direct—no middlemen, no commissions, no markup. Just land,
-                  straight from seller to buyer.
+                  Most real estate agents don’t specialize in land—and it shows.
+                  Listings are often vague, overpriced, or poorly marketed.
+                  Agents may not know the zoning, access, or off-grid potential,
+                  yet still charge 5% to 10% in commissions that get baked into
+                  your then more expensive final price.
+                  <br /><div className="my-2" />
+                  With us, you skip the middlemen and buy direct from the
+                  source. No commissions, no delays, and no pressure. Just clean
+                  land, clearly priced, and often with flexible{" "}
+                  <strong>owner financing options</strong> to make your purchase
+                  even easier.
                 </p>
               </article>
 
