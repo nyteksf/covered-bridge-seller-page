@@ -37,7 +37,17 @@ export default async function handler(req, res) {
       }),
     });
 
-    const result = await response.json();
+    let result;
+    try {
+      result = await response.json();
+    } catch (jsonErr) {
+      console.error(">>> Brevo response not JSON:", jsonErr);
+      return res.status(response.status).json({
+        message: "Non-JSON response from Brevo",
+        status: response.status,
+        raw: await response.text(), // capture raw body for debugging
+      });
+    }
 
     console.log(">>> Brevo API response:", response.status, result);
 
