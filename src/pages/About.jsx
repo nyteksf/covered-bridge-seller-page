@@ -128,7 +128,8 @@ const About = () => {
               <p>
                 Covered Bridge was built to reflect that. No upsell tricks. No
                 cringy tech-bro jargon. Just direct land deals, handled like
-                they matter—because they do.
+                they matter—because they do. Or really, why else would you be
+                here, now, reading these words?
               </p>
             </div>
           </section>
