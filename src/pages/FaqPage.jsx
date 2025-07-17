@@ -28,9 +28,10 @@ import ContactMeModal from "../components/ContactMeModal";
 
 const FaqPage = () => {
   const footerRef = useRef(null);
-  const setIsModalAnimating = useState(false)[1];
+
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalAnimating, setIsModalAnimating] = useState(false);
 
   useEffect(() => {
     const handleDOMContentLoaded = () => {
@@ -42,7 +43,6 @@ const FaqPage = () => {
       document.readyState === "complete"
     ) {
       handleDOMContentLoaded();
-      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       document.addEventListener("DOMContentLoaded", handleDOMContentLoaded);
       return () =>
@@ -59,13 +59,17 @@ const FaqPage = () => {
     return () => clearTimeout(safetyTimeout);
   }, []);
 
+  useEffect(() => {
+    if (!isLoading) {
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+  }, [isLoading]);
+
   const launchContactModal = (e) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setIsModalAnimating(true);
-    setTimeout(() => {
-      setIsModalOpen(true);
-    }, 500);
+    setIsModalOpen(true);
   };
 
   return (
@@ -73,6 +77,7 @@ const FaqPage = () => {
       <ContactMeModal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
+        isModalAnimating={isModalAnimating}
         setIsModalAnimating={setIsModalAnimating}
       />
       {isLoading ? (
@@ -362,7 +367,8 @@ const FaqPage = () => {
                   Agents may not know the zoning, access, or off-grid potential,
                   yet still charge 5% to 10% in commissions that get baked into
                   your then more expensive final price.
-                  <br /><div className="my-2" />
+                  <br />
+                  <div className="my-2" />
                   With us, you skip the middlemen and buy direct from the
                   source. No commissions, no delays, and no pressure. Just clean
                   land, clearly priced, and often with flexible{" "}
@@ -458,7 +464,7 @@ const FaqPage = () => {
               </p>
 
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={launchContactModal}
                 className="mt-4 px-4 py-2 bg-[#003e5c] text-white rounded hover:bg-[#065f6e] transition"
               >
                 Contact Me
