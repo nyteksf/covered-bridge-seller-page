@@ -33,52 +33,64 @@ const TestimonialsPage = () => {
   ];
 
   return (
-    <div className="w-full px-4 flex justify-center mt-10">
-      <div className="w-full max-w-4xl">
-        <header className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-[#003e5c] font-montserrat mb-4">
-            What Buyers Have Said
-          </h1>
-          <p className="text-lg text-slate-600 font-montserrat">
-            These aren’t actors. These aren’t scripts. Just a few words from
-            some folks we’ve worked with.
-          </p>
-        </header>
+    <>
+      <header className="mt-9 w-full max-w-[650px] px-4 py-8 bg-[#f8f8f8] text-center mb-8 rounded-lg border-2 border-gray-400 mx-auto">
+        <Link to="/">
+          <img
+            src="/logo-sm-1.png"
+            alt="Covered Bridge Properties Logo 1"
+            className="mx-auto w-[470px] max-w-full"
+          />
+        </Link>
+      </header>
 
-        <section className="space-y-10">
-          {testimonials.map(({ name, text }, i) => (
-            <blockquote
-              key={i}
-              className="bg-white p-6 border-l-4 border-cyan-400 rounded-md shadow-sm text-gray-800 text-base leading-relaxed tracking-tight relative"
+      <div className="w-full px-4 flex justify-center mt-10">
+        <div className="w-full max-w-4xl">
+          <header className="text-center mb-12">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#f5f5f5] font-montserrat mb-4">
+              What Buyers Have Said
+            </h1>
+            <p className="text-lg text-slate-600 font-semibold font-montserrat">
+              These aren’t actors. These aren’t scripts. Just a few words from
+              some folks we’ve worked with.
+            </p>
+          </header>
+
+          <section className="space-y-10">
+            {testimonials.map(({ name, text }, i) => (
+              <blockquote
+                key={i}
+                className="bg-white p-6 border-l-4 border-cyan-500 rounded-md shadow-sm text-gray-800 text-base leading-relaxed tracking-tight relative"
+              >
+                <FontAwesomeIcon
+                  icon={faQuoteLeft}
+                  className="text-cyan-300 absolute top-2 left-2 text-xl opacity-30"
+                />
+                <p className="mb-4 pl-6">{text}</p>
+                <footer className="text-right text-sm text-[#003e5c] font-semibold pl-6">
+                  — {name}
+                </footer>
+              </blockquote>
+            ))}
+          </section>
+
+          <div className="mt-8 text-center mb-8">
+            <p className="text-md text-slate-500 font-montserrat">
+              You’ve heard what a few people had to say. Now, if you’ve still
+              got questions, you can always—
+            </p>
+            <Link
+              to="/faq"
+              className="inline-block mt-4 px-6 py-3 bg-[#003e5c] text-white rounded hover:bg-[#065f6e] font-semibold font-montserrat transition"
             >
-              <FontAwesomeIcon
-                icon={faQuoteLeft}
-                className="text-cyan-300 absolute top-2 left-2 text-xl opacity-30"
-              />
-              <p className="mb-4 pl-6">{text}</p>
-              <footer className="text-right text-sm text-[#003e5c] font-semibold pl-6">
-                — {name}
-              </footer>
-            </blockquote>
-          ))}
-        </section>
+              Read the F.A.Q.
+            </Link>
+          </div>
 
-        <div className="mt-8 text-center mb-8">
-          <p className="text-md text-slate-500">
-            You’ve heard what a few people had to say. Now, if you’ve still got
-            questions, you can always—
-          </p>
-          <Link
-            to="/faq"
-            className="inline-block mt-4 px-6 py-3 bg-[#003e5c] text-white rounded hover:bg-[#065f6e] font-semibold font-montserrat transition"
-          >
-            Read the F.A.Q.
-          </Link>
+          <Footer />
         </div>
-
-        <Footer />
       </div>
-    </div>
+    </>
   );
 };
 
