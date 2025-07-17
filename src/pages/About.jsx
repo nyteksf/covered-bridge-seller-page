@@ -119,16 +119,16 @@ const About = () => {
                 of passion mixed in and applied.
               </p>
               <p>
-                Since then, I’ve begun to close on a milestone of surpassing a
+                Since then, I’ve begun to close on our milestone of surpassing a
                 dozen parcels sold across the country. But more than that, I’ve
                 helped people—normal people, and investors—get their sometimes
                 first foothold in real, tangible ownership. And that's
                 important.
               </p>
               <p>
-                Covered Bridge was built to reflect that. No upsell. No cringy
-                tech-bro jargon. Just direct land deals, handled like they
-                matter—because they do.
+                Covered Bridge was built to reflect that. No upsell tricks. No
+                cringy tech-bro jargon. Just direct land deals, handled like
+                they matter—because they do.
               </p>
             </div>
           </section>
