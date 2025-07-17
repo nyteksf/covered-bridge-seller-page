@@ -66,7 +66,7 @@ const StickySecondaryNav = () => {
             </li>
             <li className="text-left flex-col flex-none order-[-1] self-auto py-2 px-1">
               <Link
-                to="#"
+                to="/testimonials"
                 className="hover:text-cyan-200 opacity-100 text-white text-center tracking-[1px] uppercase cursor-pointer flex-shrink-0 justify-center items-center h-auto p-0 font-montserrat text-[1.1rem] font-bold transition-colors duration-250 block relative  
               duration-150 
               no-underline 
