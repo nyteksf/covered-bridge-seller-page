@@ -196,6 +196,13 @@ const LandInfo = () => {
         const docRef = doc(db, "properties", formattedId);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
+          if (docSnap.data().isPageLive === false) {
+            console.warn("Listing marked as not live");
+            setPropertyData(null); // triggers 404 fallback
+            setIsPageLoaded(true);
+            return;
+          }
+
           const data = docSnap.data();
           console.log("Firestore doc data:", data);
 
