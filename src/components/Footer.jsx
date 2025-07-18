@@ -208,7 +208,8 @@ export default function Footer() {
               We are not licensed real estate brokers.
             </p>
             <p className="leading-snug font-pt-sans text-white opacity-95 font-semibold -tracking-[0.125px] text-[14px]">
-              All properties are sold by Covered Bridge Properties LLC as owner.
+              All properties are sold by Covered Bridge Properties
+              <sup>™</sup> as owner.
             </p>
             <p className="font-pt-sans text-[10px] -tracking-[0.125px]">
               © {new Date().getFullYear()}{" "}

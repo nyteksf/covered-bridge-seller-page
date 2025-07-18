@@ -181,9 +181,15 @@ const PropertyBlurb = ({
 
           <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">
             Owner Financing is Available with a Down Payment of $
-            {formatWithCommas(propertyBlurbContent?.depositPrice)} and Monthly
-            Payments as low as $
-            {formatWithCommas(propertyBlurbContent?.monthlyPrice)}.
+            {formatWithCommas(propertyBlurbContent?.depositPrice)}
+            {propertyBlurbContent?.monthlyPrice > 0 && (
+              <>
+                {" "}
+                and Monthly Payments as low as $
+                {formatWithCommas(propertyBlurbContent?.monthlyPrice)}
+              </>
+            )}
+            .
           </p>
 
           <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">
