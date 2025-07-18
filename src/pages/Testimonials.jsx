@@ -86,10 +86,9 @@ const TestimonialsPage = () => {
               Read the F.A.Q.
             </Link>
           </div>
-
-          <Footer />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

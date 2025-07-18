@@ -7,6 +7,21 @@ const PageTitleBlock = ({ PTBContent, propertyId, formatNumberWithCommas }) => {
 
   if (!PTBContent) return null;
 
+  const formatPropertyId = (propertyId) => {
+    if (typeof propertyId !== "string") return "[Invalid ID]";
+    const parts = propertyId.split("_");
+
+    if (parts.length !== 3) return propertyId; // fallback if malformed
+
+    const [state, county, number] = parts;
+
+    const formattedState = state.toUpperCase();
+    const formattedCounty = county.charAt(0).toUpperCase() + county.slice(1);
+    const formattedNumber = number;
+
+    return [formattedState, formattedCounty, formattedNumber].join("_");
+  };
+
   return (
     <>
       <div
@@ -31,7 +46,7 @@ const PageTitleBlock = ({ PTBContent, propertyId, formatNumberWithCommas }) => {
               Covered Bridge ID
             </h3>
             <p className="mt-0 mb-0 font-lato font-bold text-[16px] text-[#555]">
-              {propertyId}
+              {formatPropertyId(propertyId)}
             </p>
           </div>
         </div>

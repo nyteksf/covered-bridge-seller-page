@@ -13,6 +13,7 @@ const PropertyDescription = ({
   nearbyPoints,
   PropertyVisitDetails,
   GPSCoords,
+  propertyId,
 }) => {
   const descriptionPairs = pSections;
   const specificationPairs = propertySpecifications ?? [];
@@ -94,7 +95,7 @@ const PropertyDescription = ({
     />,
 
     /* 6 - "Contact Info" */
-    <ContactInfoJoe />,
+    <ContactInfoJoe propertyId={propertyId} />,
   ];
 
   return (

@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 
-const ListingHeaderGroup = ({ activeTab, setActiveTab }) => {
+const ListingHeaderGroup = ({ activeTab, setActiveTab, youTubeUrl }) => {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const imagesRef = useRef(null);
@@ -10,7 +10,9 @@ const ListingHeaderGroup = ({ activeTab, setActiveTab }) => {
   const [width, setWidth] = useState(0);
 
   const tabs = [
-    { label: "Video", ref: videoRef },
+    ...(youTubeUrl && youTubeUrl !== "none"
+      ? [{ label: "Video", ref: videoRef }]
+      : []),
     { label: "Images", ref: imagesRef },
     { label: "Map", ref: mapRef },
   ];

@@ -79,8 +79,9 @@ const PropertyBlurb = ({
   };
 
   return (
-    <div className="block mb-6">
-      {propertyBlurbContent?.canOwnerFinance ? (
+    <div className="block -mt-1 mb-6">
+      {propertyBlurbContent?.canOwnerFinance ||
+      propertyBlurbContent?.canBuyNow ? (
         <>
           <div className="w-full flex flex-row justify-between items-center gap-6 bg-[#edf7f1] border border-[#e6e6e6] p-8 mb-6">
             {/* Left: Checkmark + Heading */}
@@ -151,7 +152,8 @@ const PropertyBlurb = ({
         ""
       )}
 
-      {propertyBlurbContent?.canOwnerFinance ? (
+      {propertyBlurbContent?.canOwnerFinance ||
+      propertyBlurbContent?.canBuyNow ? (
         <div className="w-full max-w-[616px] mx-auto tracking-[0.1px] border-l-[4px] border-[#007e7e] pl-4">
           <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato -mt-[4px] w-full max-w-[650px]">
             <strong>
@@ -198,23 +200,32 @@ const PropertyBlurb = ({
 
           <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">
             For Questions, Call or Text Anytime at:{" "}
-            <strong>866-8-BRIDGE</strong> (
             <a
-              href="tel:420-696-9420"
+              href="tel:866-610-5263"
               className="text-[#007e7e] hover:text-[#0cc] font-black transition-all duration-300"
             >
-              420-696-9420
-            </a>
-            ).
+              <strong>866-610-LAND</strong>
+            </a>{" "}
+            <em>
+              (
+              <a
+                href="tel:866-610-5263"
+                className="text-[#007e7e] hover:text-[#0cc] font-black transition-all duration-300"
+              >
+                5263
+              </a>
+              )
+            </em>
+            .
           </p>
 
           <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">
             You may also email directly at:{" "}
             <a
-              href="mailto:info@coveredbridge.properties"
+              href="mailto:joe@coveredbridge.properties"
               className="text-[#007e7e] hover:text-[#0cc] font-black transition-all duration-300"
             >
-              info@coveredbridge.properties
+              joe@coveredbridge.properties
             </a>
             .
           </p>
@@ -233,9 +244,9 @@ const PropertyBlurb = ({
           <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">
             For Questions or to Purchase this Property, please Call or Text Joe
             directly at:{" "}
-            <a href="tel:307-395-0929">
+            <a href="tel:407-289-1848">
               <span className="text-[#007E7E] hover:text-[#0cc] font-semibold transition-all duration-250">
-                <strong>307-395-0929</strong>
+                <strong>407-289-1848</strong>
               </span>
             </a>
             .
@@ -243,9 +254,9 @@ const PropertyBlurb = ({
 
           <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">
             You may also email us directly at:{" "}
-            <a href="mailto:info@coveredbridge.properties">
+            <a href="mailto:joe@coveredbridge.properties">
               <span className="text-[#007E7E] hover:text-[#0cc] font-semibold transition-all duration-250">
-                <strong>info@coveredbridge.properties</strong>
+                <strong>joe@coveredbridge.properties</strong>
               </span>
             </a>
           </p>
@@ -264,9 +275,9 @@ const PropertyBlurb = ({
           </p>
           <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">
             To Speak with Covered Bridge, Call or Text Us Anytime at:{" "}
-            <a href="tel:866-852-6346">
+            <a href="tel:866-610-5263">
               <span className="text-[#007E7E] hover:text-[#0cc] font-semibold transition-all duration-250">
-                866-8-BRIDGE <strong>(866-852-6346)</strong>
+                866-610-LAND <em>(5263)</em>
               </span>
             </a>
           </p>
