@@ -253,11 +253,8 @@ const About = () => {
               Our 90-Day Guarantee
             </h2>
             <p className="text-[#181818] text-center leading-relaxed">
-              We offer a{" "}
-              <strong>
-                90-Day, "Love-It-Or-Swap-It-Or-Refund-It" Guarantee.
-              </strong>{" "}
-              If you’re not fully satisfied within 90 days of purchase—and no
+              We offer a <strong>90-Day, 100% Money-Back Guarantee.</strong> If
+              you’re not fully satisfied within 90 days of purchase—and no
               improvements were made—you can either{" "}
               <strong>swap for another lot</strong> or request a{" "}
               <strong>full refund</strong>. No pressure. No hassle.

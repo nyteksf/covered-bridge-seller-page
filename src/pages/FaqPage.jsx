@@ -145,7 +145,7 @@ const FaqPage = () => {
                 <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
                   We offer a{" "}
                   <strong>
-                    90-Day, "Love-It-Or-Swap-It-Or-Refund-It" Guarantee.
+                    90-Day, 100% Money-Back Guarantee.
                   </strong>{" "}
                   If not fully satisfied with your parcel within the first 90
                   days, and no improvements were made, you can choose either a{" "}
