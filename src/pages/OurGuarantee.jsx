@@ -41,6 +41,14 @@ const OurGuarantee = () => {
               wherein we reclaim the deed, or offer to swap your property out
               for another in our portfolio.
             </p>
+
+            <p className="text-[#333] my-3 max-w-3xl mx-auto font-lato leading-6 tracking-[0.05px]">
+              In rare cases where we facilitate a transaction through a partner
+              or intermediary seller (such as a double-close or assignment),
+              that guarantee may not apply. When this happens, we’ll always let
+              you know clearly and upfront—before any funds are exchanged.
+            </p>
+
             <p className="text-[#333] mb-3 max-w-3xl mx-auto font-lato leading-6 tracking-[0.05px]">
               With no hidden fees, and no hassle: Covered Bridge Properties
               never pressures anyone to buy; let alone to hold. Our mission is

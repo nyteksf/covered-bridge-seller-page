@@ -141,6 +141,19 @@ const TermsAndConditions = () => {
 
                 <section className="mb-8">
                   <h2 className="text-xl font-semibold mb-2 text-gray-800">
+                    Refund Guarantee Disclaimer
+                  </h2>
+                  <p>
+                    Unless otherwise stated in writing, properties come with a
+                    90-day, 100% money-back guarantee. Exceptions may apply to
+                    specific transactions—such as regarding assignments or double
+                    closings—where we don’t retain title ourselves. These cases
+                    are rare and always disclosed in advance.
+                  </p>
+                </section>
+
+                <section className="mb-8">
+                  <h2 className="text-xl font-semibold mb-2 text-gray-800">
                     Governing Law
                   </h2>
                   <p>

@@ -17,7 +17,7 @@ import {
   faPlug,
   faGem,
   faSeedling,
-  faHorseHead,
+  faShieldAlt,
   faFileContract,
   faReceipt,
 } from "@fortawesome/free-solid-svg-icons";
@@ -201,32 +201,19 @@ const FaqPage = () => {
                 </p>
               </article>
 
-              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
-                <div className="text-2xl text-cyan-500 mb-4">
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-cyan-400">
+                <div className="text-2xl text-cyan-400 mb-4">
                   <FontAwesomeIcon icon={faSeedling} />
                 </div>
                 <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
-                  Can I raise crops on the property?
+                  Can I raise animals or grow crops on the land?
                 </h2>
                 <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
-                  Absolutely. Most of our properties are zoned for agriculture,
-                  so whether you're planting crops, going off-grid, or building
-                  a home, you’ve got flexibility. Zoning information is
-                  mentioned clearly in the property listings you'll be seeing.
-                </p>
-              </article>
-
-              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
-                <div className="text-2xl text-cyan-500 mb-4">
-                  <FontAwesomeIcon icon={faHorseHead} />
-                </div>
-                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
-                  Can I raise animals on the property?
-                </h2>
-                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
-                  Yes. Livestock, chickens, horses—many parcels allow for
-                  agricultural use. Check the listing description for specifics,
-                  but in general, these are your acres to cultivate.
+                  In most cases, yes. Many of our parcels are zoned for
+                  agriculture, which means you can raise livestock, grow crops,
+                  or even go fully off-grid. We list zoning details clearly in
+                  every property description, so you’ll always know your options
+                  before buying.
                 </p>
               </article>
 
@@ -390,6 +377,28 @@ const FaqPage = () => {
                   coordinates, maps, and access info to help you visit on your
                   own schedule. And remember: your deposit is backed by our
                   90-day satisfaction guarantee.
+                </p>
+              </article>
+
+              <article className="bg-white p-6 rounded-xl border border-gray-300 shadow-sm border-l-8 border-l-[cyan]">
+                <div className="text-2xl text-cyan-500 mb-4">
+                  <FontAwesomeIcon icon={faShieldAlt} />
+                </div>
+                <h2 className="border-l-8 pl-2 border-l-[#a9746e] text-xl font-semibold text-[#003e5c] mb-2">
+                  Are all properties backed by the guarantee?
+                </h2>
+                <p className="text-gray-700 leading-relaxed -tracking-[0.15]">
+                  In around 4 out of 5 cases, yes. Our 90-day guarantee gives
+                  you full peace of mind after closing.
+                  <br />
+                  The only possible exception is when we’re acting more as a
+                  facilitator—on what’s called a “double close”—where we’re
+                  lining up the deal between seller and buyer under contract.
+                  <br />
+                  When that’s the case, we’ll always make that clear before you
+                  ever commit. No pressure, no surprises. That's how we do
+                  things. And as you read this and understand, that's what you
+                  can expect.
                 </p>
               </article>
 

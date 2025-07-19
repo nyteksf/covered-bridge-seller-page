@@ -49,6 +49,9 @@ const LandInfo = () => {
   const [isContactModalAnimating, setIsContactModalAnimating] = useState(false);
   const [videoUrl, setVideoUrl] = useState(propertyData?.youTubeUrl || "");
 
+  /* TEMPORARY */
+  const [hasSpecialAccess, setHasSpecialAccess] = useState(null);
+
   /* PROPERTY DATA */
   const excludeId = propertyData?.id;
   const listingTitle = propertyData?.title;
@@ -190,55 +193,47 @@ const LandInfo = () => {
   useEffect(() => {
     const loadData = async () => {
       if (!propertyId) return;
-      const formattedId = firebaseLookupFormatPropertyId(propertyId);
 
+      const formattedId = firebaseLookupFormatPropertyId(propertyId);
       try {
         const docRef = doc(db, "properties", formattedId);
         const docSnap = await getDoc(docRef);
+
         if (docSnap.exists()) {
-          if (docSnap.data().isPageLive === false) {
-            console.warn("Listing marked as not live");
-            setPropertyData(null); // triggers 404 fallback
+          const data = docSnap.data();
+
+          // Check if it's NOT live and no special access
+          if (data.isPageLive === false && !hasSpecialAccess) {
+            console.warn("Listing marked as not live and no special access");
+            setPropertyData(null);
             setIsPageLoaded(true);
             return;
           }
 
-          const data = docSnap.data();
-          console.log("Firestore doc data:", data);
-
-          // Check images specifically
+          // Proceed normally
           if (!data.imageUrls || !Array.isArray(data.imageUrls)) {
-            console.log("data.imageUrls -> ", data.imageUrls);
-            console.warn(
-              "Property has no images or images is not an array:",
-              data.imageUrls
-            );
-
-            // If images is missing or not an array, initialize it
             data.imageUrls = data.imageUrls || [];
-          } else {
-            console.log(
-              "Images array loaded:",
-              data.imageUrls.length,
-              "images"
-            );
           }
 
           setPropertyData({ id: docSnap.id, ...data });
         } else {
           console.warn("No property found with ID:", formattedId);
-          // navigate("/error404", { replace: true });
-          setPropertyData(null); // <-- set null so we can render the 404 inline
-          setIsPageLoaded(true); // <-- allow rendering to proceed
-          return;
+          setPropertyData(null);
+          setIsPageLoaded(true);
         }
       } catch (err) {
         console.error("Error loading property data:", err);
       }
     };
 
-    loadData();
-  }, [propertyId, navigate]);
+    // ✅ Wait for hasSpecialAccess to initialize
+    if (hasSpecialAccess !== null) {
+      loadData();
+    }
+  }, [propertyId, hasSpecialAccess]);
+  {
+    /* was also [navigate] prior */
+  }
 
   useEffect(() => {
     if (activeTab !== "Video") return;
@@ -252,6 +247,14 @@ const LandInfo = () => {
 
     return () => clearTimeout(timer);
   }, [activeTab, videoLoaded]);
+
+  /* TEMPORARY*/
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isFacebookPreview = urlParams.get("facebook") === "true";
+    const isCraigslistPreview = urlParams.get("craigslist") === "true";
+    setHasSpecialAccess(isFacebookPreview || isCraigslistPreview);
+  }, []);
 
   const formattedNearbyPoints =
     propertyData?.nearbyPoints?.map((point) => {
@@ -267,151 +270,179 @@ const LandInfo = () => {
 
   return (
     <>
-      {(isContactModalOpen || isContactModalAnimating) && (
-        <ContactMeModal
-          isModalOpen={isContactModalOpen}
-          setIsModalOpen={setIsContactModalOpen}
-          isModalAnimating={isContactModalAnimating}
-          setIsModalAnimating={setIsContactModalAnimating}
-        />
-      )}
-      {!isPageLoaded ? (
-        <LoadingState />
-      ) : !propertyData ? (
+      {/* TEMPORARY WRAPPER FOR RAQUEL */}
+      {!propertyData?.isPageLive && !hasSpecialAccess ? (
         <PageNotFound />
       ) : (
         <>
-          <TopNav />
-          <SecondaryNav />
-          <StickySecondaryNav />
+          {(isContactModalOpen || isContactModalAnimating) && (
+            <ContactMeModal
+              isModalOpen={isContactModalOpen}
+              setIsModalOpen={setIsContactModalOpen}
+              isModalAnimating={isContactModalAnimating}
+              setIsModalAnimating={setIsContactModalAnimating}
+            />
+          )}
+          {!isPageLoaded ? (
+            <LoadingState />
+          ) : !propertyData ? (
+            <PageNotFound />
+          ) : (
+            <>
+              {/* EVERYTHING ELSE HERE (TopNav, SecondaryNav, etc) */}
+              {(isContactModalOpen || isContactModalAnimating) && (
+                <ContactMeModal
+                  isModalOpen={isContactModalOpen}
+                  setIsModalOpen={setIsContactModalOpen}
+                  isModalAnimating={isContactModalAnimating}
+                  setIsModalAnimating={setIsContactModalAnimating}
+                />
+              )}
+              {!isPageLoaded ? (
+                <LoadingState />
+              ) : !propertyData ? (
+                <PageNotFound />
+              ) : (
+                <>
+                  <TopNav />
+                  <SecondaryNav />
+                  <StickySecondaryNav />
 
-          <main
-            className="w-full bg-white"
-            style={{ scrollBehavior: "smooth" }}
-          >
-            {/* Full-width title */}
-            <TitleBanner listingTitle={listingTitle} />
+                  <main
+                    className="w-full bg-white"
+                    style={{ scrollBehavior: "smooth" }}
+                  >
+                    {/* Full-width title */}
+                    <TitleBanner listingTitle={listingTitle} />
 
-            <div className="">
-              <div className="w-full max-w-7xl mx-auto px-4 pb-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                  {/* Left Content Column */}
-                  <div className="col-span-1 md:col-span-2 min-h-screen">
-                    <ListingHeaderGroup
-                      activeTab={activeTab}
-                      setActiveTab={setActiveTab}
-                      youTubeUrl={propertyData?.youTubeUrl}
-                    />
-
-                    {/* media block */}
-                    {activeTab === "Video" &&
-                      propertyData?.youTubeUrl &&
-                      propertyData.youTubeUrl !== "none" && (
-                        <div className="relative w-full aspect-video">
-                          {!videoLoaded && (
-                            <div className="absolute inset-0 z-1">
-                              <YouTubeSkeleton />
-                            </div>
-                          )}
-
-                          {!videoLoadError ? (
-                            <YouTubeEmbed
-                              url={propertyData.youTubeUrl}
-                              onReady={handleVideoReady}
-                              className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${
-                                videoLoaded
-                                  ? "opacity-100 z-2"
-                                  : "opacity-0 z-0"
-                              }`}
+                    <div className="">
+                      <div className="w-full max-w-7xl mx-auto px-4 pb-8">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                          {/* Left Content Column */}
+                          <div className="col-span-1 md:col-span-2 min-h-screen">
+                            <ListingHeaderGroup
+                              activeTab={activeTab}
+                              setActiveTab={setActiveTab}
+                              youTubeUrl={propertyData?.youTubeUrl}
                             />
-                          ) : (
-                            <div className="error-message p-4 bg-red-100 text-red-700">
-                              Video unavailable or restricted. Please try
-                              another property.
-                            </div>
-                          )}
-                        </div>
-                      )}
 
-                    {activeTab === "Images" && (
-                      <>
-                        {!propertyData?.imageUrls?.length ? (
-                          <div className="relative aspect-video bg-gray-100 flex items-center justify-center flex-col border border-[#c4c4c427]">
-                            <img
-                              loading="lazy"
-                              src="/public/img/error-indicator.svg"
-                              title="Error!"
-                              alt="Error Indicator Image"
-                              className="w-[80px] h-auto"
+                            {/* media block */}
+                            {activeTab === "Video" &&
+                              propertyData?.youTubeUrl &&
+                              propertyData.youTubeUrl !== "none" && (
+                                <div className="relative w-full aspect-video">
+                                  {!videoLoaded && (
+                                    <div className="absolute inset-0 z-1">
+                                      <YouTubeSkeleton />
+                                    </div>
+                                  )}
+
+                                  {!videoLoadError ? (
+                                    <YouTubeEmbed
+                                      url={propertyData.youTubeUrl}
+                                      onReady={handleVideoReady}
+                                      className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out ${
+                                        videoLoaded
+                                          ? "opacity-100 z-2"
+                                          : "opacity-0 z-0"
+                                      }`}
+                                    />
+                                  ) : (
+                                    <div className="error-message p-4 bg-red-100 text-red-700">
+                                      Video unavailable or restricted. Please
+                                      try another property.
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+
+                            {activeTab === "Images" && (
+                              <>
+                                {!propertyData?.imageUrls?.length ? (
+                                  <div className="relative aspect-video bg-gray-100 flex items-center justify-center flex-col border border-[#c4c4c427]">
+                                    <img
+                                      loading="lazy"
+                                      src="/public/img/error-indicator.svg"
+                                      title="Error!"
+                                      alt="Error Indicator Image"
+                                      className="w-[80px] h-auto"
+                                    />
+                                    <p className="text-[#333] font-pt-serif text-sm leading-5">
+                                      Error loading property images
+                                    </p>
+                                  </div>
+                                ) : (
+                                  <ImageGallery
+                                    images={propertyData.imageUrls}
+                                    key={`gallery-${propertyData.id}`}
+                                  />
+                                )}
+                              </>
+                            )}
+
+                            {activeTab === "Map" && (
+                              <MapEmbed lat={42.38713} lng={-106.772502} />
+                            )}
+
+                            {/* rest of page column */}
+                            {propertyData?.PTBContent && (
+                              <PageTitleBlock
+                                PTBContent={propertyData.PTBContent}
+                                propertyId={prettyFormatPropertyId(propertyId)}
+                                formatNumberWithCommas={formatNumberWithCommas}
+                              />
+                            )}
+                            <HorizontalDivider />
+                            {propertyData?.id && !hasSpecialAccess && (
+                              <PropertyBlurb
+                                propertyId={propertyData.id}
+                                propertyBlurbContent={propertyData.PTBContent}
+                                propertyStatus={propertyData.propertyStatus}
+                              />
+                            )}
+                            <PropertySpecs
+                              specs={propertyData?.specsData}
+                              propertyId={prettyFormattedPropertyId}
                             />
-                            <p className="text-[#333] font-pt-serif text-sm leading-5">
-                              Error loading property images
-                            </p>
+                            <PropertyDescription
+                              propertyId={prettyFormatPropertyId(
+                                propertyData.id
+                              )}
+                              pSections={propertyData.descriptionPairs}
+                              miscItems={propertyData.miscItems}
+                              propertySpecifications={
+                                propertyData.propertySpecifications
+                              }
+                              nearbyPoints={propertyData.nearbyPoints}
+                              PropertyVisitDetails={
+                                propertyData.propertyVisitDetails
+                              }
+                              GPSCoords={propertyData.GPSCoords}
+                            />
+                            <MoreStateProperties
+                              stateName={stateName || ptbStateName}
+                              excludeId={excludeId}
+                            />
                           </div>
-                        ) : (
-                          <ImageGallery
-                            images={propertyData.imageUrls}
-                            key={`gallery-${propertyData.id}`}
-                          />
-                        )}
-                      </>
-                    )}
+                          {/* Sticky Sidebar (Right Content Column) */}
+                          <div className="sticky top-16 z-10">
+                            <LandInfoSidebar
+                              setIsContactModalOpen={setIsContactModalOpen}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </main>
 
-                    {activeTab === "Map" && (
-                      <MapEmbed lat={42.38713} lng={-106.772502} />
-                    )}
-
-                    {/* rest of page column */}
-                    {propertyData?.PTBContent && (
-                      <PageTitleBlock
-                        PTBContent={propertyData.PTBContent}
-                        propertyId={prettyFormatPropertyId(propertyId)}
-                        formatNumberWithCommas={formatNumberWithCommas}
-                      />
-                    )}
-                    <HorizontalDivider />
-                    {propertyData?.id && (
-                      <PropertyBlurb
-                        propertyId={propertyData.id}
-                        propertyBlurbContent={propertyData.PTBContent}
-                        propertyStatus={propertyData.propertyStatus}
-                      />
-                    )}
-                    <PropertySpecs
-                      specs={propertyData?.specsData}
-                      propertyId={prettyFormattedPropertyId}
-                    />
-                    <PropertyDescription
-                      propertyId={prettyFormatPropertyId(propertyData.id)}
-                      pSections={propertyData.descriptionPairs}
-                      miscItems={propertyData.miscItems}
-                      propertySpecifications={
-                        propertyData.propertySpecifications
-                      }
-                      nearbyPoints={propertyData.nearbyPoints}
-                      PropertyVisitDetails={propertyData.propertyVisitDetails}
-                      GPSCoords={propertyData.GPSCoords}
-                    />
-                    <MoreStateProperties
-                      stateName={stateName || ptbStateName}
-                      excludeId={excludeId}
-                    />
-                  </div>
-                  {/* Sticky Sidebar (Right Content Column) */}
-                  <div className="sticky top-16 z-10">
-                    <LandInfoSidebar
-                      setIsContactModalOpen={setIsContactModalOpen}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </main>
-
-          <VIPSignup />
-          <StateSelector />
-          {showScrollButton && <ButtonToTop />}
-          <Footer />
+                  <VIPSignup />
+                  <StateSelector />
+                  {showScrollButton && <ButtonToTop />}
+                  <Footer />
+                </>
+              )}
+            </>
+          )}
         </>
       )}
     </>
