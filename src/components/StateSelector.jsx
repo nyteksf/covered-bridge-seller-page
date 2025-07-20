@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function StateSelector() {
-  const availableStates = ["Texas", "Florida", "Oklahoma"];
+  const availableStates = ["Florida"];
 
   const stateAbbreviations = {
     Alabama: "AL",
