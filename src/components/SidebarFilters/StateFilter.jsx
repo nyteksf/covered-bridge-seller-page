@@ -1,6 +1,6 @@
 import React from "react";
 
-const availableStates = ["Florida", "Texas", "Oklahoma"];
+const availableStates = ["Florida"];
 
 const allStates = [
   "Alabama",
