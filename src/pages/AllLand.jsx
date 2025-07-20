@@ -64,6 +64,8 @@ export default function AllLand() {
 
   const filteredProperties = useMemo(() => {
     return properties.filter((p) => {
+      if (p.hidden === true) return false;
+
       const price = Number(p.price) || 0;
       const acres = Number(p.acres) || 0;
 
