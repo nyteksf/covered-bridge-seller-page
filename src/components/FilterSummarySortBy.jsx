@@ -39,7 +39,7 @@ const FilterSummarySortBy = ({
   `;
 
   return (
-    <div className="flex flex-wrap items-center justify-between w-full mt-[1.3rem] gap-4">
+    <div className="flex px-3 sm:px-0 flex-wrap items-center justify-between w-full mt-[1.3rem] gap-4">
       <div className="flex items-center gap-2 flex-wrap text-sm">
         <span
           className={`font-semibold ${

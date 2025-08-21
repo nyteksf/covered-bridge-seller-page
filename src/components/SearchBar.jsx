@@ -4,10 +4,10 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const SearchBar = ({ themeMode, searchQuery, setSearchQuery }) => {
   return (
-    <div className="relative w-full max-w-full">
+    <div className="relative px-3 sm:px-0 w-full max-w-full">
       <FontAwesomeIcon
         icon={faMagnifyingGlass}
-        className={`absolute left-4 top-[50%] -translate-y-[59%] pointer-events-none w-[17px] font-normal h-[17px] ml-[2px] mr-2 ${
+        className={`absolute left-4 top-[50%] -translate-y-[59%] pointer-events-none w-[17px] font-normal h-[17px] ml-[4px] sm:ml-[2px] mr-2 ${
           themeMode === "dark-mode" ? "text-[#f5f5f5]" : "text-[#333]"
         }`}
       />

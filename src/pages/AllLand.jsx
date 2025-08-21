@@ -235,7 +235,7 @@ export default function AllLand() {
                     sortBy={sortBy}
                     setSortBy={setSortBy}
                   />
-                  <span className="text-sm text-left text-gray-400 relative -top-1 mr-auto">
+                  <span className="text-sm px-3 sm:px-0 text-left text-gray-400 relative -top-1 mr-auto">
                     <span className="text-[#149f49]">
                       {sortedProperties.length}
                     </span>{" "}
