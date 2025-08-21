@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 
+import TopNav from "../components/TopNav";
 import Footer from "../components/Footer";
 
 const OurGuarantee = () => {
   return (
     <>
+      <TopNav />
       <section>
         <div className="max-w-[46rem] mx-auto my-8 p-0 border-[3px] border-[#f5f5f5] rounded-lg shadow-lg bg-[transparent]">
           <div className="-tracking-[0.075px] mx-4 md:mx-auto mt-8 bg-[#f0fdfa] border-l-4 border-[#06b6d4] text-[#003e5c] px-6 pt-2 pb-2 rounded-lg shadow mb-4 max-w-2xl">
