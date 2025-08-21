@@ -3,6 +3,9 @@ import { useRef, useState, useEffect } from "react";
 
 import Footer from "../components/Footer";
 import LoadingState from "./LoadingState";
+import TopNav from "../components/TopNav";
+import SecondaryNav from "../components/SecondaryNav";
+import StickySecondaryNav from "../components/StickySecondaryNav";
 
 const TermsAndConditions = () => {
   const footerRef = useRef(null);
@@ -29,6 +32,9 @@ const TermsAndConditions = () => {
         <LoadingState />
       ) : (
         <>
+          <TopNav />
+          <SecondaryNav />
+          <StickySecondaryNav />
           <div className="flex flex-col min-h-screen w-full max-w-full bg-white text-gray-800 items-center justify-center">
             <div className="flex flex-col w-full items-center justify-center">
               <header className="w-full border-b border-gray-300 py-4 px-8 bg-gray-100 text-center relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-cyan-400">
@@ -146,9 +152,9 @@ const TermsAndConditions = () => {
                   <p>
                     Unless otherwise stated in writing, properties come with a
                     90-day, 100% money-back guarantee. Exceptions may apply to
-                    specific transactions—such as regarding assignments or double
-                    closings—where we don’t retain title ourselves. These cases
-                    are rare and always disclosed in advance.
+                    specific transactions—such as regarding assignments or
+                    double closings—where we don’t retain title ourselves. These
+                    cases are rare and always disclosed in advance.
                   </p>
                 </section>
 
