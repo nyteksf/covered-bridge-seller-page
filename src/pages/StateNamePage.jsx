@@ -66,20 +66,20 @@ export default function StateLandPage() {
       <SecondaryNav />
       <StickySecondaryNav />
 
-      <div className="mb-2 px-4 md:px-12 py-8">
+      <div className="mb-2 px-4 md:px-12 py-2 md:py-8">
         <div className="w-full max-w-[1075px] mx-auto flex items-center justify-between pt-8 pb-10">
-          <h1 className="text-[42px] font-semibold font-pt-serif text-[#f5f5f5]">
+          <h1 className="border-l-4 tracking-tight sm:border-l-0 pl-4 text-[40px] md:text-[42px] text-center sm:text-left font-semibold font-montserrat text-[#f5f5f5]">
             {stateLabel} Land for Sale
           </h1>
           <div className="flex-1 ml-6 bg-[#e6e6e663] h-[2px]" />
         </div>
 
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex gap-2 items-center">
+        <div className="flex items-center gap-x-8 sm:gap-x-0 sm:justify-between mb-6">
+          <div className="flex gap-1 tracking-wide items-center">
             <label htmlFor="state-select">Filter By State -</label>
             <select
               id="state-select"
-              className="bg-[#1a1a1a] text-white border border-[#555] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00bfff] hover:bg-[#000000ee] hover:text-[#f5f5f5] duration-350 cursor-pointer transition duration-200"
+              className="bg-[#1a1a1a] text-white border border-[#555] rounded px-3 py-2 focus:outline-none focus:ring-2 tracking-wide focus:ring-[#00bfff] hover:bg-[#000000ee] hover:text-[#f5f5f5] duration-350 cursor-pointer transition duration-200"
               onChange={(e) => {
                 const val = e.target.value;
                 if (val) window.location.href = `/state/${val}`;
@@ -103,14 +103,14 @@ export default function StateLandPage() {
 
           <Link
             to="/land-for-sale?country=u.s.a."
-            className="px-4 py-2 border border-[#555] bg-[#000000ee] text-white rounded hover:text-[#d8d8d8] transition-all duration-350 hover:bg-[#1a1a1a] focus:outline-none focus:ring-2 focus:ring-[#00bfff]"
+            className="px-4 py-2 border border-[#555] bg-[#000000ee] text-white rounded hover:text-[#d8d8d8] transition-all text-center tracking-wide font-semibold md:text-left duration-350 hover:bg-[#1a1a1a] focus:outline-none focus:ring-2 focus:ring-[#00bfff]"
           >
             All States
           </Link>
         </div>
 
         <section className="mb-10 border-b-[2px] pb-4 border-[#e6e6e663]">
-          <h2 className="text-2xl font-medium mb-4">Available</h2>
+          <h2 className="text-2xl tracking-tight font-medium mb-4">Available</h2>
           {available.length === 0 ? (
             <p>No properties currently available in {stateLabel}.</p>
           ) : (
