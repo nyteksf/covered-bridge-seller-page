@@ -203,7 +203,7 @@ export default function Footer() {
           </div>
 
           {/* Footer Bottom */}
-          <div className="relative top-[-3.3rem] mt-10 text-gray-400">
+          <div className="relative top-[-3.3rem] sm:mt-10 mt-[64px] text-gray-400">
             <p className="leading-snug text-white font-pt-sans opacity-95 mb-[0.05rem] font-semibold -tracking-[0.125px] text-[14px]">
               We are not licensed real estate brokers.
             </p>

@@ -79,9 +79,9 @@ export default function VIPSignup() {
       className="relative bg-cover bg-no-repeat bg-center"
       style={{ backgroundImage: `url(${mountainBackImage})` }}
     >
-      <div className="pt-[25px] pb-[35px] w-full">
-        <div className="max-w-[940px] h-full max-h-[153px] mx-auto text-center text-white">
-          <h3 className="text-2xl leading-[1.25] font-bold mt-[20px] mb-[10px] font-pt-serif tracking-[0px] h-[30px]">
+      <div className="px-[32px] sm:px-0 pt-[25px] pb-[35px] w-full">
+        <div className="max-w-[940px] min-h-0 h-auto md:h-full md:max-h-[153px] mx-auto text-center text-white">
+          <h3 className="text-2xl leading-[1.25] font-bold mt-[20px] mb-[16px] sm:mb-[10px] font-pt-serif tracking-[0px] block w-full !max-w-none max-w-[700px] mx-auto">
             Receive Updates on New Properties by Joining Our VIP List
           </h3>
 
@@ -97,7 +97,7 @@ export default function VIPSignup() {
             <div className="text-center">
               <form
                 onSubmit={handleSubmit}
-                className="inline-flex items-center gap-[16px] pl-[47px] pr-[30px] py-[20px] bg-[#445255] border-4 border-[#445255] w-full max-w-[700px] h-full max-h-[78px] mb-[15px]"
+                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-[16px] py-[20px] px-[30px] sm:px-[47px] bg-[#445255] border-4 border-[#445255] w-full max-w-[700px] mx-auto h-auto sm:h-full sm:max-h-[78px] mb-[15px]"
               >
                 <input
                   type="text"
@@ -106,7 +106,7 @@ export default function VIPSignup() {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="font-semibold h-[38px] px-3 py-[10px] text-[#333] bg-white border border-[#ccc] rounded-[3px] text-[0.875rem] leading-[1.42857] font-pt-sans w-[223.99px] tracking-[-0.4px]"
+                  className="font-semibold h-[38px] px-3 py-[10px] text-[#333] bg-white border border-[#ccc] rounded-[3px] text-[0.875rem] leading-[1.42857] font-pt-sans w-full sm:w-[223.99px] flex-1 min-w-0 tracking-[-0.4px]"
                 />
                 <input
                   type="email"
@@ -114,15 +114,16 @@ export default function VIPSignup() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="font-semibold h-[38px] px-3 py-[10px] text-[#333] bg-white border border-[#ccc] rounded-[3px] text-[0.875rem] leading-[1.42857] font-pt-sans w-[223.99px] tracking-[-0.4px]"
+                  className="font-semibold h-[38px] px-3 py-[10px] text-[#333] bg-white border border-[#ccc] rounded-[3px] text-[0.875rem] leading-[1.42857] font-pt-sans w-full sm:w-[223.99px] flex-1 sm:flex-none min-w-0 tracking-[-0.4px]"
                 />
-                <div className="group relative">
+                <div className="group relative w-full sm:w-auto">
                   <button
                     type="submit"
                     disabled={isSubmitting}
                     className={`inline-flex items-center justify-center gap-2 
                       border-4 text-white uppercase tracking-[1px] font-montserrat font-bold 
-                      text-[1.1rem] leading-[20px] rounded-none px-4 h-[2.2rem] 
+                      text-[1.1rem] leading-[20px] rounded-none px-4 h-[2.2rem]
+                      w-full sm:w-auto shrink-0 
                       ${
                         isSubmitting
                           ? "bg-[#444] border-gray-300 cursor-not-allowed"
@@ -134,7 +135,7 @@ export default function VIPSignup() {
                       <FontAwesomeIcon
                         icon={faSpinner}
                         spin
-                        className="text-[#f5f5f5] text-[1.145rem]"
+                        className="text-[#f5f5f5] text-[1.145rem] shrink-0"
                       />
                     ) : (
                       "Submit"
