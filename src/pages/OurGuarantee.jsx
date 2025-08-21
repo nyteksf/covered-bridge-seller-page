@@ -7,7 +7,7 @@ const OurGuarantee = () => {
     <>
       <section>
         <div className="max-w-[46rem] mx-auto my-8 p-0 border-[3px] border-[#f5f5f5] rounded-lg shadow-lg bg-[transparent]">
-          <div className="-tracking-[0.075px] mt-8 bg-[#f0fdfa] border-l-4 border-[#06b6d4] text-[#003e5c] px-6 pt-2 pb-2 rounded-lg shadow mb-4 max-w-2xl mx-auto">
+          <div className="-tracking-[0.075px] mx-4 md:mx-auto mt-8 bg-[#f0fdfa] border-l-4 border-[#06b6d4] text-[#003e5c] px-6 pt-2 pb-2 rounded-lg shadow mb-4 max-w-2xl">
             <h1 className="font-lato text-[2.65rem] font-bold text-[#003e5c] text-center leading-tight mt-4 mb-4">
               The Covered Bridge
               <br />
@@ -27,7 +27,7 @@ const OurGuarantee = () => {
             />
             <div className="w-full border-b-4 border-brown" />
           </div>
-          <div className="bg-[#f0fdfa] border-l-4 border-[#06b6d4] text-[#003e5c] px-6 pt-5 pb-5 rounded-lg shadow mt-4 mb-8 max-w-2xl mx-auto">
+          <div className="bg-[#f0fdfa] border-l-4 border-[#06b6d4] text-[#003e5c] px-6 pt-5 pb-5 rounded-lg shadow mt-4 mb-8 max-w-2xl mx-4 md:mx-auto">
             <strong className="-tracking-[0.05px] font-montserrat border-l-4 border-cyan-300 pl-2">
               90-Day “Love‑It‑Or‑Swap‑It‑Or‑Refund‑It” Guarantee:
             </strong>
