@@ -17,7 +17,7 @@ const Disclaimer = () => {
         alt="Disclaimer Icon"
       />
       <div className="text-[14px] -tracking-[0.1px] leading-[1.4] font-lato border-l-[2px] border-[#f5f5f5] pl-3">
-        <span className="font-semibold">Disclaimer:</span> The information
+        <span className="font-semibold underline">Disclaimer:</span> The information
         provided is believed to be accurate and representative. It is subject to
         verification and no liability for error or omissions is assumed. There
         are no warranties, expressed or implied, as to the information herein

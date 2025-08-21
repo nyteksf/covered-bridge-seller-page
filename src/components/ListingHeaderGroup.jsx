@@ -33,7 +33,7 @@ const ListingHeaderGroup = ({ activeTab, setActiveTab, youTubeUrl }) => {
     <div className="w-full max-w-5xl mx-auto px-4 text-center">
       <div
         ref={containerRef}
-        className="relative flex justify-center flex-wrap gap-4 text-sm text-[#1a1a1a] uppercase tracking-wide my-2 font-lato font-bold"
+        className="relative flex justify-start md:justify-center flex-nowrap md:flex-wrap overflow-x-auto gap-3 text-sm text-[#1a1a1a] uppercase tracking-wide my-2 font-lato font-bold"
       >
         {/* Morphing background tab selector */}
         <div

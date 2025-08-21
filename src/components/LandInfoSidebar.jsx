@@ -5,7 +5,7 @@ import ShareDropdown from "@/components/ShareDropdown";
 
 const LandInfoSidebar = ({ setIsContactModalOpen }) => {
   return (
-    <aside className="space-y-6 font-lato w-full mt-4">
+    <aside className="space-y-6 font-lato w-full mt-0 sm:mt-4">
       {/* Contact Card */}
       <div className="bg-white border border-[#c4c4c4] rounded-[4px] p-4 shadow-sm">
         <h4 className="text-[18px] font-bold leading-6 text-[#333] mb-4 text-center">

@@ -51,7 +51,7 @@ const PageTitleBlock = ({ PTBContent, propertyId, formatNumberWithCommas }) => {
           </div>
         </div>
 
-        <div className="relative bg-[#c4c4c4] w-[1px] h-[40px]" />
+        <div className="relative mx-2 sm:mx-0 bg-[#c4c4c4] w-[1px] h-[40px]" />
 
         <div>
           <h3
@@ -69,7 +69,7 @@ const PageTitleBlock = ({ PTBContent, propertyId, formatNumberWithCommas }) => {
           </p>
         </div>
 
-        <div className="relative bg-[#c4c4c4] w-[1px] h-[40px]" />
+        <div className="relative mx-2 sm:mx-0 bg-[#c4c4c4] w-[1px] h-[40px]" />
 
         <div>
           <h3
@@ -87,7 +87,7 @@ const PageTitleBlock = ({ PTBContent, propertyId, formatNumberWithCommas }) => {
           </p>
         </div>
 
-        <div className="relative bg-[#c4c4c4] w-[1px] h-[40px]" />
+        <div className="relative mx-2 sm:mx-0 bg-[#c4c4c4] w-[1px] h-[40px]" />
 
         <div>
           <h3
