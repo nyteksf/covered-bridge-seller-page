@@ -11,24 +11,12 @@ const TestimonialsPage = () => {
 
   const testimonials = [
     {
-      name: "Kelly M., Oklahoma",
-      text: "I asked a bunch of stuff before I paid anything and he didn’t get annoyed or anything. Felt like I could take my time which was nice. I’m happy with the service Joe gave me.",
+      name: "Marcus T., Florida",
+      text: "To be real with you I thought it might be a scam until we got on the phone together. But Joe talked to me straight and I ended up with a quiet spot like I wanted. Not perfect land but a good deal for what I paid.",
     },
     {
-      name: "Marcus T., Nevada",
-      text: "To be real with you I thought it might be a scam until we got on the phone together. But no, Joe talked to me straight and I ended up with a quiet spot just like I wanted. Not perfect land but a good deal for how much I paid.",
-    },
-    {
-      name: "Joanne L., Arkansas",
-      text: "I just wanted a small piece of land with no drama, and that’s definitely what I got. Thought it’d be harder. I didn’t need credit or a bunch of back and forth. I can say it worked for me.",
-    },
-    {
-      name: "Samir H., Southern California",
-      text: "Honestly I was nervous cause I’d never bought land before, and most websites only made my decision more confusing. This one didn’t. I liked all the details laid out, and the map layers, too.",
-    },
-    {
-      name: "Carlos G., New Mexico",
-      text: "Picked a spot for camping. It’s kinda remote but that’s also what I wanted. They showed the GPS, I checked it out, and sent the deposit. Done. Simple.",
+      name: "Carlos G., Nevada",
+      text: "Picked a spot for camping. It’s kinda remote but that’s also what I wanted. They showed the GPS, I checked it out and sent over the deposit. Simple.",
     },
   ];
 
