@@ -12,11 +12,11 @@ const TestimonialsPage = () => {
   const testimonials = [
     {
       name: "Marcus T., Florida",
-      text: "To be real with you I thought it might be a scam until we got on the phone together. But Joe talked to me straight and I ended up with a quiet spot like I wanted. Not perfect land but a good deal for what I paid.",
+      text: "To be real with you I thought it might be a scam until we got on the phone together. But it was straight forward and I ended up with a quiet spot like I wanted. Not perfect land but a good deal for what I paid.",
     },
     {
       name: "Carlos G., Nevada",
-      text: "Picked a spot for camping. It’s kinda remote but that’s also what I wanted. They showed the GPS, I checked it out and sent over the deposit. Simple.",
+      text: "Picked a spot for camping. It’s kinda remote but that’s also what I wanted. They showed the GPS, I checked it out and sent over the deposit. It was easy.",
     },
   ];
 
