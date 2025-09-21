@@ -83,70 +83,77 @@ const PropertyBlurb = ({
       {propertyBlurbContent?.canOwnerFinance ||
       propertyBlurbContent?.canBuyNow ? (
         <>
-          <div className="w-full flex flex-row justify-between items-center gap-6 bg-[#edf7f1] border border-[#e6e6e6] p-8 mb-6">
-            {/* Left: Checkmark + Heading */}
-            <div className="flex items-center gap-2 max-w-[40%]">
-              <img
-                src={checkmarkGreen}
-                className="h-[24px] w-[24px] max-w-[100%] inline-block align-middle"
-                alt="Checkmark"
-              />
-              <h3 className="mt-0 mb-0 font-lato text-[24px] font-bold text-[#333333] tracking-[0.05px] leading-[30px]">
-                ${formatWithCommas(propertyBlurbContent?.depositPrice)} Deposit
-                Secures This Property
-              </h3>
-            </div>
-
-            {/* Center: Buy Now Button */}
-            <div className="flex justify-center items-center max-w-[33%]">
-              <Button
-                className={`uppercase bg-[#0aa952] font-lato text-[14px] px-[15px] py-[9px] rounded-lg font-black tracking-[1.1px] min-h-[35px] hover:bg-[#099146] focus:bg-[#099146] disabled:bg-[#999999] 
-                  shadow-md hover:shadow-sm hover:translate-y-[1px] text-white transition duration-150 ease-in-out max-w-full text-ellipsis overflow-hidden leading-[1.2] border-0 ${
-                    isSoldOut || isCheckingOut
-                      ? "opacity-50 cursor-not-allowed"
-                      : ""
-                  }`}
-                disabled={isCheckingOut || isSoldOut}
-                onClick={handleBuyNow}
-              >
-                {isCheckingOut
-                  ? "Processing..."
-                  : isSoldOut
-                  ? "Out of Stock"
-                  : "Buy Now"}
-                {/* SET THIS TO TRUE IN THE ONCLICK() */}
-              </Button>
-            </div>
-
-            {/* Right: Cards + Caption */}
-            <div className="flex flex-col items-center justify-center text-center max-w-[33%] gap-2 font-lato">
-              <div className="flex justify-center gap-2">
+          {/* PENIS */}
+          {/* Callout wrapper: full-bleed background, centered inner container */}
+          <div className="w-full bg-[#edf7f1] border border-[#e6e6e6] mb-6 px-4 md:px-6 py-6">
+            <div className="mx-auto max-w-[1080px] grid gap-4 justify-items-center text-center items-center md:flex md:justify-center md:items-center md:gap-4">
+              {/* Left: Checkmark + Heading */}
+              <div className="flex items-center gap-2 min-w-0 justify-center md:justify-start">
                 <img
-                  src={MasterCardIcon}
-                  className="border border-[#e6e6e6] rounded w-[48px] h-auto"
-                  alt="MasterCard"
+                  src={checkmarkGreen}
+                  className="h-6 w-6 shrink-0"
+                  alt="Checkmark"
                 />
-                <img
-                  src={VisaCardIcon}
-                  className="border border-[#e6e6e6] rounded w-[48px] h-auto"
-                  alt="Visa"
-                />
-                <img
-                  src={DiscoverCardIcon}
-                  className="border border-[#e6e6e6] rounded w-[48px] h-auto"
-                  alt="Discover"
-                />
-                <img
-                  src={AmExCardIcon}
-                  className="border border-[#e6e6e6] rounded w-[48px] h-auto"
-                  alt="AmEx"
-                />
+                <h3 className="m-0 font-lato text-[22px] sm:text-[24px] font-bold text-[#333] leading-[1.25]">
+                  ${formatWithCommas(propertyBlurbContent?.depositPrice)}{" "}
+                  Deposit Secures This Property
+                </h3>
               </div>
-              <div className="text-[#6c6c6c] tracking-[0.1px] capitalize text-[16px] font-normal">
-                <strong>Guaranteed Safe & Secure Checkout</strong>
+
+              {/* CUT HERE */}
+              {/* MIDDLE column — stays centered on laptop */}
+              <div className="justify-self-center">
+                <Button
+                  className={`uppercase bg-[#0aa952] font-lato text-[14px] px-[15px] py-[9px] rounded-lg font-black tracking-[1.1px] min-h-[35px] hover:bg-[#099146] focus:bg-[#099146] disabled:bg-[#999999]
+                shadow-md hover:shadow-sm hover:translate-y-[1px] text-white transition duration-150 ease-in-out border-0 ${
+                  isSoldOut || isCheckingOut
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
+                }`}
+                  disabled={isCheckingOut || isSoldOut}
+                  onClick={handleBuyNow}
+                >
+                  {isCheckingOut
+                    ? "Processing..."
+                    : isSoldOut
+                    ? "Out of Stock"
+                    : "Buy Now"}
+                </Button>
+              </div>
+
+              {/* RIGHT column — cards + caption (no overflow) */}
+              <div className="flex flex-col items-center md:items-center text-center md:text-center gap-2 font-lato justify-self-center md:justify-self-center">
+                <div className="flex flex-wrap items-center justify-center md:justify-center gap-2 max-w-full">
+                  <img
+                    src={MasterCardIcon}
+                    className="border border-[#e6e6e6] rounded h-7 w-auto max-w-[72px]"
+                    alt="MasterCard"
+                  />
+                  <img
+                    src={VisaCardIcon}
+                    className="border border-[#e6e6e6] rounded h-7 w-auto max-w-[72px]"
+                    alt="Visa"
+                  />
+                  <img
+                    src={DiscoverCardIcon}
+                    className="border border-[#e6e6e6] rounded h-7 w-auto max-w-[72px]"
+                    alt="Discover"
+                  />
+                  <img
+                    src={AmExCardIcon}
+                    className="border border-[#e6e6e6] rounded h-7 w-auto max-w-[72px]"
+                    alt="AmEx"
+                  />
+                </div>
+                <div className="text-[#6c6c6c] tracking-[0.1px] text-[15px] md:text-[16px]">
+                  <strong>Guaranteed Safe &amp; Secure Checkout</strong>
+                </div>
+
+                {/* END CUT HERE */}
               </div>
             </div>
           </div>
+          {/* END */}
         </>
       ) : (
         ""
