@@ -57,6 +57,7 @@ const LandInfo = () => {
   const listingTitle = propertyData?.title;
   const stateName = propertyData?.stateName;
   const ptbStateName = propertyData?.PTBContent?.stateName; // PHASE THIS OUT FOR ROOT LOCATION
+  const mapUrlData = propertyData?.mapUrl; 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -381,7 +382,7 @@ const LandInfo = () => {
                             )}
 
                             {activeTab === "Map" && (
-                              <MapEmbed lat={42.38713} lng={-106.772502} />
+                              <MapEmbed src={mapUrlData} />
                             )}
 
                             {/* rest of page column */}
