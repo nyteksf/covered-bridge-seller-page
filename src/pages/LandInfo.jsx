@@ -1,8 +1,7 @@
 import { db } from "../../firebase";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import PageNotFound from "./NotFound";
 import Footer from "../components/Footer";
@@ -33,8 +32,16 @@ import "../components/button-to-top.css";
 import "../components/contact-me-modal.css";
 
 const LandInfo = () => {
+  const [loading, setLoading] = useState(true);
+  // const [property, setProperty] = useState(null);
+  const params = useParams();
+  const rawParam = params.id ?? params.propertyId ?? "";
+  const propertyId = rawParam; // TEMP alias so old code stops crashing
+
+  // const { id } = useParams(); // URL param: fl_hernando_00001
+
   const navigate = useNavigate();
-  let { propertyId } = useParams();
+  // let { propertyId } = useParams();
   const imagesPreloaded = useRef(false);
 
   const [assetCount, setAssetCount] = useState(0);
@@ -49,15 +56,50 @@ const LandInfo = () => {
   const [isContactModalAnimating, setIsContactModalAnimating] = useState(false);
   const [videoUrl, setVideoUrl] = useState(propertyData?.youTubeUrl || "");
 
-  /* TEMPORARY */
-  const [hasSpecialAccess, setHasSpecialAccess] = useState(null);
-
   /* PROPERTY DATA */
   const excludeId = propertyData?.id;
   const listingTitle = propertyData?.title;
   const stateName = propertyData?.stateName;
   const ptbStateName = propertyData?.PTBContent?.stateName; // PHASE THIS OUT FOR ROOT LOCATION
-  const mapUrlData = propertyData?.mapUrl; 
+  const mapUrlData = propertyData?.mapUrl;
+
+  const toDocId = (val) => {
+    if (!val || typeof val !== "string") return "";
+    // if route uses hyphenated slug: fl-hernando-00001 → fl_hernando_00001
+    if (val.includes("-")) {
+      const parts = val.split("-");
+      if (parts.length === 3) {
+        const [s, c, n] = parts;
+        return `${s.toLowerCase()}_${c.toLowerCase()}_${n}`;
+      }
+    }
+    return val; // already looks like fl_hernando_00001
+  };
+
+  {
+    /* useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        const snap = await getDoc(doc(db, "properties", id)); // EXACT doc id
+        if (!active) return;
+        if (snap.exists()) {
+          setProperty({ id: snap.id, ...snap.data() });
+        } else {
+          setProperty(null);
+        }
+      } catch (err) {
+        console.error("[LandInfo] getDoc error:", err);
+        setProperty(null);
+      } finally {
+        if (active) setLoading(false);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [id]); */
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -175,63 +217,60 @@ const LandInfo = () => {
     return [formattedState, formattedCounty, formattedNumber].join("_");
   };
 
-  const firebaseLookupFormatPropertyId = (propertyId) => {
-    const parts = propertyId.split("-");
-
-    if (parts.length !== 3) return propertyId; // fallback in case it's malformed
-
-    const [state, county, number] = parts;
-
-    const formattedState = state.toLowerCase();
-    const formattedCounty = county.toLowerCase();
-    const formattedNumber = number;
-
-    return [formattedState, formattedCounty, formattedNumber].join("_");
-  };
-
-  const prettyFormattedPropertyId = prettyFormatPropertyId(propertyId);
+  const prettyFormattedPropertyId = prettyFormatPropertyId(rawParam);
 
   useEffect(() => {
-    const loadData = async () => {
-      if (!propertyId) return;
+    let active = true;
 
-      const formattedId = firebaseLookupFormatPropertyId(propertyId);
+    (async () => {
       try {
+        if (!rawParam) return;
+        setLoading(true); // ✅ make your loading gate work
+
+        const formattedId = toDocId(rawParam);
+        // (optional) debug:
+        // console.log("[LandInfo] fetching docId:", formattedId);
+
         const docRef = doc(db, "properties", formattedId);
         const docSnap = await getDoc(docRef);
+
+        if (!active) return;
 
         if (docSnap.exists()) {
           const data = docSnap.data();
 
-          // Check if it's NOT live and no special access
-          if (data.isPageLive === false && !hasSpecialAccess) {
-            console.warn("Listing marked as not live and no special access");
+          // Gate: not live and no special access
+          if (data.isPageLive === false && !data.hasSpecialAccess) {
+            console.warn("Listing not live (and no special access)");
             setPropertyData(null);
-            setIsPageLoaded(true);
             return;
           }
 
-          // Proceed normally
-          if (!data.imageUrls || !Array.isArray(data.imageUrls)) {
-            data.imageUrls = data.imageUrls || [];
-          }
+          // Normalize arrays to keep child components happy
+          if (!Array.isArray(data.imageUrls)) data.imageUrls = [];
+          if (!Array.isArray(data.descriptionPairs)) data.descriptionPairs = [];
+          if (!Array.isArray(data.specsData)) data.specsData = [];
 
           setPropertyData({ id: docSnap.id, ...data });
         } else {
           console.warn("No property found with ID:", formattedId);
           setPropertyData(null);
-          setIsPageLoaded(true);
         }
       } catch (err) {
-        console.error("Error loading property data:", err);
+        console.error("[LandInfo] getDoc error:", err);
+        setPropertyData(null);
+      } finally {
+        if (active) {
+          setLoading(false); // ✅ stop the spinner gate
+          setIsPageLoaded(true); // ✅ allow page render
+        }
       }
-    };
+    })();
 
-    // ✅ Wait for hasSpecialAccess to initialize
-    if (hasSpecialAccess !== null) {
-      loadData();
-    }
-  }, [propertyId, hasSpecialAccess]);
+    return () => {
+      active = false;
+    };
+  }, [rawParam]); // ✅ depend on rawParam, not propertyId
   {
     /* was also [navigate] prior */
   }
@@ -254,7 +293,6 @@ const LandInfo = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const isFacebookPreview = urlParams.get("facebook") === "true";
     const isCraigslistPreview = urlParams.get("craigslist") === "true";
-    setHasSpecialAccess(isFacebookPreview || isCraigslistPreview);
   }, []);
 
   const formattedNearbyPoints =
@@ -269,10 +307,13 @@ const LandInfo = () => {
       return text;
     }) || [];
 
+  if (loading) return null; // or a spinner
+  if (!propertyData) return <PageNotFound />;
+
   return (
     <>
       {/* TEMPORARY WRAPPER FOR RAQUEL */}
-      {!propertyData?.isPageLive && !hasSpecialAccess ? (
+      {!propertyData?.isPageLive ? (
         <PageNotFound />
       ) : (
         <>
@@ -389,12 +430,12 @@ const LandInfo = () => {
                             {propertyData?.PTBContent && (
                               <PageTitleBlock
                                 PTBContent={propertyData.PTBContent}
-                                propertyId={prettyFormatPropertyId(propertyId)}
+                                propertyId={prettyFormatPropertyId(rawParam)}
                                 formatNumberWithCommas={formatNumberWithCommas}
                               />
                             )}
                             <HorizontalDivider />
-                            {propertyData?.id && !hasSpecialAccess && (
+                            {propertyData?.id && (
                               <PropertyBlurb
                                 propertyId={propertyData.id}
                                 propertyBlurbContent={propertyData.PTBContent}

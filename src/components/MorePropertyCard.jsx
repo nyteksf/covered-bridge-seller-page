@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
 const formatCurrency = (value) => {
-  const number = parseFloat(value.toString().replace(/[^\d.-]/g, ""));
+  if (value === null || value === undefined) return "—";
+  const number = parseFloat(String(value).replace(/[^\d.-]/g, ""));
   return isNaN(number)
     ? "—"
     : number.toLocaleString("en-US", {
@@ -12,9 +13,10 @@ const formatCurrency = (value) => {
 };
 
 const capitalizeWords = (str = "") =>
-  str.replace(/\b\w/g, (char) => char.toUpperCase());
+  String(str).replace(/\b\w/g, (char) => char.toUpperCase());
 
-const formatPropertyId = (rawId = "") => {
+const formatPropertyId = (rawId) => {
+  if (!rawId || typeof rawId !== "string") return "—";
   const [state, county, num] = rawId.split("_");
   if (!state || !county || !num) return rawId;
   const countyFormatted =
@@ -39,7 +41,9 @@ const MorePropertyCard = ({ property }) => {
   } = property;
 
   const fallbackSpecs = Object.fromEntries(
-    specsData.map((pair) => [pair.key.toLowerCase(), pair.value])
+    (Array.isArray(specsData) ? specsData : [])
+      .filter((p) => p && typeof p.key === "string")
+      .map((p) => [p.key.toLowerCase(), p.value ?? ""])
   );
 
   const displayTitle =
@@ -67,7 +71,7 @@ const MorePropertyCard = ({ property }) => {
   const displayImage = imageUrls?.[0] || image || "/img/fallback-land.jpg";
 
   return (
-    <Link to={`/listing/${id}`}>
+    <Link to={id ? `/listing/${id}` : "#"}>
       <div className="w-full bg-white shadow-none hover:shadow-lg translate-y-0 hover:-translate-y-1 scale-100 hover:scale-105 transition-all duration-300">
         <img
           src={displayImage}
@@ -88,7 +92,8 @@ const MorePropertyCard = ({ property }) => {
             {formatCurrency(displayPrice)}
           </div>
           <div className="border p-1 text-[14px] font-semibold font-lato text-[#181818]">
-            {displayAcres} Acres +/-
+            {displayAcres}{" "}
+            {String(displayAcres).includes("Acre") ? "" : "Acres"} +/-
           </div>
         </div>
         <p className="text-center text-[14px] text-[#1a1a1a] font-lato font-semibold pt-2 pb-3 mt-1">

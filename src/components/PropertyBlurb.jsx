@@ -186,7 +186,8 @@ const PropertyBlurb = ({
             use any combination of these payment methods.
           </p>
 
-          <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">
+          {propertyBlurbContent?.canOwnerFinance && (
+            <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">
             Owner Financing is Available with a Down Payment of $
             {formatWithCommas(propertyBlurbContent?.depositPrice)}
             {propertyBlurbContent?.monthlyPrice > 0 && (
@@ -198,6 +199,7 @@ const PropertyBlurb = ({
             )}
             .
           </p>
+          )}
 
           <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">
             We make the whole process super simple and we can complete your
