@@ -165,12 +165,13 @@ const PropertyBlurb = ({
           <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato -mt-[4px] w-full max-w-[650px]">
             <strong>
               Important: To Purchase this Property, Click the Green BUY NOW
-              Button above, and by doing so, Place Your $
-              {propertyBlurbContent?.depositPrice} Deposit. Know that you will
-              receive an Instant Notification on your screen and by email once
-              your ${propertyBlurbContent?.depositPrice} Deposit has been made
-              successfully. The "BUY NOW" Button will also turn GRAY and be
-              disabled, reading, <em>"OUT OF STOCK"</em> at that time.
+              Button above, and by doing so, place your $
+              {propertyBlurbContent?.depositPrice} deposit. After this, you will
+              receive an Instant Notification both on your screen and by email
+              once your ${propertyBlurbContent?.depositPrice} deposit has been
+              made successfully. Note that the "BUY NOW" Button will also turn
+              GRAY and be disabled, reading, <em>"OUT OF STOCK"</em> at that
+              time.
             </strong>
           </p>
 
@@ -188,17 +189,17 @@ const PropertyBlurb = ({
 
           {propertyBlurbContent?.canOwnerFinance && (
             <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">
-            Owner Financing is Available with a Down Payment of $
-            {formatWithCommas(propertyBlurbContent?.depositPrice)}
-            {propertyBlurbContent?.monthlyPrice > 0 && (
-              <>
-                {" "}
-                and Monthly Payments as low as $
-                {formatWithCommas(propertyBlurbContent?.monthlyPrice)}
-              </>
-            )}
-            .
-          </p>
+              Owner Financing is Available with a Down Payment of $
+              {formatWithCommas(propertyBlurbContent?.depositPrice)}
+              {propertyBlurbContent?.monthlyPrice > 0 && (
+                <>
+                  {" "}
+                  and Monthly Payments as low as $
+                  {formatWithCommas(propertyBlurbContent?.monthlyPrice)}
+                </>
+              )}
+              .
+            </p>
           )}
 
           <p className="text-[#555] text-sm leading-5 mb-[10px] font-lato mt-0">

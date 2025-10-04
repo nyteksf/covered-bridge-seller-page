@@ -4,12 +4,12 @@ import YouTubeSkeleton from "./YouTubeSkeleton";
 const YouTubeEmbed = ({ url, className = "", onReady }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
-  
+
   useEffect(() => {
     // Reset loading state when URL changes
     setIsLoading(true);
   }, [url]);
-  
+
   const onLoad = () => {
     setIsLoading(false);
     if (onReady) onReady();
@@ -19,7 +19,8 @@ const YouTubeEmbed = ({ url, className = "", onReady }) => {
     try {
       const parsed = new URL(url);
       if (parsed.hostname === "youtu.be") return parsed.pathname.slice(1);
-      if (parsed.hostname.includes("youtube.com")) return parsed.searchParams.get("v");
+      if (parsed.hostname.includes("youtube.com"))
+        return parsed.searchParams.get("v");
       return null;
     } catch {
       return null;
@@ -30,8 +31,8 @@ const YouTubeEmbed = ({ url, className = "", onReady }) => {
   if (!videoId) return null;
 
   return (
-    <div 
-      className={`relative w-full aspect-video ${className}`}
+    <div
+      className={`relative w-full aspect-video rounded-lg overflow-hidden ring-1 ring-black/10 ${className}`}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
@@ -41,7 +42,9 @@ const YouTubeEmbed = ({ url, className = "", onReady }) => {
         </div>
       )}
       <iframe
-        className={`absolute inset-0 w-full h-full ${isLoading ? "opacity-0" : "opacity-100"}`}
+        className={`absolute inset-0 w-full h-full ${
+          isLoading ? "opacity-0" : "opacity-100"
+        }`}
         src={`https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0`}
         title="YouTube video player"
         frameBorder="0"
