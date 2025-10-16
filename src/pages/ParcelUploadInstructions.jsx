@@ -35,8 +35,8 @@ export default function ParcelUploadInstructions() {
                 A single <strong>CSV</strong> produced and exported from your
                 original, zipped county <strong>shapefile</strong>. Pain Forge
                 GPT then handles the rest near effortlessly: filtering vacant vs
-                improved, joining your downloaded lists to potentially stack
-                distress signals, and produce ranked hotlists.
+                improved, joining soon to be downloaded lists to potentially
+                stack distress signals, and produce ranked hotlists.
               </p>
               <h3 className="mt-6 font-serif text-xl font-semibold">
                 Shapefile basics (why multiple files?)
@@ -113,8 +113,9 @@ export default function ParcelUploadInstructions() {
                   along with your Pain Forge GPT filtration request.
                 </li>
                 <li>
-                  If larger, share a Dropbox/Google Drive link in the chat. It
-                  will download and process it end-to-end automatically.
+                  If larger, share a Dropbox/Google Drive link in the chat for
+                  similar usage. It will download and process it end-to-end
+                  automatically.
                 </li>
               </ul>
             </aside>
@@ -149,7 +150,8 @@ export default function ParcelUploadInstructions() {
                 <code className="rounded border border-white/15 bg-white/10 px-1">
                   .prj
                 </code>{" "}
-                files, as aforementioned.
+                files, as aforementioned. Try uploading it directly to PF GPT
+                first. If successful, skip to step 4 below.
               </p>
             </div>
 
@@ -158,7 +160,7 @@ export default function ParcelUploadInstructions() {
                 2
               </div>
               <p className="m-0 leading-relaxed">
-                Go to{" "}
+                Only if too large to upload, go to{" "}
                 <a
                   href="https://mapshaper.org/"
                   target="_blank"
