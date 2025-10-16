@@ -151,7 +151,8 @@ export default function ParcelUploadInstructions() {
                   .prj
                 </code>{" "}
                 files, as aforementioned. Try uploading it directly to PF GPT
-                first. If successful, skip to step 4 below.
+                first along with any filtering instructions. If successful, you
+                will be guided to download your first list.
               </p>
             </div>
 
