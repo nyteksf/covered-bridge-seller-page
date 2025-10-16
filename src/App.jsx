@@ -15,6 +15,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import StateNamePage from "./pages/StateNamePage";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import ProtectedAdminRoutes from "./components/ProtectedAdminRoutes";
+import ParcelUploadInstructions from "./pages/ParcelUploadInstructions";
 
 import "./index.css";
 
@@ -58,6 +59,9 @@ function App() {
         <Route path="/admin" element={<ProtectedAdminRoutes />}>
           <Route path="edit/:propertyId" element={<CreateListing />} />
         </Route>
+        <Route path="/login" element={<Login />} />
+        {/* Pain Forge GPT Instructions + Link */}
+        <Route path="/painforge" element={<ParcelUploadInstructions />} />
         {/* 404 ERROR PAGE */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
