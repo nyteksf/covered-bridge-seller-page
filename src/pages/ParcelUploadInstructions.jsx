@@ -35,8 +35,8 @@ export default function ParcelUploadInstructions() {
                 A single <strong>CSV</strong> produced and exported from your
                 original, zipped county <strong>shapefile</strong>. Pain Forge
                 GPT then handles the rest near effortlessly: filtering vacant vs
-                improved, joining soon to be downloaded lists to potentially
-                stack distress signals, and produce ranked hotlists.
+                improved while joining soon to be downloaded lists to
+                potentially stack distress signals, and produce ranked hotlists.
               </p>
               <h3 className="mt-6 font-serif text-xl font-semibold">
                 Shapefile basics (why multiple files?)
