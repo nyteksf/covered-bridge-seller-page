@@ -97,8 +97,8 @@ export default function ParcelUploadInstructions() {
                   </a>
                   , the export typically lands around{" "}
                   <strong>~100–200&nbsp;MB</strong> for a full county. This is
-                  because geographic/visual parcel data will be removed, and
-                  only the property attribute and owner data remains.
+                  because map related parcel data will be removed, and only the
+                  property attribute and owner data remains.
                 </li>
                 <li>
                   This shapefile attribute data will be used to link multiple
