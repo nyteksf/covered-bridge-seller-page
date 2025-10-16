@@ -38,7 +38,7 @@ export default function ParcelUploadInstructions() {
                 improved, joining your downloaded lists to potentially stack
                 distress signals, and produce ranked hotlists.
               </p>
-              <h3 className="mt-4 font-serif text-xl font-semibold">
+              <h3 className="mt-6 font-serif text-xl font-semibold">
                 Shapefile basics (why multiple files?)
               </h3>
               <ul className="ml-5 list-disc space-y-1">
