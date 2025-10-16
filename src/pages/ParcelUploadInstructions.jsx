@@ -3,7 +3,7 @@ export default function ParcelUploadInstructions() {
 
   return (
     <main className="min-h-screen bg-[#0c1a1e] text-slate-100">
-      <div className="mx-auto max-w-6xl px-6 py-10">
+      <div className="mx-auto max-w-6xl px-6 py-8">
         {/* Gray wrapper that contains everything and provides contrast */}
         <div className="rounded-2xl bg-slate-800/70 p-6 shadow-lg ring-1 ring-white/10">
           {/* Centered title block in my voice */}
