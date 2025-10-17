@@ -11,37 +11,35 @@ export default function ParcelUploadInstructions() {
             <div className="border-1 border-gray-300 mb-2 mt-1 h-12 w-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-200 flex items-center justify-center">
               <img src="/favicon.png" alt="logo" />
             </div>
-            <h1 className="font-serif text-3xl font-bold md:text-4xl">
+            <h1 className="font-serif text-3xl font-bold md:text-4xl tracking-wide">
               Pain Forge GPT
             </h1>
-            <p className="text-lg text-slate-300">
-              — Parcel Upload Instructions —
+            <p className="text-lg text-slate-300 tracking-wide">
+              — Parcel Data Upload Instructions —
             </p>
-            <p className="mt-1 max-w-2xl text-slate-300">
-              Shapefile too large? This is the fast path used to turn bloated
-              county shapefiles into a clean <code>.CSV</code>, then run it
-              through <strong>Pain Forge GPT</strong> for filtering, scoring,
-              and actionable lists.
+            <p className="mt-1 max-w-2xl text-slate-300 -tracking-tight">
+              The fast path used to turn county GIS shapefiles & lists into
+              filtered and actionable data.
             </p>
           </div>
 
           {/* Intro grid: 50/50 */}
           <div className="grid gap-4 md:grid-cols-2">
             <section className="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
-              <h2 className="font-serif text-2xl font-bold">
+              <h2 className="font-serif text-2xl font-bold tracking-wide">
                 What You’re Sending to Pain Forge
               </h2>
-              <p className="mt-2 border-l-4 border-amber-300/80 pl-3">
+              <p className="mt-2 border-l-4 border-amber-300/80 pl-3 tracking-tight">
                 A single <strong>CSV</strong> produced and exported from your
                 original, zipped county <strong>shapefile</strong>. Pain Forge
                 GPT then handles the rest near effortlessly: filtering vacant vs
                 improved while joining soon to be downloaded lists to
                 potentially stack distress signals, and produce ranked hotlists.
               </p>
-              <h3 className="mt-6 font-serif text-xl font-semibold">
+              <h3 className="mt-6 font-serif text-xl font-semibold tracking-wide">
                 Shapefile basics (why multiple files?)
               </h3>
-              <ul className="ml-5 list-disc space-y-1">
+              <ul className="ml-5 list-disc space-y-1 tracking-tight">
                 <li>
                   <code className="rounded border border-white/15 bg-white/10 px-1">
                     .shp
@@ -75,10 +73,10 @@ export default function ParcelUploadInstructions() {
             </section>
 
             <aside className="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
-              <h2 className="font-serif text-2xl font-bold">
+              <h2 className="font-serif text-2xl font-bold tracking-wide">
                 Process At a Glance
               </h2>
-              <ul className="ml-5 mt-2 list-disc space-y-1">
+              <ul className="ml-5 mt-2 list-disc space-y-1 tracking-tight">
                 <li>
                   First try uploading the <code>.zip</code>ped shapefile
                   directly to PF GPT. If it's under 500mb, you will succeed.
@@ -123,11 +121,11 @@ export default function ParcelUploadInstructions() {
 
           {/* Minimal Steps */}
           <section className="mt-4 rounded-2xl border border-white/10 bg-slate-900/70 p-5">
-            <h2 className="font-serif text-2xl font-bold">
+            <h2 className="font-serif text-2xl font-bold tracking-wide">
               Minimal Steps (Download ZIP ➜ Mapshaper ➜ CSV ➜ Send)
             </h2>
 
-            <div className="mt-3 flex items-start gap-3">
+            <div className="mt-3 flex items-start gap-3 tracking-tight">
               <div className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-amber-300 text-base font-semibold text-slate-900 leading-none tabular-nums lining-nums select-none ring-1 ring-white/30 shadow-sm">
                 1
               </div>
@@ -203,17 +201,17 @@ export default function ParcelUploadInstructions() {
 
           {/* Filters */}
           <section className="mt-4 rounded-2xl border border-white/10 bg-slate-900/70 p-5">
-            <h2 className="font-serif text-2xl font-bold">
+            <h2 className="font-serif text-2xl font-bold tracking-wide">
               Vacant vs Houses (Optional Filter)
             </h2>
-            <p className="mt-2 border-l-4 border-amber-300/80 pl-3">
-              Default includes both. It will pre-filter on it's side only if you
+            <p className="mt-2 border-l-4 border-amber-300/80 pl-3 tracking-tight underline">
+              Default includes both. It will pre-filter on it's end only if you
               tell it which you want:
             </p>
-            <ul className="ml-5 mt-2 list-disc space-y-1">
+            <ul className="ml-5 mt-2 list-disc space-y-1 tracking-tight">
               <li>
                 <strong>Vacant only</strong> (e.g., uses improvement value = 0
-                or property-use contains “Vacant”).
+                or <code>property-use</code> contains “Vacant”).
               </li>
               <li>
                 <strong>Houses only</strong> (e.g., uses improvement value &gt;
@@ -228,14 +226,14 @@ export default function ParcelUploadInstructions() {
 
           {/* Explicit request examples (your instruction) */}
           <section className="mt-4 rounded-2xl border border-white/10 bg-slate-900/70 p-5">
-            <h2 className="font-serif text-2xl font-bold">
+            <h2 className="font-serif text-2xl font-bold tracking-wide">
               Tell It What You Need
             </h2>
-            <p className="mt-2 border-l-4 border-amber-300/80 pl-3">
+            <p className="mt-2 border-l-4 border-amber-300/80 pl-3 tracking-tight underline">
               Be explicit so it runs the right workflow. More detail means more
               specific results. Examples:
             </p>
-            <ul className="ml-5 mt-2 list-disc space-y-1">
+            <ul className="ml-5 mt-2 list-disc space-y-1 tracking-tight">
               <li>
                 “<strong>Filter list to vacant land only</strong> and export
                 APN, acreage, land-use, and situs address with owner info in a
@@ -272,8 +270,8 @@ export default function ParcelUploadInstructions() {
 
           {/* Troubleshooting: detailed, not dumbed down */}
           <section className="mt-4 rounded-2xl border border-white/10 bg-slate-900/70 p-5">
-            <h2 className="font-serif text-2xl font-bold">Troubleshooting</h2>
-            <ul className="ml-5 mt-2 list-disc space-y-2">
+            <h2 className="font-serif text-2xl font-bold tracking-wide">Troubleshooting</h2>
+            <ul className="ml-5 mt-2 list-disc space-y-2 tracking-tight">
               <li>
                 <strong>Big ZIP won’t load in Mapshaper:</strong> Zip only the
                 shapefile layer you need (don’t include tiles or extra layers).
