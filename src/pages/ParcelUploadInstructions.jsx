@@ -275,6 +275,11 @@ export default function ParcelUploadInstructions() {
             </h2>
             <ul className="ml-5 mt-2 list-disc space-y-2 tracking-tight">
               <li>
+                <strong>Don't let the AI get lazy:</strong> If it tries to get
+                you to manually do the work, push back. Tell it to do it for
+                you.
+              </li>
+              <li>
                 <strong>Shapefile or list page is broken or missing?:</strong>{" "}
                 Load the desired page, and then cut and paste its text or take
                 screenshot(s) as needed. Specifically, come back to PF GPT and
