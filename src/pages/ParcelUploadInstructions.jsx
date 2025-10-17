@@ -270,8 +270,19 @@ export default function ParcelUploadInstructions() {
 
           {/* Troubleshooting: detailed, not dumbed down */}
           <section className="mt-4 rounded-2xl border border-white/10 bg-slate-900/70 p-5">
-            <h2 className="font-serif text-2xl font-bold tracking-wide">Troubleshooting</h2>
+            <h2 className="font-serif text-2xl font-bold tracking-wide">
+              Troubleshooting
+            </h2>
             <ul className="ml-5 mt-2 list-disc space-y-2 tracking-tight">
+              <li>
+                <strong>Shapefile or list page is broken or missing?:</strong>{" "}
+                Load the desired page, and then cut and paste its text or take
+                screenshot(s) as needed. Specifically, come back to PF GPT and
+                after you state what page it is (ie "Code Violations list
+                page"), and what you saw, paste in the aforementioned text
+                content. It will tell you what to do from there to either get
+                your list or find the right page.
+              </li>
               <li>
                 <strong>Big ZIP won’t load in Mapshaper:</strong> Zip only the
                 shapefile layer you need (don’t include tiles or extra layers).
