@@ -11,13 +11,13 @@ export default function ParcelUploadInstructions() {
             <div className="border-1 border-gray-300 mb-2 mt-1 h-12 w-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-200 flex items-center justify-center">
               <img src="/favicon.png" alt="logo" />
             </div>
-            <h1 className="font-serif text-3xl font-bold md:text-4xl tracking-wide">
+            <h1 className="text-3xl font-bold md:text-4xl tracking-wide">
               Pain Forge GPT
             </h1>
-            <p className="text-lg text-slate-300 tracking-wide">
+            <p className="text-lg text-slate-300 tracking-tight">
               — Parcel Data Upload Instructions —
             </p>
-            <p className="mt-1 max-w-2xl text-slate-300 -tracking-tight">
+            <p className="mt-1 max-w-2xl text-slate-300 tracking-tight">
               The fast path used to turn county GIS shapefiles & lists into
               filtered and actionable data.
             </p>
