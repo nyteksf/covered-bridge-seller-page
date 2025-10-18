@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function ParcelUploadInstructions() {
   const year = new Date().getFullYear();
 
@@ -8,9 +10,11 @@ export default function ParcelUploadInstructions() {
         <div className="rounded-2xl bg-slate-800/70 p-6 shadow-lg ring-1 ring-white/10">
           {/* Centered title block in my voice */}
           <div className="mb-8 flex flex-col items-center text-center">
-            <div className="border-1 border-gray-300 mb-2 mt-1 h-12 w-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-200 flex items-center justify-center">
-              <img src="/favicon.png" alt="logo" />
-            </div>
+            <Link to="/">
+              <div className="border-1 border-gray-300 mb-2 mt-1 h-12 w-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-200 flex items-center justify-center">
+                <img src="/favicon.png" alt="logo" />
+              </div>
+            </Link>
             <h1 className="text-3xl font-bold md:text-4xl tracking-wide">
               Pain Forge GPT
             </h1>
