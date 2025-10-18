@@ -257,7 +257,9 @@ export default function ParcelUploadInstructions() {
               </li>
               <li>
                 <strong>"Give me SFR and manufactured houses only."</strong> →
-                filter: property-use contains “Residential”, or similar.
+                filter: property-use contains “Residential”, and type is equal
+                to "SFR" or "manufactured" and similar keywords to be processed,
+                understood and filtered out.
               </li>
             </ul>
             <p className="mt-2">
