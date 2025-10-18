@@ -275,6 +275,13 @@ export default function ParcelUploadInstructions() {
             </h2>
             <ul className="ml-5 mt-2 list-disc space-y-2 tracking-tight">
               <li>
+                <strong>Output file only has like 12 rows or so?:</strong> If
+                you're not getting back thousands or at least HUNDREDS of rows
+                from your list depending on circumstance, the AI made a mistake.
+                Start over. Note that this is a lot less common in single-list
+                mode.
+              </li>
+              <li>
                 <strong>Don't let the AI get lazy:</strong> If it tries to get
                 you to manually do the work, push back. Tell it to do it for
                 you.
