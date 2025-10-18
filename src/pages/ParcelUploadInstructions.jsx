@@ -256,8 +256,8 @@ export default function ParcelUploadInstructions() {
                 Baths = 2 (garage optional)
               </li>
               <li>
-                <strong>"Give me houses only."</strong> → filter: property-use
-                contains “Residential”, or similar.
+                <strong>"Give me SFR and manufactured houses only."</strong> →
+                filter: property-use contains “Residential”, or similar.
               </li>
             </ul>
             <p className="mt-2">
@@ -275,16 +275,18 @@ export default function ParcelUploadInstructions() {
             </h2>
             <ul className="ml-5 mt-2 list-disc space-y-2 tracking-tight">
               <li>
-                <strong>Output file only has like 12 rows or so?:</strong> If
-                you're not getting back thousands or at least HUNDREDS of rows
-                from your list depending on circumstance, the AI made a mistake.
-                Start over. Note that this is a lot less common in single-list
-                mode.
+                <strong>Your output file only has like 12 rows or so?:</strong>{" "}
+                If you're not getting back thousands or at least HUNDREDS of
+                rows from your list depending on circumstance, the AI made a
+                mistake. Everyone makes them sometimes. Start over, and point
+                out what happened to the AI, so it can learn. Note that this is
+                a lot less common in single-list mode; where complexity is
+                lesser.
               </li>
               <li>
-                <strong>Don't let the AI get lazy:</strong> If it tries to get
-                you to manually do the work, push back. Tell it to do it for
-                you.
+                <strong>Don't allow the AI to get lazy:</strong> If it ever
+                tries to get you to manually do any of the work, just push back.
+                Tell it to do it for you. It will.
               </li>
               <li>
                 <strong>Shapefile or list page is broken or missing?:</strong>{" "}
