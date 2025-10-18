@@ -293,11 +293,13 @@ export default function ParcelUploadInstructions() {
               <li>
                 <strong>Shapefile or list page is broken or missing?:</strong>{" "}
                 Load the desired page, and then cut and paste its text or take
-                screenshot(s) as needed. Specifically, come back to PF GPT and
-                after you state what page it is (ie "Code Violations list
-                page"), and what you saw, paste in the aforementioned text
-                content. It will tell you what to do from there to either get
-                your list or find the right page.
+                screenshot(s) as needed. Specifically, come back over to PF GPT
+                and after you state what page it was (ie "Code Violations list
+                page"), and what you saw, cut and paste in the page text or take
+                screenshots with snipping tool in windows. The AI will tell you
+                what to do from there to either get your list or find the right
+                page. If ever you're lost, show your screen or screen text to
+                the AI.
               </li>
               <li>
                 <strong>Big ZIP won’t load in Mapshaper:</strong> Zip only the
@@ -335,7 +337,7 @@ export default function ParcelUploadInstructions() {
           {/* Footer */}
           <footer className="mt-6 flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/70 p-5">
             <div className="text-slate-400">
-              © {year} Covered Bridge Properties
+              © {year} Covered Bridge Properties™
             </div>
             <a
               href="#top"
