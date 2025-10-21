@@ -128,7 +128,7 @@ export default function ParcelUploadInstructions() {
             {" "}
             {/* A WARNING TO USERS */}
             <h2 className="font-serif text-2xl font-bold tracking-wide flex items-center">
-              <AlertTriangle className="mr-1" /> Warning!
+              <AlertTriangle className="mr-1" /> Warning! Important!
             </h2>
             <p className="mt-2 border-l-4 border-amber-300/80 pl-3 tracking-tight underline">
               This is <em>NOT</em> a fully automated tool; not a virtual VA
@@ -150,9 +150,16 @@ export default function ParcelUploadInstructions() {
                   Some counties have multiple formats for their lists:
                 </strong>{" "}
                 For example, probate may be truncated in one form, and yet in
-                another contains useful, related petitioner addresses and so forth in
-                terms of otherwise missing details. Look at the suggested links
-                for the list, and make sure your find is sufficient.
+                another contains useful, related petitioner addresses and so
+                forth in terms of otherwise missing details. Look at the
+                suggested links for the list, and make sure your find is
+                sufficient.
+              </li>
+              <li>
+                <strong>Take screenshots / cut and paste when lost:</strong>{" "}
+                Confused and don't know what to do? Use the windows snipping
+                tool to take a screenshot, or cut and paste the screen text
+                directly into PF GPT. It will advise your next steps.
               </li>
             </ul>
             <p className="mt-2 text-sm text-slate-400">
