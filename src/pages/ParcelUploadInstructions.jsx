@@ -150,7 +150,7 @@ export default function ParcelUploadInstructions() {
                   Some counties have multiple formats for their lists:
                 </strong>{" "}
                 For example, probate may be truncated in one form, and yet in
-                another contain related petitioner addresses and so forth in
+                another contains useful, related petitioner addresses and so forth in
                 terms of otherwise missing details. Look at the suggested links
                 for the list, and make sure your find is sufficient.
               </li>
