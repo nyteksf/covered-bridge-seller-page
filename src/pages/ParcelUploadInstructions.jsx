@@ -145,6 +145,15 @@ export default function ParcelUploadInstructions() {
                 rows/properties- but it still ultimately must be linkable to
                 begin with.
               </li>
+              <li>
+                <strong>
+                  Some counties have multiple formats for their lists:
+                </strong>{" "}
+                For example, probate may be truncated in one form, and yet in
+                another contain related petitioner addresses and so forth in
+                terms of otherwise missing details. Look at the suggested links
+                for the list, and make sure your find is sufficient.
+              </li>
             </ul>
             <p className="mt-2 text-sm text-slate-400">
               Don't assume — make sure you verify the data exists before
