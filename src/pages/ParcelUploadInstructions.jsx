@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { AlertTriangle } from "lucide-react";
 
 export default function ParcelUploadInstructions() {
   const year = new Date().getFullYear();
@@ -123,6 +124,34 @@ export default function ParcelUploadInstructions() {
             </aside>
           </div>
 
+          <section className="mt-4 rounded-2xl border border-white/10 bg-slate-900/70 p-5">
+            {" "}
+            {/* A WARNING TO USERS */}
+            <h2 className="font-serif text-2xl font-bold tracking-wide flex items-center">
+              <AlertTriangle className="mr-1" /> Warning!
+            </h2>
+            <p className="mt-2 border-l-4 border-amber-300/80 pl-3 tracking-tight underline">
+              This is <em>NOT</em> a fully automated tool; not a virtual VA
+              (yet). It is instead 95% automated. What this means for protocol:
+            </p>
+            <ul className="ml-5 mt-2 list-disc space-y-1 tracking-tight">
+              <li>
+                <strong>Download and look at your list's data/format:</strong>{" "}
+                Make sure all of your lists have the data you expect, or expect
+                silent errors to arise later. <br />
+                For example, how can you link the parcel info to an address and
+                other details if the address or details aren't there? It is
+                saving you from having to manually link the data on thousand of
+                rows/properties- but it still ultimately must be linkable to
+                begin with.
+              </li>
+            </ul>
+            <p className="mt-2 text-sm text-slate-400">
+              Don't assume — make sure you verify the data exists before
+              referencing it or instructions related to it.
+            </p>
+          </section>
+
           {/* Minimal Steps */}
           <section className="mt-4 rounded-2xl border border-white/10 bg-slate-900/70 p-5">
             <h2 className="font-serif text-2xl font-bold tracking-wide">
@@ -201,6 +230,63 @@ export default function ParcelUploadInstructions() {
                 filtering. Examples below.
               </p>
             </div>
+          </section>
+
+          {/* INSTRUCTION DETAILS */}
+          <section className="mt-4 rounded-2xl border border-white/10 bg-slate-900/70 p-5">
+            <h2 className="font-serif text-2xl font-bold tracking-wide flex items-center">
+              How To: Process Each List Optimally
+            </h2>
+
+            <p className="mt-2 border-l-4 border-amber-300/80 pl-3 tracking-tight underline">
+              Here are some suggestions for using PF GPT to process your county
+              lists:
+            </p>
+            <ul className="ml-5 mt-2 list-disc space-y-1 tracking-tight">
+              <li>
+                <strong>Probate:</strong> Speed kills. Pull 2 weeks back only.
+                Process this against the county shapefile to determine which
+                decedents owned property. Call PR, but send mail to "Est. of
+                ...", at the decedent's listed address.
+              </li>
+              <li>
+                <strong>Tax Delinquency:</strong> Must figure out the time
+                period in each county; for how long it takes from delinquency to
+                tax certificate issuance, though the GPT will try to figure this
+                much out automatically. <br />
+                Filter by property type and details, and will automatically look
+                for repeat delinquencies and/or larger amounts, among other
+                signs.
+              </li>
+              <li>
+                <strong>Code Violations:</strong> GPT will read through and
+                parse the violations for you. It searches this for addresses and
+                looks for severity and relevance via descriptions. If it doesn't
+                find an address, it notes the language infers a house is
+                attached to the violation and provides the case information to
+                look up. Output creates 30 day retrospective, plus a
+                30d.-to-6mo. repeat offender list in order to find higher tier
+                prospects.
+              </li>
+              <li>
+                <strong>Evictions:</strong> This is best used to search back up
+                to a year. In doing so, the GPT will find repeat offenders.
+                These are potential tired landlords; especially if they are
+                found to overlap with Code Violations.
+              </li>
+              <li>
+                <strong>Lis Pendens (Foreclosure):</strong> Pull the last 30
+                days, and the last 6 months (ie high pain list vs. <b>very</b>{" "}
+                high pain list). Cross data rows against the parcel shapefile to
+                find related addresses to mail linked regarding recent
+                foreclosures.
+              </li>
+              <li>
+                <strong>Master Pain Report:</strong> List of properties and pain
+                sources; stacked from highest and most overlapping to least. And
+                an outreach file deduped with addresses and other details.
+              </li>
+            </ul>
           </section>
 
           {/* Filters */}
